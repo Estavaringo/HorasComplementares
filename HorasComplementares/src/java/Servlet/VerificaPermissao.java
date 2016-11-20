@@ -31,7 +31,7 @@ public class VerificaPermissao extends HttpServlet {
         }else{
             if(acesso == false){
                 return true;
-            }else if(usuario.getPerfil().equals("admin")){
+            }else if(usuario.getTipoUsuario().equals("admin")){
                 return true;                
             }else{
                 return false;

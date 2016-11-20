@@ -69,7 +69,7 @@ public class ContatoUsuarioServlet implements LogicaDeNegocio{
                     contatoUsuario = new ContatoUsuario();
 
                     //Atribui as informações da contatoUsuario no objeto
-                    contatoUsuario.setCodigo(Integer.parseInt(req.getParameter("descricao")));
+                    contatoUsuario.setCodigo(Integer.parseInt(req.getParameter("codigo")));
                     contatoUsuario.setDescricao(req.getParameter("descricao"));
                     
                     usuario.setCodigo(Integer.parseInt(req.getParameter("codigoUsuario")));
@@ -97,7 +97,7 @@ public class ContatoUsuarioServlet implements LogicaDeNegocio{
                     contatoUsuario = new ContatoUsuario();
 
                     //Atribui as informações da contatoUsuario no objeto
-                    contatoUsuario.setCodigo(Integer.parseInt(req.getParameter("descricao")));
+                    contatoUsuario.setCodigo(Integer.parseInt(req.getParameter("codigo")));
                     contatoUsuario.setDescricao(req.getParameter("descricao"));
                     
                     usuario.setCodigo(Integer.parseInt(req.getParameter("codigoUsuario")));

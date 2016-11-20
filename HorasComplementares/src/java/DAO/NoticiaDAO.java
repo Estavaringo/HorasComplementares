@@ -5,9 +5,9 @@
  */
 package DAO;
 
-import Bean.ContatoUsuario;
 import Bean.Curso;
-import Bean.TipoContato;
+import Bean.Noticia;
+import Bean.StatusNoticia;
 import Bean.TipoUsuario;
 import Bean.Usuario;
 import java.sql.PreparedStatement;
@@ -20,35 +20,40 @@ import java.util.ArrayList;
  *
  * @author gabri
  */
-public class ContatoUsuarioDAO implements DAO<ContatoUsuario>{
+public class NoticiaDAO implements DAO<Noticia>{
 
     BancoDados bd = new BancoDados();
-    
+
     @Override
-    public void Incluir(ContatoUsuario obj) throws SQLException {
+    public void Incluir(Noticia obj) throws SQLException {
         try {
             bd.conectar();
             String strSql
-                    = "INSERT INTO CONTATO_USUARIO (COUS_DESC, TICO_ID, USUA_ID) VALUES (?,?,?)";
+                    = "INSERT INTO NOTICIA (NOTI_TITU, NOTI_DESC, NOTI_DT_PUBL, NOTI_DT_AGEN, NOTI_VISI, STNO_ID, USUA_ID) VALUES (?,?,?,?,?,?,?)";
             PreparedStatement p
                     = bd.connection.prepareStatement(strSql);
-            p.setString(1, obj.getDescricao());
-            p.setInt(2, obj.getTipoContato().getCodigo());
-            p.setInt(3, obj.getUsuario().getCodigo());
+            p.setString(1, obj.getTitulo());
+            p.setString(2, obj.getDescricao());
+            p.setDate(3, obj.getDataPublicacao());
+            p.setDate(4, obj.getDataAgendamento());
+            p.setBoolean(5, obj.isVisivel());
+            p.setInt(6, obj.getStatusNoticia().getCodigo());
+            p.setInt(7, obj.getUsuario().getCodigo());
             p.execute();
             p.close();
             bd.desconectar();
         } catch (SQLException ex) {
             bd.desconectar();
             throw ex;
-        }    }
+        }
+    }
 
     @Override
     public void Excluir(int codigo) throws SQLException {
         try {
             bd.conectar();
             String strSql
-                    = "DELETE FROM CONTATO_USUARIO WHERE COUS_ID = ?";
+                    = "DELETE FROM NOTICIA WHERE NOTI_ID = ?";
             PreparedStatement p
                     = bd.connection.prepareStatement(strSql);
             p.setInt(1, codigo);
@@ -62,17 +67,21 @@ public class ContatoUsuarioDAO implements DAO<ContatoUsuario>{
     }
 
     @Override
-    public void Alterar(ContatoUsuario obj) throws SQLException {
+    public void Alterar(Noticia obj) throws SQLException {
         try {
             bd.conectar();
             String strSql
-                    = "UPDATE CONTATO_USUARIO SET COUS_DESC = ?, TICO_ID = ?, USUA_ID = ? WHERE COUS_ID = ? ";
+                    = "UPDATE NOTICIA SET NOTI_TITU = ?, NOTI_DESC = ?, NOTI_DT_PUBL = ?, NOTI_DT_AGEN = ?, NOTI_VISI = ?, STNO_ID = ?, USUA_ID = ? WHERE NOTI_ID = ? ";
             PreparedStatement p
                     = bd.connection.prepareStatement(strSql);
-            p.setString(1, obj.getDescricao());
-            p.setInt(2, obj.getTipoContato().getCodigo());
-            p.setInt(3, obj.getUsuario().getCodigo());
-            p.setInt(4, obj.getCodigo());
+            p.setString(1, obj.getTitulo());
+            p.setString(2, obj.getDescricao());
+            p.setDate(3, obj.getDataPublicacao());
+            p.setDate(4, obj.getDataAgendamento());
+            p.setBoolean(5, obj.isVisivel());
+            p.setInt(6, obj.getStatusNoticia().getCodigo());
+            p.setInt(7, obj.getUsuario().getCodigo());
+            p.setInt(8, obj.getCodigo());
             p.execute();
             p.close();
             bd.desconectar();
@@ -83,30 +92,34 @@ public class ContatoUsuarioDAO implements DAO<ContatoUsuario>{
     }
 
     @Override
-    public ArrayList<ContatoUsuario> Consultar() throws SQLException {
+    public ArrayList<Noticia> Consultar() throws SQLException {
         try {
-            ArrayList<ContatoUsuario> lista = new ArrayList<>();
+            ArrayList<Noticia> lista = new ArrayList<>();
             bd.conectar();
             Statement comando;
             comando = bd.connection.createStatement();
-            ResultSet rs = comando.executeQuery("SELECT C.COUS_ID, C.COUS_DESC, C.TICO_ID, C.USUA_ID, "
+            ResultSet rs = comando.executeQuery("SELECT N.NOTI_ID, N.NOTI_TITU, N.NOTI_DESC, N.NOTI_DT_PUBL, N.NOTI_DT_AGEN, N.NOTI_VISI, N.STNO_ID, N.USUA_ID, "
                     + "U.USUA_ID, U.USUA_NM, U.USUA_PRON, U.USUA_FUNC, U.USUA_DT_INI, U.USUA_SEME, U.CURS_ID, U.TIUS_ID, U.USUA_ATIVO, "
-                    + "T.TICO_ID, T.TICO_DESC "
-                    + "FROM CONTATO_USUARIO C "
+                    + "S.STNO_ID, S.STNO_DESC "
+                    + "FROM NOTICIA N "
                     + "INNER JOIN USUARIO U "
-                    + "ON C.USUA_ID = U.USUA_ID "
-                    + "INNER JOIN TIPO_CONTATO T "
-                    + "ON C.TICO_ID = T.TICO_ID ");
+                    + "ON N.USUA_ID = U.USUA_ID "
+                    + "INNER JOIN STATUS_NOTICIA S "
+                    + "ON N.STNO_ID = S.STNO_ID ");
             while (rs.next()) {
-                ContatoUsuario obj = new ContatoUsuario();
+                Noticia obj = new Noticia();
                 Usuario usuario = new Usuario();
                 Curso curso = new Curso();
                 TipoUsuario tipoUsuario = new TipoUsuario();
-                TipoContato tipoContato = new TipoContato();
-                
-                obj.setCodigo(rs.getInt("C.COUS_ID"));
-                obj.setDescricao(rs.getString("C.COUS_DESC"));
-                
+                StatusNoticia statusNoticia = new StatusNoticia();
+
+                obj.setCodigo(rs.getInt("N.NOTI_ID"));
+                obj.setTitulo(rs.getString("N.NOTI_TITU"));
+                obj.setDescricao(rs.getString("N.NOTI_DESC"));
+                obj.setDataPublicacao(rs.getDate("N.NOTI_DT_PUBL"));
+                obj.setDataAgendamento(rs.getDate("N.NOTI_DT_AGEN"));
+                obj.setVisivel(rs.getBoolean("N.NOTI_VISI"));
+
                 usuario.setCodigo(rs.getInt("U.USUA_ID"));
                 usuario.setNome(rs.getString("U.USUA_NM"));
                 usuario.setProntuario(rs.getString("U.USUA_PRON"));
@@ -119,11 +132,11 @@ public class ContatoUsuarioDAO implements DAO<ContatoUsuario>{
                 tipoUsuario.setCodigo(rs.getInt("U.TIUS_ID"));
                 usuario.setTipoUsuario(tipoUsuario);
                 obj.setUsuario(usuario);
-                
-                tipoContato.setCodigo(rs.getInt("T.TICO_ID"));
-                tipoContato.setDescricao(rs.getString("T.TICO_DESC"));
-                obj.setTipoContato(tipoContato);
-                
+
+                statusNoticia.setCodigo(rs.getInt("S.STNO_ID"));
+                statusNoticia.setDescricao(rs.getString("S.STNO_DESC"));
+                obj.setStatusNoticia(statusNoticia);
+
                 lista.add(obj);
             }
             comando.close();
@@ -136,32 +149,36 @@ public class ContatoUsuarioDAO implements DAO<ContatoUsuario>{
     }
 
     @Override
-    public ContatoUsuario Consultar(int codigo) throws SQLException {
+    public Noticia Consultar(int codigo) throws SQLException {
         try {
-            ContatoUsuario obj = null;
+            Noticia obj = null;
             bd.conectar();
-            String strSQL = "SELECT C.COUS_ID, C.COUS_DESC, C.TICO_ID, C.USUA_ID, "
+            String strSQL = "SELECT N.NOTI_ID, N.NOTI_TITU, N.NOTI_DESC, N.NOTI_DT_PUBL, N.NOTI_DT_AGEN, N.NOTI_VISI, N.STNO_ID, N.USUA_ID, "
                     + "U.USUA_ID, U.USUA_NM, U.USUA_PRON, U.USUA_FUNC, U.USUA_DT_INI, U.USUA_SEME, U.CURS_ID, U.TIUS_ID, U.USUA_ATIVO, "
-                    + "T.TICO_ID, T.TICO_DESC "
-                    + "FROM CONTATO_USUARIO C "
+                    + "S.STNO_ID, S.STNO_DESC "
+                    + "FROM NOTICIA C "
                     + "INNER JOIN USUARIO U "
-                    + "ON C.USUA_ID = U.USUA_ID "
-                    + "INNER JOIN TIPO_CONTATO T "
-                    + "ON C.TICO_ID = T.TICO_ID "
-                    + "WHERE C.COUS_ID = ?";
+                    + "ON N.USUA_ID = U.USUA_ID "
+                    + "INNER JOIN STATUS_NOTICIA S "
+                    + "ON N.STNO_ID = S.STNO_ID "
+                    + "WHERE N.NOTI_ID = ?";
             PreparedStatement p = bd.connection.prepareStatement(strSQL);
             p.setInt(1, codigo);
             ResultSet rs = p.executeQuery();
             if (rs.next()) {
-                obj = new ContatoUsuario();
+                obj = new Noticia();
                 Usuario usuario = new Usuario();
                 Curso curso = new Curso();
                 TipoUsuario tipoUsuario = new TipoUsuario();
-                TipoContato tipoContato = new TipoContato();
-                
-                obj.setCodigo(rs.getInt("C.COUS_ID"));
-                obj.setDescricao(rs.getString("C.COUS_DESC"));
-                
+                StatusNoticia statusNoticia = new StatusNoticia();
+
+                obj.setCodigo(rs.getInt("N.NOTI_ID"));
+                obj.setTitulo(rs.getString("N.NOTI_TITU"));
+                obj.setDescricao(rs.getString("N.NOTI_DESC"));
+                obj.setDataPublicacao(rs.getDate("N.NOTI_DT_PUBL"));
+                obj.setDataAgendamento(rs.getDate("N.NOTI_DT_AGEN"));
+                obj.setVisivel(rs.getBoolean("N.NOTI_VISI"));
+
                 usuario.setCodigo(rs.getInt("U.USUA_ID"));
                 usuario.setNome(rs.getString("U.USUA_NM"));
                 usuario.setProntuario(rs.getString("U.USUA_PRON"));
@@ -174,11 +191,11 @@ public class ContatoUsuarioDAO implements DAO<ContatoUsuario>{
                 tipoUsuario.setCodigo(rs.getInt("U.TIUS_ID"));
                 usuario.setTipoUsuario(tipoUsuario);
                 obj.setUsuario(usuario);
-                
-                tipoContato.setCodigo(rs.getInt("T.TICO_ID"));
-                tipoContato.setDescricao(rs.getString("T.TICO_DESC"));
-                obj.setTipoContato(tipoContato);
-               
+
+                statusNoticia.setCodigo(rs.getInt("S.STNO_ID"));
+                statusNoticia.setDescricao(rs.getString("S.STNO_DESC"));
+                obj.setStatusNoticia(statusNoticia);
+
                 p.close();
                 bd.desconectar();
                 return obj;
@@ -190,5 +207,6 @@ public class ContatoUsuarioDAO implements DAO<ContatoUsuario>{
             bd.desconectar();
             throw ex;
         }
-    } 
+    }
+
 }
