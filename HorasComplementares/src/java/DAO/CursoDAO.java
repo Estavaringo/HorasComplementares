@@ -5,7 +5,7 @@
  */
 package DAO;
 
-import Bean.TipoRelatorio;
+import Bean.Curso;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,20 +16,20 @@ import java.util.ArrayList;
  *
  * @author gabri
  */
-public class TipoRelatorioDAO implements DAO<TipoRelatorio>{
+public class CursoDAO implements DAO<Curso>{
 
     BancoDados bd = new BancoDados();
     
     @Override
-    public void Incluir(TipoRelatorio obj) throws SQLException {
+    public void Incluir(Curso obj) throws SQLException {
         try {
             bd.conectar();
             String strSql
-                    = "INSERT INTO TIPO_RELATORIO (TIRE_DESC, TIRE_HR) VALUES (?,?)";
+                    = "INSERT INTO CURSO (CURS_DESC, CURS_HR_NECE) VALUES (?,?)";
             PreparedStatement p
                     = bd.connection.prepareStatement(strSql);
             p.setString(1, obj.getDescricao());
-            p.setInt(2, obj.getQtdHoras());
+            p.setInt(2, obj.getCargaHoraria());
             p.execute();
             p.close();
             bd.desconectar();
@@ -43,7 +43,7 @@ public class TipoRelatorioDAO implements DAO<TipoRelatorio>{
         try {
             bd.conectar();
             String strSql
-                    = "DELETE FROM TIPO_RELATORIO WHERE TIRE_ID = ?";
+                    = "DELETE FROM CURSO WHERE CURS_ID = ?";
             PreparedStatement p
                     = bd.connection.prepareStatement(strSql);
             p.setInt(1, codigo);
@@ -57,15 +57,15 @@ public class TipoRelatorioDAO implements DAO<TipoRelatorio>{
     }
 
     @Override
-    public void Alterar(TipoRelatorio obj) throws SQLException {
+    public void Alterar(Curso obj) throws SQLException {
         try {
             bd.conectar();
             String strSql
-                    = "UPDATE TIPO_RELATORIO SET TIRE_DESC = ?, TIRE_HR = ? WHERE TIRE_ID = ?";
+                    = "UPDATE CURSO SET CURS_DESC = ?, CURS_HR_NECE = ? WHERE CURS_ID = ?";
             PreparedStatement p
                     = bd.connection.prepareStatement(strSql);
             p.setString(1, obj.getDescricao());
-            p.setInt(2, obj.getQtdHoras());
+            p.setInt(2, obj.getCargaHoraria());
             p.setInt(3, obj.getCodigo());
             p.execute();
             p.close();
@@ -77,18 +77,18 @@ public class TipoRelatorioDAO implements DAO<TipoRelatorio>{
     }
 
     @Override
-    public ArrayList<TipoRelatorio> Consultar() throws SQLException {
+    public ArrayList<Curso> Consultar() throws SQLException {
         try {
-            ArrayList<TipoRelatorio> lista = new ArrayList<>();
+            ArrayList<Curso> lista = new ArrayList<>();
             bd.conectar();
             Statement comando;
             comando = bd.connection.createStatement();
-            ResultSet rs = comando.executeQuery("SELECT TIRE_ID, TIRE_DESC, TIRE_HR FROM TIPO_RELATORIO");
+            ResultSet rs = comando.executeQuery("SELECT CURS_ID, CURS_DESC, CURS_HR_NECE FROM CURSO");
             while (rs.next()) {
-                TipoRelatorio obj = new TipoRelatorio();
-                obj.setCodigo(rs.getInt("TIRE_ID"));
-                obj.setDescricao(rs.getString("TIRE_DESC"));
-                obj.setQtdHoras(rs.getInt("TIRE_HR"));
+                Curso obj = new Curso();
+                obj.setCodigo(rs.getInt("CURS_ID"));
+                obj.setDescricao(rs.getString("CURS_DESC"));
+                obj.setCargaHoraria(rs.getInt("CURS_HR_NECE"));
                 lista.add(obj);
             }
             comando.close();
@@ -101,19 +101,19 @@ public class TipoRelatorioDAO implements DAO<TipoRelatorio>{
     }
 
     @Override
-    public TipoRelatorio Consultar(int codigo) throws SQLException {
+    public Curso Consultar(int codigo) throws SQLException {
         try {
-            TipoRelatorio obj = null;
+            Curso obj = null;
             bd.conectar();
-            String strSQL = "SELECT TIRE_ID, TIRE_DESC, TIRE_HR FROM TIPO_RELATORIO WHERE TIRE_ID = ?";
+            String strSQL = "SELECT CURS_ID, CURS_DESC, CURS_HR_NECE FROM CURSO WHERE CURS_ID = ?";
             PreparedStatement p = bd.connection.prepareStatement(strSQL);
             p.setInt(1, codigo);
             ResultSet rs = p.executeQuery();
             if (rs.next()) {
-                obj = new TipoRelatorio();
-                obj.setCodigo(rs.getInt("TIRE_ID"));
-                obj.setDescricao(rs.getString("TIRE_DESC"));
-                obj.setQtdHoras(rs.getInt("TIRE_HR"));
+                obj = new Curso();
+                obj.setCodigo(rs.getInt("CURS_ID"));
+                obj.setDescricao(rs.getString("CURS_DESC"));
+                obj.setCargaHoraria(rs.getInt("CURS_HR_NECE"));
                 p.close();
                 bd.desconectar();
                 return obj;
@@ -126,5 +126,6 @@ public class TipoRelatorioDAO implements DAO<TipoRelatorio>{
             throw ex;
         }
     }
+    
     
 }

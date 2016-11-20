@@ -5,29 +5,16 @@
  */
 package Bean;
 
-import java.sql.Date;
-
 /**
  *
  * @author gabri
  */
-public class Usuario {
+public class StatusRelatorioFinal {
     //Primary Key
     private int codigo;
     
     //Atributos
-    private String nome;
-    private String prontuario;
-    private String funcional;
-    private Date dataMatricula;
-    private String semestre;
-    private String login;
-    private String senha;
-    private boolean ativo;
-    
-    //Foreign Key
-    private TipoUsuario tipoUsuario;
-    private Curso curso;
+    private String descricao;
 
     /**
      * @return the codigo
@@ -42,5 +29,18 @@ public class Usuario {
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
-    
+
+    /**
+     * @return the descricao
+     */
+    public String getDescricao() {
+        return descricao;
+    }
+
+    /**
+     * @param descricao the descricao to set
+     */
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
 }

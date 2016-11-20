@@ -5,7 +5,8 @@
  */
 package DAO;
 
-import Bean.TipoRelatorio;
+import Bean.Documento;
+import Bean.Usuario;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,20 +17,23 @@ import java.util.ArrayList;
  *
  * @author gabri
  */
-public class TipoRelatorioDAO implements DAO<TipoRelatorio>{
+public class DocumentoDAO implements DAO<Documento>{
 
     BancoDados bd = new BancoDados();
     
     @Override
-    public void Incluir(TipoRelatorio obj) throws SQLException {
+    public void Incluir(Documento obj) throws SQLException {
         try {
             bd.conectar();
             String strSql
-                    = "INSERT INTO TIPO_RELATORIO (TIRE_DESC, TIRE_HR) VALUES (?,?)";
+                    = "INSERT INTO DOCUMENTO (DOCU_DESC, DOCU_URL, DOCU_VISI, DOCU_DT, USUA_ID) VALUES (?,?,?,?,?)";
             PreparedStatement p
                     = bd.connection.prepareStatement(strSql);
             p.setString(1, obj.getDescricao());
-            p.setInt(2, obj.getQtdHoras());
+            p.setString(2, obj.getUrl());
+            p.setBoolean(3, obj.isVisivel());
+            p.setDate(4, obj.getData());
+            p.setInt(5, obj.getUsuario().getCodigo());
             p.execute();
             p.close();
             bd.desconectar();
@@ -43,7 +47,7 @@ public class TipoRelatorioDAO implements DAO<TipoRelatorio>{
         try {
             bd.conectar();
             String strSql
-                    = "DELETE FROM TIPO_RELATORIO WHERE TIRE_ID = ?";
+                    = "DELETE FROM DOCUMENTO WHERE DOCU_ID = ?";
             PreparedStatement p
                     = bd.connection.prepareStatement(strSql);
             p.setInt(1, codigo);
@@ -57,16 +61,19 @@ public class TipoRelatorioDAO implements DAO<TipoRelatorio>{
     }
 
     @Override
-    public void Alterar(TipoRelatorio obj) throws SQLException {
+    public void Alterar(Documento obj) throws SQLException {
         try {
             bd.conectar();
             String strSql
-                    = "UPDATE TIPO_RELATORIO SET TIRE_DESC = ?, TIRE_HR = ? WHERE TIRE_ID = ?";
+                    = "UPDATE DOCUMENTO SET DOCU_DESC = ?, DOCU_URL = ?, DOCU_VISI = ?, DOCU_DT = ?, USUA_ID = ? WHERE DOCU_ID = ? ";
             PreparedStatement p
                     = bd.connection.prepareStatement(strSql);
             p.setString(1, obj.getDescricao());
-            p.setInt(2, obj.getQtdHoras());
-            p.setInt(3, obj.getCodigo());
+            p.setString(2, obj.getUrl());
+            p.setBoolean(3, obj.isVisivel());
+            p.setDate(4, obj.getData());
+            p.setInt(5, obj.getUsuario().getCodigo());
+            p.setInt(6, obj.getCodigo());
             p.execute();
             p.close();
             bd.desconectar();
@@ -77,18 +84,27 @@ public class TipoRelatorioDAO implements DAO<TipoRelatorio>{
     }
 
     @Override
-    public ArrayList<TipoRelatorio> Consultar() throws SQLException {
+    public ArrayList<Documento> Consultar() throws SQLException {
         try {
-            ArrayList<TipoRelatorio> lista = new ArrayList<>();
+            ArrayList<Documento> lista = new ArrayList<>();
             bd.conectar();
             Statement comando;
             comando = bd.connection.createStatement();
-            ResultSet rs = comando.executeQuery("SELECT TIRE_ID, TIRE_DESC, TIRE_HR FROM TIPO_RELATORIO");
+            ResultSet rs = comando.executeQuery("SELECT DOCU_ID, DOCU_DESC, DOCU_URL, DOCU_VISI, DOCU_DT, USUA_ID FROM DOCUMENTO");
             while (rs.next()) {
-                TipoRelatorio obj = new TipoRelatorio();
-                obj.setCodigo(rs.getInt("TIRE_ID"));
-                obj.setDescricao(rs.getString("TIRE_DESC"));
-                obj.setQtdHoras(rs.getInt("TIRE_HR"));
+                Documento obj = new Documento();
+                Usuario usuario = new Usuario();
+                
+                obj.setCodigo(rs.getInt("DOCU_ID"));
+                obj.setDescricao(rs.getString("DOCU_DESC"));
+                obj.setUrl(rs.getString("DOCU_URL"));
+                obj.setVisivel(rs.getBoolean("DOCU_VISI"));
+                obj.setData(rs.getDate("DOCU_DT"));
+                
+                usuario = new UsuarioDAO().Consultar(rs.getString("USUA_ID"));
+                        
+                obj.setUsuario(usuario);
+                
                 lista.add(obj);
             }
             comando.close();
@@ -101,19 +117,27 @@ public class TipoRelatorioDAO implements DAO<TipoRelatorio>{
     }
 
     @Override
-    public TipoRelatorio Consultar(int codigo) throws SQLException {
+    public Documento Consultar(int codigo) throws SQLException {
         try {
-            TipoRelatorio obj = null;
+            Documento obj = null;
             bd.conectar();
-            String strSQL = "SELECT TIRE_ID, TIRE_DESC, TIRE_HR FROM TIPO_RELATORIO WHERE TIRE_ID = ?";
+            String strSQL = "SELECT DOCU_ID, DOCU_DESC, DOCU_URL, DOCU_VISI, DOCU_DT, USUA_ID FROM DOCUMENTO WHERE DOCU_ID = ?";
             PreparedStatement p = bd.connection.prepareStatement(strSQL);
             p.setInt(1, codigo);
             ResultSet rs = p.executeQuery();
             if (rs.next()) {
-                obj = new TipoRelatorio();
-                obj.setCodigo(rs.getInt("TIRE_ID"));
-                obj.setDescricao(rs.getString("TIRE_DESC"));
-                obj.setQtdHoras(rs.getInt("TIRE_HR"));
+                obj = new Documento();
+                Usuario usuario = new Usuario();
+                
+                obj.setCodigo(rs.getInt("DOCU_ID"));
+                obj.setDescricao(rs.getString("DOCU_DESC"));
+                obj.setUrl(rs.getString("DOCU_URL"));
+                obj.setVisivel(rs.getBoolean("DOCU_VISI"));
+                obj.setData(rs.getDate("DOCU_DT"));
+                
+                usuario = new UsuarioDAO().Consultar(rs.getString("USUA_ID"));
+                
+                obj.setUsuario(usuario);
                 p.close();
                 bd.desconectar();
                 return obj;
@@ -125,6 +149,6 @@ public class TipoRelatorioDAO implements DAO<TipoRelatorio>{
             bd.desconectar();
             throw ex;
         }
-    }
+    } 
     
 }
