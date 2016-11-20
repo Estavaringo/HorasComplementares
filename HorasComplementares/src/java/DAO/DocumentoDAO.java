@@ -5,7 +5,9 @@
  */
 package DAO;
 
+import Bean.Curso;
 import Bean.Documento;
+import Bean.TipoUsuario;
 import Bean.Usuario;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -90,10 +92,16 @@ public class DocumentoDAO implements DAO<Documento>{
             bd.conectar();
             Statement comando;
             comando = bd.connection.createStatement();
-            ResultSet rs = comando.executeQuery("SELECT DOCU_ID, DOCU_DESC, DOCU_URL, DOCU_VISI, DOCU_DT, USUA_ID FROM DOCUMENTO");
+            ResultSet rs = comando.executeQuery("SELECT D.DOCU_ID, D.DOCU_DESC, D.DOCU_URL, D.DOCU_VISI, D.DOCU_DT, D.USUA_ID, "
+                    + "U.USUA_ID, U.USUA_NM, U.USUA_PRON, U.USUA_FUNC, U.USUA_DT_INI, U.USUA_SEME, U.CURS_ID, U.TIUS_ID, U.USUA_ATIVO "
+                    + "FROM DOCUMENTO D"
+                    + "INNER JOIN USUARIO U"
+                    + "ON D.USUA_ID = U.USUA_ID");
             while (rs.next()) {
                 Documento obj = new Documento();
                 Usuario usuario = new Usuario();
+                Curso curso = new Curso();
+                TipoUsuario tipoUsuario = new TipoUsuario();
                 
                 obj.setCodigo(rs.getInt("DOCU_ID"));
                 obj.setDescricao(rs.getString("DOCU_DESC"));
@@ -101,8 +109,20 @@ public class DocumentoDAO implements DAO<Documento>{
                 obj.setVisivel(rs.getBoolean("DOCU_VISI"));
                 obj.setData(rs.getDate("DOCU_DT"));
                 
-                usuario = new UsuarioDAO().Consultar(rs.getString("USUA_ID"));
-                        
+                usuario.setCodigo(rs.getInt("USUA_ID"));
+                usuario.setNome(rs.getString("USUA_NM"));
+                usuario.setProntuario(rs.getString("USUA_PRON"));
+                usuario.setFuncional(rs.getString("USUA_FUNC"));
+                usuario.setDataMatricula(rs.getDate("USUA_DT_INI"));
+                usuario.setSemestre(rs.getString("USUA_SEME"));
+                usuario.setAtivo(rs.getBoolean("USUA_ATIVO"));
+                
+                curso.setCodigo(rs.getInt("CURS_ID"));
+                usuario.setCurso(curso);
+                
+                tipoUsuario.setCodigo(rs.getInt("TIUS_ID"));
+                usuario.setTipoUsuario(tipoUsuario);
+                
                 obj.setUsuario(usuario);
                 
                 lista.add(obj);
@@ -121,13 +141,20 @@ public class DocumentoDAO implements DAO<Documento>{
         try {
             Documento obj = null;
             bd.conectar();
-            String strSQL = "SELECT DOCU_ID, DOCU_DESC, DOCU_URL, DOCU_VISI, DOCU_DT, USUA_ID FROM DOCUMENTO WHERE DOCU_ID = ?";
+            String strSQL = "SELECT D.DOCU_ID, D.DOCU_DESC, D.DOCU_URL, D.DOCU_VISI, D.DOCU_DT, D.USUA_ID, " 
+                    + "U.USUA_ID, U.USUA_NM, U.USUA_PRON, U.USUA_FUNC, U.USUA_DT_INI, U.USUA_SEME, U.CURS_ID, U.TIUS_ID, U.USUA_ATIVO " 
+                    + "FROM DOCUMENTO D " 
+                    + "INNER JOIN USUARIO U " 
+                    + "ON D.USUA_ID = U.USUA_ID "
+                    + "WHERE D.DOCU_ID = ?";
             PreparedStatement p = bd.connection.prepareStatement(strSQL);
             p.setInt(1, codigo);
             ResultSet rs = p.executeQuery();
             if (rs.next()) {
                 obj = new Documento();
                 Usuario usuario = new Usuario();
+                Curso curso = new Curso();
+                TipoUsuario tipoUsuario = new TipoUsuario();
                 
                 obj.setCodigo(rs.getInt("DOCU_ID"));
                 obj.setDescricao(rs.getString("DOCU_DESC"));
@@ -135,9 +162,20 @@ public class DocumentoDAO implements DAO<Documento>{
                 obj.setVisivel(rs.getBoolean("DOCU_VISI"));
                 obj.setData(rs.getDate("DOCU_DT"));
                 
-                usuario = new UsuarioDAO().Consultar(rs.getString("USUA_ID"));
+                usuario.setCodigo(rs.getInt("USUA_ID"));
+                usuario.setNome(rs.getString("USUA_NM"));
+                usuario.setProntuario(rs.getString("USUA_PRON"));
+                usuario.setFuncional(rs.getString("USUA_FUNC"));
+                usuario.setDataMatricula(rs.getDate("USUA_DT_INI"));
+                usuario.setSemestre(rs.getString("USUA_SEME"));
+                usuario.setAtivo(rs.getBoolean("USUA_ATIVO"));
+                curso.setCodigo(rs.getInt("CURS_ID"));
+                usuario.setCurso(curso);
+                tipoUsuario.setCodigo(rs.getInt("TIUS_ID"));
+                usuario.setTipoUsuario(tipoUsuario);
                 
                 obj.setUsuario(usuario);
+                
                 p.close();
                 bd.desconectar();
                 return obj;

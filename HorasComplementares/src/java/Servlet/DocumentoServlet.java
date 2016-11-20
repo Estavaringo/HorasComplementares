@@ -13,7 +13,6 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.logging.Level;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -73,6 +72,7 @@ public class DocumentoServlet implements LogicaDeNegocio {
                     documento = new Documento();
 
                     //Atribui as informações da documento no objeto
+                    documento.setCodigo(Integer.parseInt(req.getParameter("codigo")));
                     documento.setDescricao(req.getParameter("descricao"));
                     documento.setUrl(req.getParameter("url"));
                     documento.setVisivel(Boolean.parseBoolean(req.getParameter("visivel")));
@@ -104,6 +104,7 @@ public class DocumentoServlet implements LogicaDeNegocio {
                     documento = new Documento();
 
                     //Atribui as informações da documento no objeto
+                    documento.setCodigo(Integer.parseInt(req.getParameter("codigo")));
                     documento.setDescricao(req.getParameter("descricao"));
                     documento.setUrl(req.getParameter("url"));
                     documento.setVisivel(Boolean.parseBoolean(req.getParameter("visivel")));

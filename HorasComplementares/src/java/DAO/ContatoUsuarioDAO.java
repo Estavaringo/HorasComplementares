@@ -6,6 +6,9 @@
 package DAO;
 
 import Bean.ContatoUsuario;
+import Bean.Curso;
+import Bean.TipoContato;
+import Bean.TipoUsuario;
 import Bean.Usuario;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,14 +29,12 @@ public class ContatoUsuarioDAO implements DAO<ContatoUsuario>{
         try {
             bd.conectar();
             String strSql
-                    = "INSERT INTO CONTATO_USUARIO (CONT_USUA_DESC, CONT_USUA_URL, CONT_USUA_VISI, CONT_USUA_DT, USUA_ID) VALUES (?,?,?,?,?)";
+                    = "INSERT INTO CONTATO_USUARIO (CONT_USUA_DESC, TICO_ID, USUA_ID) VALUES (?,?,?)";
             PreparedStatement p
                     = bd.connection.prepareStatement(strSql);
             p.setString(1, obj.getDescricao());
-            p.setString(2, obj.getUrl());
-            p.setBoolean(3, obj.isVisivel());
-            p.setDate(4, obj.getData());
-            p.setInt(5, obj.getUsuario().getCodigo());
+            p.setInt(2, obj.getTipoContato().getCodigo());
+            p.setInt(3, obj.getUsuario().getCodigo());
             p.execute();
             p.close();
             bd.desconectar();
@@ -65,15 +66,13 @@ public class ContatoUsuarioDAO implements DAO<ContatoUsuario>{
         try {
             bd.conectar();
             String strSql
-                    = "UPDATE CONTATO_USUARIO SET CONT_USUA_DESC = ?, CONT_USUA_URL = ?, CONT_USUA_VISI = ?, CONT_USUA_DT = ?, USUA_ID = ? WHERE CONT_USUA_ID = ? ";
+                    = "UPDATE CONTATO_USUARIO SET CONT_USUA_DESC = ?, TICO_ID = ?, USUA_ID = ? WHERE CONT_USUA_ID = ? ";
             PreparedStatement p
                     = bd.connection.prepareStatement(strSql);
             p.setString(1, obj.getDescricao());
-            p.setString(2, obj.getUrl());
-            p.setBoolean(3, obj.isVisivel());
-            p.setDate(4, obj.getData());
-            p.setInt(5, obj.getUsuario().getCodigo());
-            p.setInt(6, obj.getCodigo());
+            p.setInt(2, obj.getTipoContato().getCodigo());
+            p.setInt(3, obj.getUsuario().getCodigo());
+            p.setInt(4, obj.getCodigo());
             p.execute();
             p.close();
             bd.desconectar();
@@ -90,20 +89,40 @@ public class ContatoUsuarioDAO implements DAO<ContatoUsuario>{
             bd.conectar();
             Statement comando;
             comando = bd.connection.createStatement();
-            ResultSet rs = comando.executeQuery("SELECT CONT_USUA_ID, CONT_USUA_DESC, CONT_USUA_URL, CONT_USUA_VISI, CONT_USUA_DT, USUA_ID FROM CONTATO_USUARIO");
+            ResultSet rs = comando.executeQuery("SELECT C.CONT_USUA_ID, C.CONT_USUA_DESC, C.TICO_ID, C.USUA_ID, "
+                    + "U.USUA_ID, U.USUA_NM, U.USUA_PRON, U.USUA_FUNC, U.USUA_DT_INI, U.USUA_SEME, U.CURS_ID, U.TIUS_ID, U.USUA_ATIVO, "
+                    + "T.TICO_ID, T.TICO_DESC "
+                    + "FROM CONTATO_USUARIO C "
+                    + "INNER JOIN USUARIO U "
+                    + "ON C.USUA_ID = U.USUA_ID "
+                    + "INNER JOIN TIPO_CONTATO T "
+                    + "ON C.TICO_ID = T.TICO_ID ");
             while (rs.next()) {
                 ContatoUsuario obj = new ContatoUsuario();
                 Usuario usuario = new Usuario();
+                Curso curso = new Curso();
+                TipoUsuario tipoUsuario = new TipoUsuario();
+                TipoContato tipoContato = new TipoContato();
                 
-                obj.setCodigo(rs.getInt("CONT_USUA_ID"));
-                obj.setDescricao(rs.getString("CONT_USUA_DESC"));
-                obj.setUrl(rs.getString("CONT_USUA_URL"));
-                obj.setVisivel(rs.getBoolean("CONT_USUA_VISI"));
-                obj.setData(rs.getDate("CONT_USUA_DT"));
+                obj.setCodigo(rs.getInt("C.CONT_USUA_ID"));
+                obj.setDescricao(rs.getString("C.CONT_USUA_DESC"));
                 
-                usuario = new UsuarioDAO().Consultar(rs.getString("USUA_ID"));
-                        
+                usuario.setCodigo(rs.getInt("U.USUA_ID"));
+                usuario.setNome(rs.getString("U.USUA_NM"));
+                usuario.setProntuario(rs.getString("U.USUA_PRON"));
+                usuario.setFuncional(rs.getString("U.USUA_FUNC"));
+                usuario.setDataMatricula(rs.getDate("U.USUA_DT_INI"));
+                usuario.setSemestre(rs.getString("U.USUA_SEME"));
+                usuario.setAtivo(rs.getBoolean("U.USUA_ATIVO"));
+                curso.setCodigo(rs.getInt("U.CURS_ID"));
+                usuario.setCurso(curso);
+                tipoUsuario.setCodigo(rs.getInt("U.TIUS_ID"));
+                usuario.setTipoUsuario(tipoUsuario);
                 obj.setUsuario(usuario);
+                
+                tipoContato.setCodigo(rs.getInt("T.TICO_ID"));
+                tipoContato.setDescricao(rs.getString("T.TICO_DESC"));
+                obj.setTipoContato(tipoContato);
                 
                 lista.add(obj);
             }
@@ -121,22 +140,45 @@ public class ContatoUsuarioDAO implements DAO<ContatoUsuario>{
         try {
             ContatoUsuario obj = null;
             bd.conectar();
-            String strSQL = "SELECT CONT_USUA_ID, CONT_USUA_DESC, CONT_USUA_URL, CONT_USUA_VISI, CONT_USUA_DT, USUA_ID FROM CONTATO_USUARIO WHERE CONT_USUA_ID = ?";
+            String strSQL = "SELECT C.CONT_USUA_ID, C.CONT_USUA_DESC, C.TICO_ID, C.USUA_ID, "
+                    + "U.USUA_ID, U.USUA_NM, U.USUA_PRON, U.USUA_FUNC, U.USUA_DT_INI, U.USUA_SEME, U.CURS_ID, U.TIUS_ID, U.USUA_ATIVO, "
+                    + "T.TICO_ID, T.TICO_DESC "
+                    + "FROM CONTATO_USUARIO C "
+                    + "INNER JOIN USUARIO U "
+                    + "ON C.USUA_ID = U.USUA_ID "
+                    + "INNER JOIN TIPO_CONTATO T "
+                    + "ON C.TICO_ID = T.TICO_ID "
+                    + "WHERE C.CONT_USUA_ID = ?";
             PreparedStatement p = bd.connection.prepareStatement(strSQL);
             p.setInt(1, codigo);
             ResultSet rs = p.executeQuery();
             if (rs.next()) {
                 obj = new ContatoUsuario();
                 Usuario usuario = new Usuario();
+                Curso curso = new Curso();
+                TipoUsuario tipoUsuario = new TipoUsuario();
+                TipoContato tipoContato = new TipoContato();
                 
-                obj.setCodigo(rs.getInt("CONT_USUA_ID"));
-                obj.setDescricao(rs.getString("CONT_USUA_DESC"));
-                obj.setUrl(rs.getString("CONT_USUA_URL"));
-                obj.setVisivel(rs.getBoolean("CONT_USUA_VISI"));
-                obj.setData(rs.getDate("CONT_USUA_DT"));
+                obj.setCodigo(rs.getInt("C.CONT_USUA_ID"));
+                obj.setDescricao(rs.getString("C.CONT_USUA_DESC"));
                 
-                usuario = new UsuarioDAO().Consultar(rs.getString("USUA_ID"));
+                usuario.setCodigo(rs.getInt("U.USUA_ID"));
+                usuario.setNome(rs.getString("U.USUA_NM"));
+                usuario.setProntuario(rs.getString("U.USUA_PRON"));
+                usuario.setFuncional(rs.getString("U.USUA_FUNC"));
+                usuario.setDataMatricula(rs.getDate("U.USUA_DT_INI"));
+                usuario.setSemestre(rs.getString("U.USUA_SEME"));
+                usuario.setAtivo(rs.getBoolean("U.USUA_ATIVO"));
+                curso.setCodigo(rs.getInt("U.CURS_ID"));
+                usuario.setCurso(curso);
+                tipoUsuario.setCodigo(rs.getInt("U.TIUS_ID"));
+                usuario.setTipoUsuario(tipoUsuario);
+                obj.setUsuario(usuario);
                 
+                tipoContato.setCodigo(rs.getInt("T.TICO_ID"));
+                tipoContato.setDescricao(rs.getString("T.TICO_DESC"));
+                obj.setTipoContato(tipoContato);
+               
                 obj.setUsuario(usuario);
                 p.close();
                 bd.desconectar();

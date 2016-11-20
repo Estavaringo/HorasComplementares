@@ -5,7 +5,6 @@
  */
 package Bean;
 
-import java.sql.Date;
 
 /**
  *
