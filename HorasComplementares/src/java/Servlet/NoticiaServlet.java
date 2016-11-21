@@ -54,7 +54,7 @@ public class NoticiaServlet implements LogicaDeNegocio{
                     noticia.setDataAgendamento(sqlAgendamento);
                     
                     java.util.Date dataPublicacao = formato.parse(req.getParameter("dataPublicacao"));
-                    Date sqlPublicacao = new Date(dataAgendamento.getTime());
+                    Date sqlPublicacao = new Date(dataPublicacao.getTime());
                     noticia.setDataPublicacao(sqlPublicacao);
                     
                     usuario.setCodigo(Integer.parseInt(req.getParameter("codigoUsuario")));
@@ -92,7 +92,7 @@ public class NoticiaServlet implements LogicaDeNegocio{
                     noticia.setDataAgendamento(sqlAgendamento);
                     
                     java.util.Date dataPublicacao = formato.parse(req.getParameter("dataPublicacao"));
-                    Date sqlPublicacao = new Date(dataAgendamento.getTime());
+                    Date sqlPublicacao = new Date(dataPublicacao.getTime());
                     noticia.setDataPublicacao(sqlPublicacao);
                     
                     usuario.setCodigo(Integer.parseInt(req.getParameter("codigoUsuario")));
@@ -130,7 +130,7 @@ public class NoticiaServlet implements LogicaDeNegocio{
                     noticia.setDataAgendamento(sqlAgendamento);
                     
                     java.util.Date dataPublicacao = formato.parse(req.getParameter("dataPublicacao"));
-                    Date sqlPublicacao = new Date(dataAgendamento.getTime());
+                    Date sqlPublicacao = new Date(dataPublicacao.getTime());
                     noticia.setDataPublicacao(sqlPublicacao);
                     
                     usuario.setCodigo(Integer.parseInt(req.getParameter("codigoUsuario")));

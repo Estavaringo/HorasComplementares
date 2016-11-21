@@ -21,7 +21,7 @@ public class Usuario {
     private String funcional;
     private Date dataMatricula;
     private String semestre;
-    private String login;
+    private String login;   
     private String senha;
     private boolean ativo;
     

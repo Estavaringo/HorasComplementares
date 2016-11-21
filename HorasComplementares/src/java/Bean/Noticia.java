@@ -24,7 +24,7 @@ public class Noticia {
     
     //Foreign Key
     private Usuario usuario;
-    private StatusNoticia StatusNoticia;
+    private StatusNoticia statusNoticia;
 
     /**
      * @return the codigo
@@ -128,13 +128,13 @@ public class Noticia {
      * @return the StatusNoticia
      */
     public StatusNoticia getStatusNoticia() {
-        return StatusNoticia;
+        return statusNoticia;
     }
 
     /**
      * @param StatusNoticia the StatusNoticia to set
      */
     public void setStatusNoticia(StatusNoticia StatusNoticia) {
-        this.StatusNoticia = StatusNoticia;
+        this.statusNoticia = StatusNoticia;
     }
 }
