@@ -128,7 +128,7 @@ public class CursoServlet implements LogicaDeNegocio{
                     return "erro.html";
                 }
 
-                return "/WEB-INF/Paginas/tiporelatorio.jsp";
+                return "/WEB-INF/Paginas/curso.jsp";
 
             default:
                 System.err.println("Tarefa informada é inválida!");
@@ -151,7 +151,7 @@ public class CursoServlet implements LogicaDeNegocio{
             return "erro.html";
         }
 
-        return "/WEB-INF/Paginas/tiporelatorio.jsp";
+        return "/WEB-INF/Paginas/curso.jsp";
     }
 
     @Override

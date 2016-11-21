@@ -26,8 +26,7 @@ public class BancoDados {
     public void conectar() {
         try {
             Class.forName(DRIVER).newInstance();
-            this.connection = DriverManager.
-                    getConnection(URL, LOGIN, SENHA);
+            this.connection = DriverManager.getConnection(URL, LOGIN, SENHA);
 
         } catch (Exception e) {
             System.err.println(e);

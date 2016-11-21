@@ -46,21 +46,15 @@ $(document).ready(function () {
         $('#modal-excluir').openModal();
     });
     
-    $(".botao-alterar-materia").click(function () {
+    $(".botao-alterar-curso").click(function () {
                 
         var codigo = this.id;
-        var nome = $('#nome-' + codigo).text();
         var descricao = $('#descricao-' + codigo).text();
-        var curso = $('#curso-' + codigo).text();
+        var cargaHoraria = $('#cargahoraria-' + codigo).text();
 
         $('#codigo-alterar').val(codigo);
-        $('#nome-alterar').val(nome);
         $('#descricao-alterar').val(descricao);
-        $('#select-curso').val(curso);
-        
-        // Reinicia o Select para selecionar o item
-        $('#select-curso').material_select();
-
+        $('#cargaHoraria-alterar').val(cargaHoraria);
 
         $('#modal-alterar').openModal('');
     });

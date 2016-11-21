@@ -30,8 +30,8 @@
                         <c:forEach var="curso" items="${listaCurso}">
                             <tr>
                                 <td >${curso.codigo}</td>
-                                <td id="nome-${curso.codigo}"> ${curso.descricao}</td>
-                                <td id="descricao-${curso.codigo}"> ${curso.cargaHoraria} horas</td>
+                                <td id="descricao-${curso.codigo}"> ${curso.descricao}</td>
+                                <td id="cargahoraria-${curso.codigo}"> ${curso.cargaHoraria} horas</td>
                                 <td class="hide-on-med-and-up">
                                     <a class="botao-alterar-curso cyan-text text-darken-4" id="${curso.codigo}"><i class="material-icons yellow-text text-darken-4" style="font-size: 35px">edit</i></a>
                                     <br>
@@ -69,14 +69,14 @@
 
                 <div class="input-field">
                     <i class="material-icons prefix"></i>
-                    <label for="nome-alterar">Nome</label>
-                    <input id="nome-alterar" placeholder="Insira o nome da curso aqui..." type="text" class="validate" name="nome" value="" />
+                    <label for="descricao-alterar">Nome</label>
+                    <input id="descricao-alterar" placeholder="Insira o nome da curso aqui..." type="text" class="validate" name="descricao" value="" />
                 </div>
                 
                 <div class="input-field">
                     <i class="material-icons prefix">timelapse</i>
-                    <label for="descricao-alterar">Caga Horária Necessária</label>
-                    <input id="descricao-alterar" placeholder="Insira a carga horário necessária para o  respectivo curso..." type="text" name="cargaHoraria" value="" />
+                    <label for="cargaHoraria-alterar">Caga Horária Necessária</label>
+                    <input id="cargaHoraria-alterar" placeholder="Insira a carga horário necessária para o  respectivo curso..." type="text" name="cargaHoraria" value="" />
                 </div>
                 
             </div>
@@ -129,14 +129,14 @@
                 
                 <div class="input-field">
                     <i class="material-icons prefix">border_color</i>
-                    <label for="nome-incluir">Nome</label>
-                    <input id="nome-incluir" placeholder="Insira o nome do curso aqui..." type="text" class="validate" name="descricao" value="" />
+                    <label for="descricao-incluir">Nome</label>
+                    <input id="descricao-incluir" placeholder="Insira o nome do curso aqui..." type="text" class="validate" name="descricao" value="" />
                 </div>
                                 
                 <div class="input-field">
                     <i class="material-icons prefix">timelapse</i>
-                    <label for="descricao-incluir">Caga Horária Necessária</label>
-                    <input id="descricao-incluir" placeholder="Insira a carga horário necessária para o respectivo curso..." type="text" name="cargaHoraria" value="" />
+                    <label for="cargaHoraria-incluir">Caga Horária Necessária</label>
+                    <input id="cargaHoraria-incluir" placeholder="Insira a carga horário necessária para o respectivo curso..." type="text" name="cargaHoraria" value="" />
                 </div>                
             </div>
             <div class="modal-footer">
