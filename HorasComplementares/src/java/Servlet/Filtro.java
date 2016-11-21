@@ -47,7 +47,7 @@ public class Filtro implements Filter {
         if (usuario == null) {
             return "<deslogado>";
         }
-        return usuario.getEmail();
+        return usuario.getNome();
     }
 
     @Override

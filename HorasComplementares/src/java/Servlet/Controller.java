@@ -22,16 +22,16 @@ public class Controller extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String tarefa = request.getParameter("logicaDeNegocio");
-        System.out.println("Tarefa: " + tarefa);
-        if(tarefa==null){
+        String classeDeNegocio = request.getParameter("logicaDeNegocio");
+        System.out.println("Nome da Classe: " + classeDeNegocio);
+        if(classeDeNegocio==null){
             System.out.println("OK");
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("feed.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("curso.jsp");
             requestDispatcher.forward(request, response);
         }
         
         //Pega o nome da classe
-        String nomeDaClasse = "Servlet." + tarefa;
+        String nomeDaClasse = "Servlet." + classeDeNegocio;
 
         try {
             //Localiza a classe através do seu nome
