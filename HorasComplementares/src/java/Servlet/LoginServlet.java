@@ -76,7 +76,7 @@ public class LoginServlet implements LogicaDeNegocio {
         session.setAttribute("tarefa", "consultarLista");
 
         
-        return "/WEB-INF/Paginas/curso.jsp";
+        return "/WEB-INF/Paginas/cursos.jsp";
     }
 
     @Override
