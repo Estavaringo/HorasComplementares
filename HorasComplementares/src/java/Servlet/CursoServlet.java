@@ -6,9 +6,7 @@
 package Servlet;
 
 import Bean.Curso;
-import Bean.TipoRelatorio;
 import DAO.CursoDAO;
-import DAO.TipoRelatorioDAO;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
@@ -22,7 +20,6 @@ public class CursoServlet implements LogicaDeNegocio{
 
     //Declarações
     private Curso curso = null;
-    private TipoRelatorio tipoRelatorio = null;
     private String tarefa;
 
     @Override
@@ -30,32 +27,6 @@ public class CursoServlet implements LogicaDeNegocio{
 
         tarefa = req.getParameter("tarefa");
         switch (tarefa) {
-            case "abrir":
-                try {
-
-                    //instancia uma nova curso
-                    curso = new Curso();
-                    
-                    //Consulta o código do curso no banco de dados
-                    curso = new CursoDAO().Consultar(Integer.parseInt(req.getParameter("codigo")));
-                    
-                    //Atribui numa sessão o objeto com o curso especifico
-                    req.setAttribute("curso", curso);
-                    
-                    //instancia uma nova curso
-                    tipoRelatorio = new TipoRelatorio();
-                    
-                    //Consulta o código do curso no banco de dados
-                    //tipoRelatorio = new TipoRelatorioDAO().ConsultarCurso(Integer.parseInt(req.getParameter("codigo")));
-
-                    //Atribui numa sessão o objeto com o curso especifico
-                    req.setAttribute("tipoRelatorio", tipoRelatorio);
-
-                } catch (SQLException ex) {
-                    System.err.println("Erro ao consultar curso no banco de dados. Detalhes: " + ex.getMessage());
-                    return "erro.html";
-                }
-                return "/WEB-INF/Paginas/configuraCurso.jsp";
             case "incluir":
                 try {
 
@@ -157,7 +128,7 @@ public class CursoServlet implements LogicaDeNegocio{
                     return "erro.html";
                 }
 
-                return "/WEB-INF/Paginas/cursos.jsp";
+                return "/WEB-INF/Paginas/curso.jsp";
 
             default:
                 System.err.println("Tarefa informada é inválida!");
@@ -180,7 +151,7 @@ public class CursoServlet implements LogicaDeNegocio{
             return "erro.html";
         }
 
-        return "/WEB-INF/Paginas/cursos.jsp";
+        return "/WEB-INF/Paginas/curso.jsp";
     }
 
     @Override

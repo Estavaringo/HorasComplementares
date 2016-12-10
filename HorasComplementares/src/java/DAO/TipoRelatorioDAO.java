@@ -127,30 +127,4 @@ public class TipoRelatorioDAO implements DAO<TipoRelatorio>{
         }
     }
     
-    public TipoRelatorio ConsultarCurso(int codigoCurso) throws SQLException {
-        try {
-            TipoRelatorio obj = null;
-            bd.conectar();
-            String strSQL = "SELECT TIRE_ID, TIRE_DESC, TIRE_HR FROM TIPO_RELATORIO WHERE TIRE_CURSO_ID = ?";
-            PreparedStatement p = bd.connection.prepareStatement(strSQL);
-            p.setInt(1, codigoCurso);
-            ResultSet rs = p.executeQuery();
-            if (rs.next()) {
-                obj = new TipoRelatorio();
-                obj.setCodigo(rs.getInt("TIRE_ID"));
-                obj.setDescricao(rs.getString("TIRE_DESC"));
-                obj.setQtdHoras(rs.getInt("TIRE_HR"));
-                p.close();
-                bd.desconectar();
-                return obj;
-            }
-            p.close();
-            bd.desconectar();
-            return obj;
-        } catch (SQLException ex) {
-            bd.desconectar();
-            throw ex;
-        }
-    }
-    
 }
