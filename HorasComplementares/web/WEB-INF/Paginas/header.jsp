@@ -47,7 +47,7 @@
                     </div>
                 </li>
                 <li><a class="waves-effect" href="#!"><i class="material-icons">forum</i><span class="gray-text text-darken-2"><b>Quadro de Avisos</b></span></a></li>
-                <li><a class="waves-effect" href="#!"><i class="material-icons">info</i><span class="gray-text text-darken-2"><b>Regulamento</b></span></a></li>
+                <li><a class="waves-effect" href="#!"><i class="material-icons">settings</i><span class="gray-text text-darken-2"><b>Regulamento</b></span></a></li>
                 <li><a class="waves-effect" href="#!"><i class="material-icons">note_add</i><span class="gray-text text-darken-2"><b>Nova Atividade</b></span></a></li>
 
                 <%--:if test="${usuarioLogado.moderador}"--%>
@@ -59,7 +59,7 @@
                                 <a class="collapsible-header">Configurações<i class="material-icons">arrow_drop_down</i></a>
                                 <div class="collapsible-body">
                                     <ul>
-                                        <li><a href="Executa?logicaDeNegocio=CursoServlet&tarefa=consultarLista">Cursos</a></li>
+                                        <li><a href="Executa?logicaDeNegocio=CursoServlet&tarefa=consultarLista">Cadastro de Cursos</a></li>
                                     </ul>
                                 </div>
                             </li>
