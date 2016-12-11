@@ -116,17 +116,17 @@ public class UsuarioDAO implements DAO<Usuario>{
                 Curso curso = new Curso();
                 TipoUsuario tipoUsuario = new TipoUsuario();
 
-                obj.setCodigo(rs.getInt("N.USUA_ID"));
-                obj.setNome(rs.getString("N.USUA_NM"));
-                obj.setProntuario(rs.getString("N.USUA_PRON"));
-                obj.setFuncional(rs.getString("N.USUA_FUNC"));
-                obj.setDataMatricula(rs.getDate("N.USUA_DT_INI"));
-                obj.setSemestre(rs.getString("N.USUA_SEME"));
-                obj.setLogin(rs.getString("N.USUA_LOGIN"));
-                obj.setSenha(rs.getString("N.USUA_SENHA"));
-                obj.setAtivo(rs.getBoolean("N.USUA_ATIVO"));
+                obj.setCodigo(rs.getInt("U.USUA_ID"));
+                obj.setNome(rs.getString("U.USUA_NM"));
+                obj.setProntuario(rs.getString("U.USUA_PRON"));
+                obj.setFuncional(rs.getString("U.USUA_FUNC"));
+                obj.setDataMatricula(rs.getDate("U.USUA_DT_INI"));
+                obj.setSemestre(rs.getString("U.USUA_SEME"));
+                obj.setLogin(rs.getString("U.USUA_LOGIN"));
+                obj.setSenha(rs.getString("U.USUA_SENHA"));
+                obj.setAtivo(rs.getBoolean("U.USUA_ATIVO"));
 
-                curso.setCodigo(rs.getInt("C.USUA_ID"));
+                curso.setCodigo(rs.getInt("C.CURS_ID"));
                 curso.setNome(rs.getString("C.CURS_NOME"));
                 curso.setDescricao(rs.getString("C.CURS_DESC"));
                 obj.setCurso(curso);
@@ -168,17 +168,17 @@ public class UsuarioDAO implements DAO<Usuario>{
                 Curso curso = new Curso();
                 TipoUsuario tipoUsuario = new TipoUsuario();
 
-                obj.setCodigo(rs.getInt("N.USUA_ID"));
-                obj.setNome(rs.getString("N.USUA_NM"));
-                obj.setProntuario(rs.getString("N.USUA_PRON"));
-                obj.setFuncional(rs.getString("N.USUA_FUNC"));
-                obj.setDataMatricula(rs.getDate("N.USUA_DT_INI"));
-                obj.setSemestre(rs.getString("N.USUA_SEME"));
-                obj.setLogin(rs.getString("N.USUA_LOGIN"));
-                obj.setSenha(rs.getString("N.USUA_SENHA"));
-                obj.setAtivo(rs.getBoolean("N.USUA_ATIVO"));
+                obj.setCodigo(rs.getInt("U.USUA_ID"));
+                obj.setNome(rs.getString("U.USUA_NM"));
+                obj.setProntuario(rs.getString("U.USUA_PRON"));
+                obj.setFuncional(rs.getString("U.USUA_FUNC"));
+                obj.setDataMatricula(rs.getDate("U.USUA_DT_INI"));
+                obj.setSemestre(rs.getString("U.USUA_SEME"));
+                obj.setLogin(rs.getString("U.USUA_LOGIN"));
+                obj.setSenha(rs.getString("U.USUA_SENHA"));
+                obj.setAtivo(rs.getBoolean("U.USUA_ATIVO"));
 
-                curso.setCodigo(rs.getInt("C.USUA_ID"));
+                curso.setCodigo(rs.getInt("C.CURS_ID"));
                 curso.setNome(rs.getString("C.CURS_NOME"));
                 curso.setDescricao(rs.getString("C.CURS_DESC"));
                 obj.setCurso(curso);
@@ -221,17 +221,17 @@ public class UsuarioDAO implements DAO<Usuario>{
                 Curso curso = new Curso();
                 TipoUsuario tipoUsuario = new TipoUsuario();
 
-                obj.setCodigo(rs.getInt("N.USUA_ID"));
-                obj.setNome(rs.getString("N.USUA_NM"));
-                obj.setProntuario(rs.getString("N.USUA_PRON"));
-                obj.setFuncional(rs.getString("N.USUA_FUNC"));
-                obj.setDataMatricula(rs.getDate("N.USUA_DT_INI"));
-                obj.setSemestre(rs.getString("N.USUA_SEME"));
-                obj.setLogin(rs.getString("N.USUA_LOGIN"));
-                obj.setSenha(rs.getString("N.USUA_SENHA"));
-                obj.setAtivo(rs.getBoolean("N.USUA_ATIVO"));
+                obj.setCodigo(rs.getInt("U.USUA_ID"));
+                obj.setNome(rs.getString("U.USUA_NM"));
+                obj.setProntuario(rs.getString("U.USUA_PRON"));
+                obj.setFuncional(rs.getString("U.USUA_FUNC"));
+                obj.setDataMatricula(rs.getDate("U.USUA_DT_INI"));
+                obj.setSemestre(rs.getString("U.USUA_SEME"));
+                obj.setLogin(rs.getString("U.USUA_LOGIN"));
+                obj.setSenha(rs.getString("U.USUA_SENHA"));
+                obj.setAtivo(rs.getBoolean("U.USUA_ATIVO"));
 
-                curso.setCodigo(rs.getInt("C.USUA_ID"));
+                curso.setCodigo(rs.getInt("C.CURS_ID"));
                 curso.setNome(rs.getString("C.CURS_NOME"));
                 curso.setDescricao(rs.getString("C.CURS_DESC"));
                 obj.setCurso(curso);
