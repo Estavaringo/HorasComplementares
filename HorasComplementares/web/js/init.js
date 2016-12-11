@@ -61,7 +61,16 @@ $(document).ready(function () {
     
     $('select').material_select();
     
-    
+    $(".botao-alterar-tipoDocumento").click(function (){
+       
+        var codigo = this.id;
+        var descricao = $('#descricao-' + codigo).text();
+        
+        $('#codigo-alterar').val(codigo);
+        $('#descricao-alterar').val(descricao);
+        
+        $('#modal-alterar').openModal('');
+    });
 
 
 });
