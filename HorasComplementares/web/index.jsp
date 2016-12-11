@@ -13,7 +13,20 @@
                         <h5 class="header col s12 light">As Atividades Complementares são um conjunto de atividades, habilidades, experiências e conhecimentos que devem ser adquiridos em ambiente extra-classe pelos alunos desta Instituição.</h5>
                     </div>
                     <div class="row center">
-                        <a href="/HorasComplementares/login.jsp" id="download-button" class="btn-large waves-effect waves-light green lighten-1">Acesse Aqui</a>
+                        <c:if test="${(not empty usuarioLogado)}">
+                            <form method="POST" action="Executa">
+                                <input type="hidden" name="logicaDeNegocio" value="CursoServlet">
+                                <input type="hidden" name="tarefa" value="consultarLista">
+                                <div class="row">
+                                    <button type="submit" id="download-button" class="btn-large waves-effect waves-light green lighten-1" value="Acessar">Acesse Aqui</button>
+                                </div>
+                            </form>
+                        </c:if>
+                        <c:if test="${(empty usuarioLogado)}">
+                            <div>
+                                <a href="/HorasComplementares/login.jsp" id="download-button" class="btn-large waves-effect waves-light green lighten-1">Acesse Aqui</a>
+                            </div>
+                        </c:if>
                     </div>
                     <br><br>
                 </div>
