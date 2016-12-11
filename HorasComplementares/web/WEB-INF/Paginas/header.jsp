@@ -56,16 +56,28 @@
                     <li class="no-padding">
                         <ul class="collapsible collapsible-accordion">
                             <li>
-                                <a class="collapsible-header">Configurações<i class="material-icons">arrow_drop_down</i></a>
+                                <a class="collapsible-header">Configuração<i class="material-icons">arrow_drop_down</i></a>
                                 <div class="collapsible-body">
                                     <ul>
-                                        <li><a href="Executa?logicaDeNegocio=CursoServlet&tarefa=consultarLista">Cursos</a></li>
+                                        <li><a href="Executa?logicaDeNegocio=CursoServlet&tarefa=consultarLista">Configurar Cursos</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="no-padding">
+                        <ul class="collapsible collapsible-accordion">
+                            <li>
+                                <a class="collapsible-header">Parâmetros<i class="material-icons">arrow_drop_down</i></a>
+                                <div class="collapsible-body">
+                                    <ul>
+                                        <li><a href="Executa?logicaDeNegocio=TipoDocumentoServlet&tarefa=consultarLista">Tipo de Comprovantes</a></li>
+                                        <li><a href="Executa?logicaDeNegocio=TipoRelatorioServlet&tarefa=consultarLista">Tipo de Atividades</a></li>
                                     </ul>
                                 </div>
                             </li>
                         </ul>
                     </li>
                 </c:if>
-
             </ul>
         </header>
