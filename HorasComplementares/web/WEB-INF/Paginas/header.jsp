@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="Latin1"%>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -33,7 +33,7 @@
                 </nav>
             </div>
 
-            <!-- MENU DE LOGOUT DO USU√ÅRIO -->
+            <!-- MENU DE LOGOUT DO USU¡RIO -->
             <ul id="dropdown-user" class="dropdown-content">
                 <li class="divider"></li>
                 <li><a href="Executa?logicaDeNegocio=Logout" class="cyan-text"><i class="material-icons left">close</i>Sair</a></li>
@@ -50,7 +50,7 @@
                 <li><a class="waves-effect" href="#!"><i class="material-icons">dashboard</i><span class="gray-text text-darken-2"><b>Dashboard</b></span></a></li>
                 <li><div class="divider"></div></li>
                 <li><a class="waves-effect modal-trigger" href="#modal-upload"><i class="icon-horas-complementares"></i><span class="gray-text text-darken-2"><b>Nova Atividade</b></span></a></li>
-                <li><a class="waves-effect" href="#!"><i class="material-icons">swap_vertical_circle</i><span class="gray-text text-darken-2"><b>Ver Hist√≥rico</b></span></a></li>
+                <li><a class="waves-effect" href="#!"><i class="material-icons">swap_vertical_circle</i><span class="gray-text text-darken-2"><b>Ver HistÛrico</b></span></a></li>
                 <li><div class="divider"></div></li>
                 <li><a class="waves-effect" href="#!"><i class="material-icons">forum</i><span class="gray-text text-darken-2"><b>Quadro de Avisos</b></span></a></li>
                 <li><a class="waves-effect" href="#!"><i class="material-icons">info</i><span class="gray-text text-darken-2"><b>Regulamento</b></span></a></li>
@@ -60,11 +60,11 @@
                     <li class="no-padding">
                         <ul class="collapsible collapsible-accordion">
                             <li>
-                                <a class="collapsible-header">Configura√ß√µes<i class="material-icons">arrow_drop_down</i></a>
+                                <a class="collapsible-header">ConfiguraÁıes<i class="material-icons">arrow_drop_down</i></a>
                                 <div class="collapsible-body">
                                     <ul>
                                         <li><a href="Executa?logicaDeNegocio=CursoServlet&tarefa=consultarLista">Cursos</a></li>
-                                        <li><a href="Executa?logicaDeNegocio=UsuarioServlet&tarefa=consultarLista">Usu√°rios</a></li>
+                                        <li><a href="Executa?logicaDeNegocio=UsuarioServlet&tarefa=consultarLista">Usu·rios</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -74,7 +74,7 @@
                     <li class="no-padding">
                         <ul class="collapsible collapsible-accordion">
                             <li>
-                                <a class="collapsible-header">Par√¢metros<i class="material-icons">arrow_drop_down</i></a>
+                                <a class="collapsible-header">Par‚metros<i class="material-icons">arrow_drop_down</i></a>
                                 <div class="collapsible-body">
                                     <ul>
                                         <li><a href="Executa?logicaDeNegocio=TipoComprovanteServlet&tarefa=consultarLista">Tipo de Comprovantes</a></li>

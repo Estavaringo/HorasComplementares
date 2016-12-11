@@ -31,7 +31,7 @@
                                 <td id="nome-${curso.codigo}">
                                     <a class="btn-floating green darken-2 tooltipped" data-position="bottom" data-delay="50" data-tooltip="Clique aqui para configurar." href="Executa?logicaDeNegocio=CursoServlet&tarefa=abrir&codigo=${curso.codigo}" class="waves-effect waves-light">
                                         <i class="large material-icons left">settings</i>
-                                    </a>${curso.descricao}</td>
+                                    </a>${curso.nome}</td>
                                 <td id="descricao-${curso.codigo}"> ${curso.descricao}</td>
                                 <td class="hide-on-med-and-up">
                                     <a class="botao-alterar-curso cyan-text text-darken-4" id="${curso.codigo}"><i class="material-icons yellow-text text-darken-4" style="font-size: 35px">edit</i></a>
@@ -69,15 +69,15 @@
                 <input type="hidden" name="codigo" id="codigo-alterar">
 
                 <div class="input-field">
-                    <i class="material-icons prefix"></i>
+                    <i class="material-icons prefix">edit</i>
                     <label for="descricao-alterar">Nome</label>
-                    <input id="descricao-alterar" placeholder="Insira o nome da curso aqui..." type="text" class="validate" name="descricao" value="" />
+                    <input id="descricao-alterar" placeholder="Insira o nome do curso aqui..." type="text" class="validate" name="nome" value="" />
                 </div>
                 
                 <div class="input-field">
-                    <i class="material-icons prefix">timelapse</i>
-                    <label for="cargaHoraria-alterar">Caga Horária Necessária</label>
-                    <input id="cargaHoraria-alterar" placeholder="Insira a carga horário necessária para o  respectivo curso..." type="text" name="cargaHoraria" value="" />
+                    <i class="material-icons prefix">description</i>
+                    <label for="cargaHoraria-alterar">Descrição do Curso</label>
+                    <input id="cargaHoraria-alterar" placeholder="Insira a descrição do curso..." type="text" name="descricao" value="" />
                 </div>
                 
             </div>
@@ -100,8 +100,8 @@
                 <input type="hidden" name="codigo" id="codigo-excluir">
 
                 <div class="input-field">
-                    <i class="material-icons prefix">description</i>
-                    <input disabled class="grey-text text-darken-4" id="descricao-excluir" type="text" name="descricao" value="" />
+                    <i class="material-icons prefix">edit</i>
+                    <input disabled class="grey-text text-darken-4" id="descricao-excluir" type="text" name="nome" value="" />
                 </div>
             </div>
             <div class="modal-footer">
@@ -129,15 +129,15 @@
 
                 
                 <div class="input-field">
-                    <i class="material-icons prefix">border_color</i>
-                    <label for="descricao-incluir">Nome</label>
-                    <input id="descricao-incluir" placeholder="Insira o nome do curso aqui..." type="text" class="validate" name="descricao" value="" />
+                    <i class="material-icons prefix">edit</i>
+                    <label for="nome-incluir">Nome</label>
+                    <input id="descricao-incluir" placeholder="Insira o nome do curso aqui..." type="text" class="validate" name="nome" value="" />
                 </div>
                                 
                 <div class="input-field">
-                    <i class="material-icons prefix">timelapse</i>
-                    <label for="cargaHoraria-incluir">Caga Horária Necessária</label>
-                    <input id="cargaHoraria-incluir" placeholder="Insira a carga horário necessária para o respectivo curso..." type="text" name="cargaHoraria" value="" />
+                    <i class="material-icons prefix">description</i>
+                    <label for="descricao-incluir">Descrição do Curso</label>
+                    <input id="cargaHoraria-incluir" placeholder="Insira uma descrição para o curso..." type="text" name="descricao" value="" />
                 </div>                
             </div>
             <div class="modal-footer">
