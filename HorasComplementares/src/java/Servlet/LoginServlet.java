@@ -28,55 +28,40 @@ public class LoginServlet implements LogicaDeNegocio {
 
         try {
             senha = new Criptografia().Digest(req.getParameter("senha"));
+            System.out.println(senha);
         } catch (NoSuchAlgorithmException | UnsupportedEncodingException ex) {
             System.err.println("Erro ao criptografar a senha. Detalhes: " + ex.getMessage());
         }
 
-//        Usuario usuario = new Usuario();
-//
-//        try {
-//            usuario = new UsuarioDAO().LoginServlet(login);
-//
-//            if (usuario == null) {
-//                HttpSession session = req.getSession();
-//                session.setAttribute("usuarioInvalido", true);
-//                return "index.jsp";
-//            } else if (!senha.equals(usuario.getSenha())) {
-//                HttpSession session = req.getSession();
-//                session.setAttribute("senhaInvalida", true);
-//                return "index.jsp";
-//            } else if (!usuario.isAtivo()) {
-//                HttpSession session = req.getSession();
-//                session.setAttribute("senhaInvalida", true);
-//                return "index.jsp";
-//            } else {
-//                HttpSession session = req.getSession();
-//                session.removeAttribute("senhaInvalida");
-//                session.removeAttribute("usuarioInvalido");
-//                session.setAttribute("usuarioLogado", usuario);
-//                return "/WEB-INF/Paginas/dashboard.jsp";
-//            }
-//
-//        } catch (SQLException ex) {
-//            System.err.println("Erro ao consultar usuário no banco de dados. Detalhes: " + ex.getMessage());
-//            return "erro.html";
-//        }
         Usuario usuario = new Usuario();
-        TipoUsuario tipoUsuario = new TipoUsuario();
-        usuario.setLogin(login);
-        usuario.setLogin(senha);
-        tipoUsuario.setDescricao("admin");
-        usuario.setTipoUsuario(tipoUsuario);
 
-        HttpSession session = req.getSession();
-        session.removeAttribute("senhaInvalida");
-        session.removeAttribute("usuarioInvalido");
-        session.setAttribute("usuarioLogado", usuario);
-        session.setAttribute("logicaDeNegocio", "CursoServlet");
-        session.setAttribute("tarefa", "consultarLista");
+        try {
+            usuario = new UsuarioDAO().Login(login);
 
-        
-        return "/WEB-INF/Paginas/cursos.jsp";
+            if (usuario == null) {
+                HttpSession session = req.getSession();
+                session.setAttribute("usuarioInvalido", true);
+                return "login.jsp";
+            } else if (!senha.equals(usuario.getSenha())) {
+                HttpSession session = req.getSession();
+                session.setAttribute("senhaInvalida", true);
+                return "login.jsp";
+            } else if (!usuario.isAtivo()) {
+                HttpSession session = req.getSession();
+                session.setAttribute("usuarioInativo", true);
+                return "login.jsp";
+            } else {
+                HttpSession session = req.getSession();
+                session.removeAttribute("senhaInvalida");
+                session.removeAttribute("usuarioInvalido");
+                session.setAttribute("usuarioLogado", usuario);
+                return "/WEB-INF/Paginas/cursos.jsp";
+            }
+
+        } catch (SQLException ex) {
+            System.err.println("Erro ao consultar usuário no banco de dados. Detalhes: " + ex.getMessage());
+            return "erro.html";
+        }
     }
 
     @Override

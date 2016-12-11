@@ -10,22 +10,27 @@
                 </div>
                 <div class="col s12 edge">
                     <section class="login">
-                        <c:if test="${(not empty usuarioInvalido) || (not empty senhaInvalida)}">
-                            <div class="error">
-                                <span class="red-text text-darken-2">Informe os campos corretamente.</span>
-                            </div>
-                        </c:if>
                         <form method="POST" action="Executa">
                             <div class="row">
                                 <input type="hidden" name="logicaDeNegocio" value="LoginServlet">
                             </div>
                             <div class="row">
+                                <c:if test="${(not empty usuarioInvalido)}">
+                                    <div class="error">
+                                        <span class="red-text text-darken-2">Usuário Inválido!</span>
+                                    </div>
+                                </c:if>
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">account_circle</i>
                                     <input placeholder="Informe seu login" id="login" name="login" type="text" class="validate">
                                     <label for="login">Login</label>
                                 </div>
                             </div>
+                            <c:if test="${(not empty senhaInvalida)}">
+                                <div class="error">
+                                    <span class="red-text text-darken-2">Senha Inválida!</span>
+                                </div>
+                            </c:if>
                             <div class="row">
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">lock</i>
@@ -46,8 +51,8 @@
                 <a href="/HorasComplementares">
                     <img src="images/HorasComplementares_horizontal.png" alt="Horas Complementares">
                 </a>
-            <h2>Ainda não se cadastrou?</h2>
-            <a href="" class="btn orange">Cadastre-se</a>
+                <h2>Ainda não se cadastrou?</h2>
+                <a href="" class="btn orange">Cadastre-se</a>
             </div>
         </div>
     </div>

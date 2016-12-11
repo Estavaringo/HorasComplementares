@@ -77,9 +77,9 @@
                                 <a class="collapsible-header">Parâmetros<i class="material-icons">arrow_drop_down</i></a>
                                 <div class="collapsible-body">
                                     <ul>
-                                        <li><a href="Executa?logicaDeNegocio=TipoComprovanteServlet&tarefa=consultarLista">Tipo de Comprovantes</a></li>
-                                        <li><a href="Executa?logicaDeNegocio=TipoRelatorioServlet&tarefa=consultarLista">Tipo de Atividades</a></li>
-                                        <li><a href="Executa?logicaDeNegocio=TipoContatoServlet&tarefa=consultarLista">Tipo de Contatos</a></li>
+                                        <li><a href="Executa?logicaDeNegocio=TipoComprovanteServlet&tarefa=consultarLista">Tipos de Comprovantes</a></li>
+                                        <li><a href="Executa?logicaDeNegocio=TipoRelatorioServlet&tarefa=consultarLista">Tipos de Atividades</a></li>
+                                        <li><a href="Executa?logicaDeNegocio=TipoContatoServlet&tarefa=consultarLista">Tipos de Contatos</a></li>
                                     </ul>
                                 </div>
                             </li>
