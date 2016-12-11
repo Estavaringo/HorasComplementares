@@ -127,8 +127,8 @@ public class UsuarioDAO implements DAO<Usuario>{
                 obj.setAtivo(rs.getBoolean("N.USUA_ATIVO"));
 
                 curso.setCodigo(rs.getInt("C.USUA_ID"));
+                curso.setNome(rs.getString("C.CURS_DESC"));
                 curso.setDescricao(rs.getString("C.CURS_DESC"));
-                curso.setCargaHoraria(rs.getInt("C.CURS_HR_NECE"));
                 obj.setCurso(curso);
 
                 tipoUsuario.setCodigo(rs.getInt("T.TIUS_ID"));
@@ -179,8 +179,8 @@ public class UsuarioDAO implements DAO<Usuario>{
                 obj.setAtivo(rs.getBoolean("N.USUA_ATIVO"));
 
                 curso.setCodigo(rs.getInt("C.USUA_ID"));
+                curso.setNome(rs.getString("C.CURS_NOME"));
                 curso.setDescricao(rs.getString("C.CURS_DESC"));
-                curso.setCargaHoraria(rs.getInt("C.CURS_HR_NECE"));
                 obj.setCurso(curso);
 
                 tipoUsuario.setCodigo(rs.getInt("T.TIUS_ID"));
@@ -232,8 +232,8 @@ public class UsuarioDAO implements DAO<Usuario>{
                 obj.setAtivo(rs.getBoolean("N.USUA_ATIVO"));
 
                 curso.setCodigo(rs.getInt("C.USUA_ID"));
+                curso.setNome(rs.getString("C.CURS_NOME"));
                 curso.setDescricao(rs.getString("C.CURS_DESC"));
-                curso.setCargaHoraria(rs.getInt("C.CURS_HR_NECE"));
                 obj.setCurso(curso);
 
                 tipoUsuario.setCodigo(rs.getInt("T.TIUS_ID"));
