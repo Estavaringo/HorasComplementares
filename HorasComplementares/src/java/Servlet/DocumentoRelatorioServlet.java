@@ -7,7 +7,7 @@ package Servlet;
 
 import Bean.DocumentoRelatorio;
 import Bean.RelatorioAtividade;
-import Bean.TipoDocumento;
+import Bean.TipoComprovante;
 import DAO.DocumentoRelatorioDAO;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ public class DocumentoRelatorioServlet implements LogicaDeNegocio{
 
     //Declarações
     private DocumentoRelatorio documentoRelatorio = null;
-    private TipoDocumento tipoDocumento = new TipoDocumento();
+    private TipoComprovante tipoDocumento = new TipoComprovante();
     private RelatorioAtividade relatorioAtividade = new RelatorioAtividade();
     private String tarefa;
 

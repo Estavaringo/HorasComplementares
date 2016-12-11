@@ -5,7 +5,7 @@
  */
 package DAO;
 
-import Bean.TipoDocumento;
+import Bean.TipoComprovante;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,12 +16,12 @@ import java.util.ArrayList;
  *
  * @author gabri
  */
-public class TipoDocumentoDAO implements DAO<TipoDocumento>{
+public class TipoComprovanteDAO implements DAO<TipoComprovante>{
 
     BancoDados bd = new BancoDados();
     
     @Override
-    public void Incluir(TipoDocumento obj) throws SQLException {
+    public void Incluir(TipoComprovante obj) throws SQLException {
         try {
             bd.conectar();
             String strSql
@@ -56,7 +56,7 @@ public class TipoDocumentoDAO implements DAO<TipoDocumento>{
     }
 
     @Override
-    public void Alterar(TipoDocumento obj) throws SQLException {
+    public void Alterar(TipoComprovante obj) throws SQLException {
         try {
             bd.conectar();
             String strSql
@@ -75,15 +75,15 @@ public class TipoDocumentoDAO implements DAO<TipoDocumento>{
     }
 
     @Override
-    public ArrayList<TipoDocumento> Consultar() throws SQLException {
+    public ArrayList<TipoComprovante> Consultar() throws SQLException {
         try {
-            ArrayList<TipoDocumento> lista = new ArrayList<>();
+            ArrayList<TipoComprovante> lista = new ArrayList<>();
             bd.conectar();
             Statement comando;
             comando = bd.connection.createStatement();
             ResultSet rs = comando.executeQuery("SELECT TIDO_ID, TIDO_DESC FROM TIPO_DOCUMENTO");
             while (rs.next()) {
-                TipoDocumento obj = new TipoDocumento();
+                TipoComprovante obj = new TipoComprovante();
                 obj.setCodigo(rs.getInt("TIDO_ID"));
                 obj.setDescricao(rs.getString("TIDO_DESC"));
                 lista.add(obj);
@@ -98,16 +98,16 @@ public class TipoDocumentoDAO implements DAO<TipoDocumento>{
     }
 
     @Override
-    public TipoDocumento Consultar(int codigo) throws SQLException {
+    public TipoComprovante Consultar(int codigo) throws SQLException {
         try {
-            TipoDocumento obj = null;
+            TipoComprovante obj = null;
             bd.conectar();
             String strSQL = "SELECT TIDO_ID, TIDO_DESC FROM TIPO_DOCUMENTO WHERE TIDO_ID = ?";
             PreparedStatement p = bd.connection.prepareStatement(strSQL);
             p.setInt(1, codigo);
             ResultSet rs = p.executeQuery();
             if (rs.next()) {
-                obj = new TipoDocumento();
+                obj = new TipoComprovante();
                 obj.setCodigo(rs.getInt("TIDO_ID"));
                 obj.setDescricao(rs.getString("TIDO_DESC"));
                 p.close();

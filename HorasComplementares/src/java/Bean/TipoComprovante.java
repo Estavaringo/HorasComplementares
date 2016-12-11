@@ -9,7 +9,7 @@ package Bean;
  *
  * @author gabri
  */
-public class TipoDocumento {
+public class TipoComprovante {
     //Primary Key
     private int codigo;
     

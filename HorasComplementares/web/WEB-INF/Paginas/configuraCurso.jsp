@@ -111,12 +111,6 @@
             </div>
         </form>
     </div>
-    <!-- ABRE MODAL INCLUIR -->
-    <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-        <a class="modal-trigger btn-floating btn-large red" href="#modal-incluir">
-            <i class="large material-icons">add</i>
-        </a>
-    </div>
     <!-- ESTRUTURA DA MODAL INCLUIR -->
     <div id="modal-incluir" class="modal modal-fixed-footer">
         <form method="POST" action="Executa">

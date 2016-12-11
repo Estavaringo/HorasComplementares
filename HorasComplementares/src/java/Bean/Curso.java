@@ -14,8 +14,8 @@ public class Curso {
     private int codigo;
     
     //Atributos
+    private String nome;
     private String descricao;
-    private int cargaHoraria;
 
     /**
      * @return the codigo
@@ -48,15 +48,15 @@ public class Curso {
     /**
      * @return the cargaHoraria
      */
-    public int getCargaHoraria() {
-        return cargaHoraria;
+    public String getNome() {
+        return nome;
     }
 
     /**
      * @param cargaHoraria the cargaHoraria to set
      */
-    public void setCargaHoraria(int cargaHoraria) {
-        this.cargaHoraria = cargaHoraria;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     
