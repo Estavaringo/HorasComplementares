@@ -25,7 +25,7 @@ public class TipoComprovanteDAO implements DAO<TipoComprovante>{
         try {
             bd.conectar();
             String strSql
-                    = "INSERT INTO TIPO_DOCUMENTO (TIDO_DESC) VALUES (?)";
+                    = "INSERT INTO TIPO_COMPROVANTE (TIDO_DESC) VALUES (?)";
             PreparedStatement p
                     = bd.connection.prepareStatement(strSql);
             p.setString(1, obj.getDescricao());
@@ -42,7 +42,7 @@ public class TipoComprovanteDAO implements DAO<TipoComprovante>{
         try {
             bd.conectar();
             String strSql
-                    = "DELETE FROM TIPO_DOCUMENTO WHERE TIDO_ID = ?";
+                    = "DELETE FROM TIPO_COMPROVANTE WHERE TIDO_ID = ?";
             PreparedStatement p
                     = bd.connection.prepareStatement(strSql);
             p.setInt(1, codigo);
@@ -60,7 +60,7 @@ public class TipoComprovanteDAO implements DAO<TipoComprovante>{
         try {
             bd.conectar();
             String strSql
-                    = "UPDATE TIPO_DOCUMENTO SET TIDO_DESC = ? WHERE TIDO_ID = ?";
+                    = "UPDATE TIPO_COMPROVANTE SET TIDO_DESC = ? WHERE TIDO_ID = ?";
             PreparedStatement p
                     = bd.connection.prepareStatement(strSql);
             p.setString(1, obj.getDescricao());
@@ -81,7 +81,7 @@ public class TipoComprovanteDAO implements DAO<TipoComprovante>{
             bd.conectar();
             Statement comando;
             comando = bd.connection.createStatement();
-            ResultSet rs = comando.executeQuery("SELECT TIDO_ID, TIDO_DESC FROM TIPO_DOCUMENTO");
+            ResultSet rs = comando.executeQuery("SELECT TIDO_ID, TIDO_DESC FROM TIPO_COMPROVANTE");
             while (rs.next()) {
                 TipoComprovante obj = new TipoComprovante();
                 obj.setCodigo(rs.getInt("TIDO_ID"));
@@ -102,7 +102,7 @@ public class TipoComprovanteDAO implements DAO<TipoComprovante>{
         try {
             TipoComprovante obj = null;
             bd.conectar();
-            String strSQL = "SELECT TIDO_ID, TIDO_DESC FROM TIPO_DOCUMENTO WHERE TIDO_ID = ?";
+            String strSQL = "SELECT TIDO_ID, TIDO_DESC FROM TIPO_COMPROVANTE WHERE TIDO_ID = ?";
             PreparedStatement p = bd.connection.prepareStatement(strSQL);
             p.setInt(1, codigo);
             ResultSet rs = p.executeQuery();
