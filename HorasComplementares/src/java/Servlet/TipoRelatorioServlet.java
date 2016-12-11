@@ -34,6 +34,7 @@ public class TipoRelatorioServlet implements LogicaDeNegocio{
                     tipoRelatorio = new TipoRelatorio();
 
                     //Atribui as informações da tipoRelatorio no objeto
+                    tipoRelatorio.setNome(req.getParameter("nome"));
                     tipoRelatorio.setDescricao(req.getParameter("descricao"));
 
                     //Grava um nova tipoRelatorio no banco de dados
@@ -55,6 +56,7 @@ public class TipoRelatorioServlet implements LogicaDeNegocio{
                     tipoRelatorio = new TipoRelatorio();
 
                     //Atribui as informações da tipoRelatorio no objeto
+                    tipoRelatorio.setNome(req.getParameter("nome"));
                     tipoRelatorio.setDescricao(req.getParameter("descricao"));
                     tipoRelatorio.setCodigo(Integer.parseInt(req.getParameter("codigo")));
 
@@ -77,6 +79,7 @@ public class TipoRelatorioServlet implements LogicaDeNegocio{
                     tipoRelatorio = new TipoRelatorio();
 
                     //Atribui as informações da tipoRelatorio no objeto
+                    tipoRelatorio.setNome(req.getParameter("nome"));
                     tipoRelatorio.setDescricao(req.getParameter("descricao"));
                     tipoRelatorio.setCodigo(Integer.parseInt(req.getParameter("codigo")));
 

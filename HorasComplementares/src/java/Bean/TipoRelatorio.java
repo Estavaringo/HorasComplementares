@@ -14,6 +14,7 @@ public class TipoRelatorio {
     private int codigo;
     
     //Atributos
+    private String nome;
     private String descricao;
     private int qtdHoras;
 
@@ -57,5 +58,19 @@ public class TipoRelatorio {
      */
     public void setQtdHoras(int qtdHoras) {
         this.qtdHoras = qtdHoras;
+    }
+
+    /**
+     * @return the nome
+     */
+    public String getNome() {
+        return nome;
+    }
+
+    /**
+     * @param nome the nome to set
+     */
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 }

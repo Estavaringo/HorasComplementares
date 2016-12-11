@@ -46,6 +46,18 @@ $(document).ready(function () {
         $('#modal-excluir').openModal();
     });
     
+    $(".botao-excluir-nome").click(function () {
+
+        var codigo = this.id;
+
+        var nome = $('#nome-' + codigo).text();
+
+        $('#codigo-excluir').val(codigo);
+        $('#nome-excluir').val(nome);
+
+        $('#modal-excluir').openModal();
+    });
+    
     $(".botao-alterar-curso").click(function () {
                 
         var codigo = this.id;
@@ -75,12 +87,12 @@ $(document).ready(function () {
     $(".botao-alterar-tipoRelatorio").click(function (){
        
         var codigo = this.id;
+        var nome = $('#nome-' + codigo).text();
         var descricao = $('#descricao-' + codigo).text();
-        var qtdHoras = $('#qtdHoras-' + codigo).text();
         
         $('#codigo-alterar').val(codigo);
+        $('#nome-alterar').val(nome);
         $('#descricao-alterar').val(descricao);
-        $('#qtdHoras-alterar').val(qtdHoras);
         
         $('#modal-alterar').openModal('');
     });

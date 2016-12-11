@@ -1,6 +1,6 @@
 <%@page import="java.util.Collection"%>
 <%@page import="Bean.TipoComprovante"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="latin1"%>
 <%@ include file="header.jsp" %>
 <main>    
         <!--BANNER COM O TITULO-->
@@ -9,18 +9,18 @@
                 <div class="row">
                     <div class="col s12">
                         <h2 class="header center-on-small-only">Tipo de Comprovantes</h2>
-                        <h4 class="light green-text text-lighten-4 center-on-small-only">Gerencie os tipos de comprovantes que s√£o aceitos</h4>
+                        <h4 class="light green-text text-lighten-4 center-on-small-only">Gerencie os tipos de comprovantes que s„o aceitos</h4>
                     </div>
                 </div>
             </div>
         </div>
-        <!--CONTE√öDO DO P√ÅGINA-->
+        <!--CONTE⁄DO DO P¡GINA-->
         <div class="container">
             <table id="example" class="highlight responsive-table">
                 <thead>
                     <tr>
                         <th data-field="tipoComprovante">Comprovante</th>
-                        <th data-field="acao">A√ß√£o</th>
+                        <th data-field="acao">AÁ„o</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -58,7 +58,7 @@
                 <h4>Alterar tipo de comprovante</h4>
                 <p>Altere o tipo de comprovante selecionada:</p>
 
-                <!--Nome das Classes que dever√£o ser informadas na requisi√ß√£o-->
+                <!--Nome das Classes que dever„o ser informadas na requisiÁ„o-->
                 <input type="hidden" name="logicaDeNegocio" value="TipoComprovanteServlet">
                 <input type="hidden" name="tarefa" value="alterar">
                 <input type="hidden" name="codigo" id="codigo-alterar">
@@ -80,9 +80,9 @@
         <form method="POST" action="Executa">
             <div class="modal-content">
                 <h4>Excluir tipo de comprovante</h4>
-                <p>Confirme a exclus√£o do tipo de comprovante selecionado:</p>
+                <p>Confirme a exclus„o do tipo de comprovante selecionado:</p>
 
-                <!--Nome das Classes que dever√£o ser informadas na requisi√ß√£o-->
+                <!--Nome das Classes que dever„o ser informadas na requisiÁ„o-->
                 <input type="hidden" name="logicaDeNegocio" value="TipoComprovanteServlet">
                 <input type="hidden" name="tarefa" value="remover">
                 <input type="hidden" name="codigo" id="codigo-excluir">
@@ -93,7 +93,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="modal-action waves-effect waves-green btn btn-default cyan" value="Alterar">Confirmar Exclus√£o</button>
+                <button type="submit" class="modal-action waves-effect waves-green btn btn-default cyan" value="Alterar">Confirmar Exclus„o</button>
                 <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancelar</a>
             </div>
         </form>
@@ -111,7 +111,7 @@
                 <h4>Incluir tipo de comprovante</h4>
                 <p>Insira abaixo o novo tipo de comprovante</p>
 
-                <!--Nome das Classes que dever√£o ser informadas na requisi√ß√£o-->
+                <!--Nome das Classes que dever„o ser informadas na requisiÁ„o-->
                 <input type="hidden" name="logicaDeNegocio" value="TipoComprovanteServlet">
                 <input type="hidden" name="tarefa" value="incluir">
 

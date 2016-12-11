@@ -8,7 +8,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col s12">
-                        <h2 class="header center-on-small-only">Tipo de Atividades Complementares</h2>
+                        <h2 class="header center-on-small-only">Tipos de Atividades Complementares</h2>
                         <h4 class="light green-text text-lighten-4 center-on-small-only">Gerencie os tipos de atividades complementares do sistema  </h4>
                     </div>
                 </div>
@@ -20,6 +20,7 @@
                 <thead>
                     <tr>
                         <th data-field="tipoRelatorio">Atividade</th>
+                        <th data-field="tipoRelatorio">Descrição</th>
                         <th data-field="acao">Ação</th>
                     </tr>
                 </thead>
@@ -27,6 +28,7 @@
                     <c:if test="${not empty listaTipoRelatorio}">
                         <c:forEach var="tipoRelatorio" items="${listaTipoRelatorio}">
                             <tr>
+                                <td id="nome-${tipoRelatorio.codigo}">${tipoRelatorio.nome}</td>
                                 <td id="descricao-${tipoRelatorio.codigo}">${tipoRelatorio.descricao}</td>
                                 <td class="hide-on-med-and-up">
                                     <a class="botao-alterar-tipoRelatorio cyan-text text-darken-4" id="${tipoRelatorio.codigo}"><i class="material-icons yellow-text text-darken-4" style="font-size: 35px">edit</i></a>
@@ -41,7 +43,7 @@
                                         <li class="divider"></li>
                                         <li><a class="botao-alterar-tipoRelatorio cyan-text text-darken-4" id="${tipoRelatorio.codigo}"><i class="material-icons yellow-text text-darken-4">edit</i>Alterar</a></li>
                                         <li class="divider"></li>
-                                        <li><a class="botao-excluir cyan-text text-darken-4" id="${tipoRelatorio.codigo}"><i class="material-icons deep-orange-text">delete</i>Excluir</a></li>
+                                        <li><a class="botao-excluir-nome cyan-text text-darken-4" id="${tipoRelatorio.codigo}"><i class="material-icons deep-orange-text">delete</i>Excluir</a></li>
                                     </ul>
                                 </td>
                             </tr>
@@ -64,9 +66,14 @@
                 <input type="hidden" name="codigo" id="codigo-alterar">
 
                 <div class="input-field">
-                    <i class="material-icons prefix"></i>
+                    <i class="material-icons prefix">border_color</i>
+                    <label for="nome-alterar"></label>
+                    <input id="nome-alterar" placeholder="Insira o nome do tipo de atividade aqui..." type="text" class="validate" name="nome" value="" />
+                </div>
+                <div class="input-field">
+                    <i class="material-icons prefix">border_color</i>
                     <label for="descricao-alterar"></label>
-                    <input id="descricao-alterar" placeholder="Insira o nome do tipo de atividade aqui..." type="text" class="validate" name="descricao" value="" />
+                    <input id="descricao-alterar" placeholder="Insira a descrição do tipo de atividade aqui..." type="text" class="validate" name="descricao" value="" />
                 </div>
             </div>
             <div class="modal-footer">
@@ -89,7 +96,7 @@
 
                 <div class="input-field">
                     <i class="material-icons prefix">description</i>
-                    <input disabled class="grey-text text-darken-4" id="descricao-excluir" type="text" name="descricao" value="" />
+                    <input disabled class="grey-text text-darken-4" id="nome-excluir" type="text" name="nome" value="" />
                 </div>
             </div>
             <div class="modal-footer">
@@ -114,11 +121,14 @@
                 <!--Nome das Classes que deverão ser informadas na requisição-->
                 <input type="hidden" name="logicaDeNegocio" value="TipoRelatorioServlet">
                 <input type="hidden" name="tarefa" value="incluir">
-
-                
                 <div class="input-field">
                     <i class="material-icons prefix">border_color</i>
-                    <label for="descricao-incluir">Nome</label>
+                    <label for="nome-incluir">Nome</label>
+                    <input id="nome-incluir" placeholder="Insira o nome do tipo de atividade aqui..." type="text" class="validate" name="nome" value="" />
+                </div>
+                <div class="input-field">
+                    <i class="material-icons prefix">border_color</i>
+                    <label for="descricao-incluir">Descricao</label>
                     <input id="descricao-incluir" placeholder="Insira o nome do tipo de atividade aqui..." type="text" class="validate" name="descricao" value="" />
                 </div>
             </div>
