@@ -57,7 +57,7 @@ public class TipoRelatorioServlet implements LogicaDeNegocio{
 
                     //Atribui as informações da tipoRelatorio no objeto
                     tipoRelatorio.setDescricao(req.getParameter("descricao"));
-                    tipoRelatorio.setQtdHoras(Integer.parseInt(req.getParameter("horas")));
+                    //tipoRelatorio.setQtdHoras(Integer.parseInt(req.getParameter("horas"))); não é um comando necessário
                     tipoRelatorio.setCodigo(Integer.parseInt(req.getParameter("codigo")));
 
                     //Exclui tipoRelatorio no banco de dados
@@ -128,7 +128,7 @@ public class TipoRelatorioServlet implements LogicaDeNegocio{
                     return "erro.html";
                 }
 
-                return "/WEB-INF/Paginas/tiporelatorio.jsp";
+                return "/WEB-INF/Paginas/tipoRelatorio.jsp";
 
             default:
                 System.err.println("Tarefa informada é inválida!");
@@ -151,7 +151,7 @@ public class TipoRelatorioServlet implements LogicaDeNegocio{
             return "erro.html";
         }
 
-        return "/WEB-INF/Paginas/tiporelatorio.jsp";
+        return "/WEB-INF/Paginas/tipoRelatorio.jsp";
     }
 
     @Override

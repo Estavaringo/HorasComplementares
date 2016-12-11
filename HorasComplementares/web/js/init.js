@@ -71,6 +71,19 @@ $(document).ready(function () {
         
         $('#modal-alterar').openModal('');
     });
+    
+    $(".botao-alterar-tipoRelatorio").click(function (){
+       
+        var codigo = this.id;
+        var descricao = $('#descricao-' + codigo).text();
+        var qtdHoras = $('#qtdHoras-' + codigo).text();
+        
+        $('#codigo-alterar').val(codigo);
+        $('#descricao-alterar').val(descricao);
+        $('#qtdHoras-alterar').val(qtdHoras);
+        
+        $('#modal-alterar').openModal('');
+    });
 
 
 });
