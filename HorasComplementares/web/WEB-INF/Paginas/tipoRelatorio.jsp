@@ -19,8 +19,8 @@
             <table id="example" class="highlight responsive-table">
                 <thead>
                     <tr>
-                        <th data-field="tipoRelatorio">Atividade</th>
-                        <th data-field="tipoRelatorio">Descrição</th>
+                        <th data-field="nome">Atividade</th>
+                        <th data-field="descricao">Descrição</th>
                         <th data-field="acao">Ação</th>
                     </tr>
                 </thead>
@@ -67,13 +67,13 @@
 
                 <div class="input-field">
                     <i class="material-icons prefix">border_color</i>
-                    <label for="nome-alterar"></label>
+                    <label for="nome-alterar">Nome</label>
                     <input id="nome-alterar" placeholder="Insira o nome do tipo de atividade aqui..." type="text" class="validate" name="nome" value="" />
                 </div>
-                <div class="input-field">
+                <div class="input-field col s12">
                     <i class="material-icons prefix">border_color</i>
-                    <label for="descricao-alterar"></label>
-                    <input id="descricao-alterar" placeholder="Insira a descrição do tipo de atividade aqui..." type="text" class="validate" name="descricao" value="" />
+                    <label for="descricao-alterar">Descrição</label>
+                    <textarea id="descricao-alterar" placeholder="Insira a descrição do tipo de atividade aqui..." type="text" class="materialize-textarea" name="descricao"></textarea>
                 </div>
             </div>
             <div class="modal-footer">
@@ -100,14 +100,14 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="modal-action waves-effect waves-green btn btn-default cyan" value="Alterar">Confirmar Exclusão</button>
+                <button type="submit" class="modal-action waves-effect waves-green btn btn-default cyan" value="Excluir">Confirmar Exclusão</button>
                 <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancelar</a>
             </div>
         </form>
     </div>
     <!-- ABRE MODAL INCLUIR -->
     <div class="fixed-action-btn" style="bottom: 110px; right: 24px;">
-        <a class="modal-trigger btn-floating btn-large red tooltipped" data-position="top" data-delay="50" data-tooltip="Incluir Tipo de Relatório" href="#modal-incluir">
+        <a class="modal-trigger btn-floating btn-large red tooltipped" data-position="top" data-delay="50" data-tooltip="Incluir Tipo de Atividade" href="#modal-incluir">
             <i class="large material-icons">add</i>
         </a>
     </div>
@@ -126,10 +126,10 @@
                     <label for="nome-incluir">Nome</label>
                     <input id="nome-incluir" placeholder="Insira o nome do tipo de atividade aqui..." type="text" class="validate" name="nome" value="" />
                 </div>
-                <div class="input-field">
+                <div class="input-field col s12">
                     <i class="material-icons prefix">border_color</i>
                     <label for="descricao-incluir">Descricao</label>
-                    <input id="descricao-incluir" placeholder="Insira o nome do tipo de atividade aqui..." type="text" class="validate" name="descricao" value="" />
+                    <textarea id="descricao-incluir" placeholder="Insira a descrição do tipo de atividade aqui..." type="text" class="materialize-textarea" name="descricao"></textarea>
                 </div>
             </div>
             <div class="modal-footer">

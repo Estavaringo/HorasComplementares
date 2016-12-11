@@ -15,6 +15,8 @@ public class TipoComprovante {
     
     //Atributos
     private String descricao;
+    private String intrucao;
+    private String ativo;
 
     /**
      * @return the codigo
@@ -42,5 +44,19 @@ public class TipoComprovante {
      */
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    /**
+     * @return the intrucao
+     */
+    public String getIntrucao() {
+        return intrucao;
+    }
+
+    /**
+     * @param intrucao the intrucao to set
+     */
+    public void setIntrucao(String intrucao) {
+        this.intrucao = intrucao;
     }
 }

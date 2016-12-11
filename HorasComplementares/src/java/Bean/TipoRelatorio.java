@@ -17,6 +17,8 @@ public class TipoRelatorio {
     private String nome;
     private String descricao;
     private int qtdHoras;
+    private int qtdLimite;
+    private String ativo;
 
     /**
      * @return the codigo
@@ -72,5 +74,33 @@ public class TipoRelatorio {
      */
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    /**
+     * @return the qtdLimite
+     */
+    public int getQtdLimite() {
+        return qtdLimite;
+    }
+
+    /**
+     * @param qtdLimite the qtdLimite to set
+     */
+    public void setQtdLimite(int qtdLimite) {
+        this.qtdLimite = qtdLimite;
+    }
+
+    /**
+     * @return the ativo
+     */
+    public String getAtivo() {
+        return ativo;
+    }
+
+    /**
+     * @param ativo the ativo to set
+     */
+    public void setAtivo(String ativo) {
+        this.ativo = ativo;
     }
 }
