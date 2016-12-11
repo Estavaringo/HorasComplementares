@@ -9,7 +9,7 @@
             <div class="col s12">
                 <a href="#!" class="breadcrumb green-text text-lighten-4">Configurações</a>
                 <a href="Executa?logicaDeNegocio=CursoServlet&tarefa=consultarLista" class="breadcrumb green-text text-lighten-4">Cursos</a>
-                <a href="Executa?logicaDeNegocio=CursoServlet&tarefa=abrir&codigo=${curso.codigo}" class="breadcrumb">${curso.descricao}</a>
+                <a href="Executa?logicaDeNegocio=CursoServlet&tarefa=abrir&codigo=${curso.codigo}" class="breadcrumb">${curso.nome}</a>
             </div>
         </div>
     </nav>
@@ -18,7 +18,7 @@
         <div class="container">
             <div class="row">
                 <div class="col s12">
-                    <h4 class="truncate header center-on-small-only"><i class="centralizar-icons large material-icons">school</i>${curso.descricao}</h4>
+                    <h4 class="truncate header center-on-small-only"><i class="centralizar-icons large material-icons">school</i>${curso.nome}</h4>
                 </div>
             </div> 
         </div>

@@ -61,12 +61,12 @@ $(document).ready(function () {
     $(".botao-alterar-curso").click(function () {
                 
         var codigo = this.id;
+        var nome = $('#nome-' + codigo).text();
         var descricao = $('#descricao-' + codigo).text();
-        var cargaHoraria = $('#cargahoraria-' + codigo).text();
 
         $('#codigo-alterar').val(codigo);
+        $('#nome-alterar').val(nome);
         $('#descricao-alterar').val(descricao);
-        $('#cargaHoraria-alterar').val(cargaHoraria);
 
         $('#modal-alterar').openModal('');
     });

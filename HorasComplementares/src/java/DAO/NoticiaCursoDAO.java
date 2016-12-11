@@ -109,8 +109,8 @@ public class NoticiaCursoDAO implements DAO<NoticiaCurso>{
                 obj.setDescricao(rs.getString("N.NOCU_DESC"));
 
                 curso.setCodigo(rs.getInt("C.USUA_ID"));
+                curso.setNome(rs.getString("C.CURS_NOME"));
                 curso.setDescricao(rs.getString("C.CURS_DESC"));
-              //  curso.setCargaHoraria(rs.getInt("C.CURS_HR_NECE"));
                 obj.setCurso(curso);
 
                 noticia.setCodigo(rs.getInt("X.NOTI_ID"));
@@ -165,8 +165,8 @@ public class NoticiaCursoDAO implements DAO<NoticiaCurso>{
                 obj.setDescricao(rs.getString("N.NOCU_DESC"));
 
                 curso.setCodigo(rs.getInt("C.USUA_ID"));
+                curso.setNome(rs.getString("C.CURS_NOME"));
                 curso.setDescricao(rs.getString("C.CURS_DESC"));
-               // curso.setCargaHoraria(rs.getInt("C.CURS_HR_NECE"));
                 obj.setCurso(curso);
 
                 noticia.setCodigo(rs.getInt("X.NOTI_ID"));
