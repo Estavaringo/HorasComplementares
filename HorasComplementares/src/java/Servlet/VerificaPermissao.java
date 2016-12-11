@@ -18,25 +18,25 @@ import javax.servlet.http.HttpSession;
 public class VerificaPermissao extends HttpServlet {
 
     static boolean executa(HttpServletRequest req, HttpServletResponse resp, LogicaDeNegocio instancia) {
-//        HttpSession session = req.getSession();
-//        Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
-//        boolean acesso = instancia.verifica();        
-//        
-//        if(usuario == null){
-//            if(acesso == false){
-//                return true;
-//            }else{
-//                return false;
-//            }
-//        }else{
-//            if(acesso == false){
-//                return true;
-//            }else if(usuario.getTipoUsuario().equals("admin")){
-//                return true;                
-//            }else{
-//                return false;
-//            }
-//        }
+        HttpSession session = req.getSession();
+        Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
+        boolean acesso = instancia.verifica();
+
+        if (usuario == null) {
+            if (acesso == false) {
+                return true;
+            } else {
+                return false;
+            }
+        }
         return true;
+        /*    }else if (acesso == false) {
+            return true;
+        } else if (usuario.getTipoUsuario().equals("admin")) {
+            return true;
+        } else {
+            return false;
+        }*/
+
     }
 }

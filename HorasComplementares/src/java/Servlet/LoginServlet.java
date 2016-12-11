@@ -28,7 +28,6 @@ public class LoginServlet implements LogicaDeNegocio {
 
         try {
             senha = new Criptografia().Digest(req.getParameter("senha"));
-            System.out.println(senha);
         } catch (NoSuchAlgorithmException | UnsupportedEncodingException ex) {
             System.err.println("Erro ao criptografar a senha. Detalhes: " + ex.getMessage());
         }
@@ -66,6 +65,6 @@ public class LoginServlet implements LogicaDeNegocio {
 
     @Override
     public boolean verifica() {
-        return true;
+        return false;
     }
 }
