@@ -125,7 +125,7 @@ public class TipoDocumentoServlet implements LogicaDeNegocio{
                     return "erro.html";
                 }
 
-                return "/WEB-INF/Paginas/tipodocumento.jsp";
+                return "/WEB-INF/Paginas/tipoDocumento.jsp";
 
             default:
                 System.err.println("Tarefa informada é inválida!");
@@ -148,7 +148,7 @@ public class TipoDocumentoServlet implements LogicaDeNegocio{
             return "erro.html";
         }
 
-        return "/WEB-INF/Paginas/tipodocumento.jsp";
+        return "/WEB-INF/Paginas/tipoDocumento.jsp";
     }
 
     @Override

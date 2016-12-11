@@ -27,7 +27,7 @@
                     <c:if test="${not empty listaTipoDocumento}">
                         <c:forEach var="tipoDocumento" items="${listaTipoDocumento}">
                             <tr>
-                                <td id="descricao-${tipoDocumento.codigo}">${tipoDoumento.descricao}</td>
+                                <td id="descricao-${tipoDocumento.codigo}">${tipoDocumento.descricao}</td>
                                 <td class="hide-on-med-and-up">
                                     <a class="botao-alterar-tipoDocumento cyan-text text-darken-4" id="${tipoDocumento.codigo}"><i class="material-icons yellow-text text-darken-4" style="font-size: 35px">edit</i></a>
                                     <br>
