@@ -10,6 +10,7 @@
         <!-- CSS  -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="css/horas_complementares.css" type="text/css" rel="stylesheet" media="screen,projection"/>
         <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     </head>
     <body>
@@ -46,33 +47,39 @@
                         <p class="white-text truncate">${usuarioLogado.nome}</p>
                     </div>
                 </li>
+                <li><a class="waves-effect" href="#!"><i class="material-icons">dashboard</i><span class="gray-text text-darken-2"><b>Dashboard</b></span></a></li>
+                <li><div class="divider"></div></li>
+                <li><a class="waves-effect modal-trigger" href="#modal-upload"><i class="icon-horas-complementares"></i><span class="gray-text text-darken-2"><b>Nova Atividade</b></span></a></li>
+                <li><a class="waves-effect" href="#!"><i class="material-icons">swap_vertical_circle</i><span class="gray-text text-darken-2"><b>Ver Histórico</b></span></a></li>
+                <li><div class="divider"></div></li>
                 <li><a class="waves-effect" href="#!"><i class="material-icons">forum</i><span class="gray-text text-darken-2"><b>Quadro de Avisos</b></span></a></li>
                 <li><a class="waves-effect" href="#!"><i class="material-icons">info</i><span class="gray-text text-darken-2"><b>Regulamento</b></span></a></li>
-                <li><a class="waves-effect" href="#!"><i class="material-icons">note_add</i><span class="gray-text text-darken-2"><b>Nova Atividade</b></span></a></li>
-
                 <%--:if test="${usuarioLogado.moderador}"--%>
                 <c:if test="${true}">
                     <li><div class="divider"></div></li>
                     <li class="no-padding">
                         <ul class="collapsible collapsible-accordion">
                             <li>
-                                <a class="collapsible-header">Configuração<i class="material-icons">arrow_drop_down</i></a>
+                                <a class="collapsible-header">Configurações<i class="material-icons">arrow_drop_down</i></a>
                                 <div class="collapsible-body">
                                     <ul>
-                                        <li><a href="Executa?logicaDeNegocio=CursoServlet&tarefa=consultarLista">Configurar Cursos</a></li>
+                                        <li><a href="Executa?logicaDeNegocio=CursoServlet&tarefa=consultarLista">Cursos</a></li>
+                                        <li><a href="Executa?logicaDeNegocio=UsuarioServlet&tarefa=consultarLista">Usuários</a></li>
                                     </ul>
                                 </div>
                             </li>
                         </ul>
                     </li>
+                    <li><div class="divider"></div></li>
                     <li class="no-padding">
                         <ul class="collapsible collapsible-accordion">
                             <li>
                                 <a class="collapsible-header">Parâmetros<i class="material-icons">arrow_drop_down</i></a>
                                 <div class="collapsible-body">
                                     <ul>
-                                        <li><a href="Executa?logicaDeNegocio=TipoDocumentoServlet&tarefa=consultarLista">Tipo de Comprovantes</a></li>
+                                        <li><a href="Executa?logicaDeNegocio=TipoComprovanteServlet&tarefa=consultarLista">Tipo de Comprovantes</a></li>
                                         <li><a href="Executa?logicaDeNegocio=TipoRelatorioServlet&tarefa=consultarLista">Tipo de Atividades</a></li>
+                                        <li><a href="Executa?logicaDeNegocio=TipoContatoServlet&tarefa=consultarLista">Tipo de Contatos</a></li>
                                     </ul>
                                 </div>
                             </li>

@@ -8,7 +8,6 @@ package Servlet;
 import Bean.Curso;
 import Bean.TipoRelatorio;
 import DAO.CursoDAO;
-import DAO.TipoRelatorioDAO;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
@@ -58,16 +57,19 @@ public class CursoServlet implements LogicaDeNegocio{
                 return "/WEB-INF/Paginas/configuraCurso.jsp";
             case "incluir":
                 try {
-
+                    
+                    //Declaração
+                    int codigoGerado = 0;
+                    
                     //instancia uma nova curso
                     curso = new Curso();
 
                     //Atribui as informações da curso no objeto
+                    curso.setNome(req.getParameter("nome"));
                     curso.setDescricao(req.getParameter("descricao"));
-                    curso.setCargaHoraria(Integer.parseInt(req.getParameter("cargaHoraria")));
 
                     //Grava um nova curso no banco de dados
-                    new CursoDAO().Incluir(curso);
+                    codigoGerado = new CursoDAO().IncluirComRetornoDoCodigo(curso);
 
                     //Atribui a ultima curso como Atributo a ser enviado na próxima Requisição 
                     req.setAttribute("incluidoCurso", curso);
@@ -76,7 +78,7 @@ public class CursoServlet implements LogicaDeNegocio{
                     System.err.println("Erro ao inserir curso no banco de dados. Detalhes: " + ex.getMessage());
                     return "erro.html";
                 }
-                break;
+                return "/WEB-INF/Paginas/configuraCurso.jsp";
 
             case "remover":
                 try {
@@ -85,8 +87,8 @@ public class CursoServlet implements LogicaDeNegocio{
                     curso = new Curso();
 
                     //Atribui as informações da curso no objeto
+                    curso.setNome(req.getParameter("nome"));
                     curso.setDescricao(req.getParameter("descricao"));
-                    curso.setCargaHoraria(Integer.parseInt(req.getParameter("cargaHoraria")));
                     curso.setCodigo(Integer.parseInt(req.getParameter("codigo")));
 
                     //Exclui curso no banco de dados
@@ -108,8 +110,8 @@ public class CursoServlet implements LogicaDeNegocio{
                     curso = new Curso();
 
                     //Atribui as informações da curso no objeto
+                    curso.setNome(req.getParameter("nome"));
                     curso.setDescricao(req.getParameter("descricao"));
-                    curso.setCargaHoraria(Integer.parseInt(req.getParameter("cargaHoraria")));
                     curso.setCodigo(Integer.parseInt(req.getParameter("codigo")));
 
                     //altera curso no banco de dados

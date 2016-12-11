@@ -9,7 +9,7 @@ import Bean.DocumentoRelatorio;
 import Bean.RelatorioAtividade;
 import Bean.RelatorioFinal;
 import Bean.StatusRelatorioAtividade;
-import Bean.TipoDocumento;
+import Bean.TipoComprovante;
 import Bean.TipoRelatorio;
 import Bean.Usuario;
 import java.sql.PreparedStatement;
@@ -105,7 +105,7 @@ public class DocumentoRelatorioDAO implements DAO<DocumentoRelatorio>{
             while (rs.next()) {
                 DocumentoRelatorio obj = new DocumentoRelatorio();
                 RelatorioAtividade relatorioAtividade = new RelatorioAtividade();
-                TipoDocumento tipoDocumento = new TipoDocumento();
+                TipoComprovante tipoDocumento = new TipoComprovante();
                 Usuario usuario = new Usuario();
                 StatusRelatorioAtividade statusRelatorioAtividade = new StatusRelatorioAtividade();
                 TipoRelatorio tipoRelatorio = new TipoRelatorio();
@@ -165,7 +165,7 @@ public class DocumentoRelatorioDAO implements DAO<DocumentoRelatorio>{
             if (rs.next()) {
                 obj = new DocumentoRelatorio();
                 RelatorioAtividade relatorioAtividade = new RelatorioAtividade();
-                TipoDocumento tipoDocumento = new TipoDocumento();
+                TipoComprovante tipoDocumento = new TipoComprovante();
                 Usuario usuario = new Usuario();
                 StatusRelatorioAtividade statusRelatorioAtividade = new StatusRelatorioAtividade();
                 TipoRelatorio tipoRelatorio = new TipoRelatorio();

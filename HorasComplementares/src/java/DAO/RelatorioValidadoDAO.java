@@ -10,7 +10,7 @@ import Bean.RelatorioAtividade;
 import Bean.RelatorioFinal;
 import Bean.RelatorioValidado;
 import Bean.StatusRelatorioAtividade;
-import Bean.TipoDocumento;
+import Bean.TipoComprovante;
 import Bean.TipoRelatorio;
 import Bean.TipoUsuario;
 import Bean.Usuario;

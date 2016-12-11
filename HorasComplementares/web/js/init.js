@@ -61,7 +61,7 @@ $(document).ready(function () {
     
     $('select').material_select();
     
-    $(".botao-alterar-tipoDocumento").click(function (){
+    $(".botao-alterar-tipoComprovante").click(function (){
        
         var codigo = this.id;
         var descricao = $('#descricao-' + codigo).text();
@@ -84,6 +84,23 @@ $(document).ready(function () {
         
         $('#modal-alterar').openModal('');
     });
+    
+    $(".botao-alterar-tipoContato").click(function (){
+       
+        var codigo = this.id;
+        var descricao = $('#descricao-' + codigo).text();
+        
+        $('#codigo-alterar').val(codigo);
+        $('#descricao-alterar').val(descricao);
+        
+        $('#modal-alterar').openModal('');
+    });
+    
+    $('.dropdown-button').dropdown({
+      hover: true // Activate on hover
+    }
+  );
+    
 
 
 });

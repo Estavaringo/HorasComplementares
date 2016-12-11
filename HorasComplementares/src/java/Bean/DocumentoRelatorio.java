@@ -22,7 +22,7 @@ public class DocumentoRelatorio {
     
     //Foreign Key
     private RelatorioAtividade relatorioAtividade;
-    private TipoDocumento tipoDocumento;
+    private TipoComprovante tipoDocumento;
 
     /**
      * @return the codigo
@@ -83,14 +83,14 @@ public class DocumentoRelatorio {
     /**
      * @return the tipoDocumento
      */
-    public TipoDocumento getTipoDocumento() {
+    public TipoComprovante getTipoDocumento() {
         return tipoDocumento;
     }
 
     /**
      * @param tipoDocumento the tipoDocumento to set
      */
-    public void setTipoDocumento(TipoDocumento tipoDocumento) {
+    public void setTipoDocumento(TipoComprovante tipoDocumento) {
         this.tipoDocumento = tipoDocumento;
     }
 

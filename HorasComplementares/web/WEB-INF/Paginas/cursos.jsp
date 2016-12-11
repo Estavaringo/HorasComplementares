@@ -20,7 +20,7 @@
                 <thead>
                     <tr>
                         <th data-field="curso">Nome do Curso</th>
-                        <th data-field="descricao">Qtde de Horas Necessárias</th>
+                        <th data-field="descricao">Descrição do Curso</th>
                         <th data-field="acao">Ação</th>
                     </tr>
                 </thead>
@@ -28,8 +28,11 @@
                     <c:if test="${not empty listaCurso}">
                         <c:forEach var="curso" items="${listaCurso}">
                             <tr>
-                                <td id="descricao-${curso.codigo}"><a href="Executa?logicaDeNegocio=CursoServlet&tarefa=abrir&codigo=${curso.codigo}" class="waves-effect waves-light"><i class="centralizar-icons small material-icons left">settings</i>${curso.descricao}</a></td>
-                                <td id="cargahoraria-${curso.codigo}"> ${curso.cargaHoraria} horas</td>
+                                <td id="nome-${curso.codigo}">
+                                    <a class="btn-floating green darken-2 tooltipped" data-position="bottom" data-delay="50" data-tooltip="Clique aqui para configurar." href="Executa?logicaDeNegocio=CursoServlet&tarefa=abrir&codigo=${curso.codigo}" class="waves-effect waves-light">
+                                        <i class="large material-icons left">settings</i>
+                                    </a>${curso.descricao}</td>
+                                <td id="descricao-${curso.codigo}"> ${curso.descricao}</td>
                                 <td class="hide-on-med-and-up">
                                     <a class="botao-alterar-curso cyan-text text-darken-4" id="${curso.codigo}"><i class="material-icons yellow-text text-darken-4" style="font-size: 35px">edit</i></a>
                                     <br>
@@ -108,8 +111,8 @@
         </form>
     </div>
     <!-- ABRE MODAL INCLUIR -->
-    <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-        <a class="modal-trigger btn-floating btn-large red" href="#modal-incluir">
+    <div class="fixed-action-btn" style="bottom: 110px; right: 24px;">
+        <a class="modal-trigger btn-floating btn-large red tooltipped" data-position="top" data-delay="50" data-tooltip="Incluir Curso" href="#modal-incluir">
             <i class="large material-icons">add</i>
         </a>
     </div>
@@ -138,7 +141,7 @@
                 </div>                
             </div>
             <div class="modal-footer">
-                <button type="submit" class="modal-action waves-effect waves-green btn btn-default cyan" value="Incluir">Incluir</button>
+                <button type="submit" class="modal-action waves-effect waves-green btn btn-default cyan" value="Incluir">Incluir e Configurar</button>
                 <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancelar</a>
             </div>
         </form>

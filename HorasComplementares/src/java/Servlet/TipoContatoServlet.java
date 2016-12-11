@@ -125,7 +125,7 @@ public class TipoContatoServlet implements LogicaDeNegocio{
                     return "erro.html";
                 }
 
-                return "/WEB-INF/Paginas/tipocontato.jsp";
+                return "/WEB-INF/Paginas/tipoContato.jsp";
 
             default:
                 System.err.println("Tarefa informada é inválida!");
@@ -148,7 +148,7 @@ public class TipoContatoServlet implements LogicaDeNegocio{
             return "erro.html";
         }
 
-        return "/WEB-INF/Paginas/tipocontato.jsp";
+        return "/WEB-INF/Paginas/tipoContato.jsp";
     }
 
     @Override
