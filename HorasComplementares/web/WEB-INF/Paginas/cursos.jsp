@@ -1,6 +1,6 @@
 <%@page import="java.util.Collection"%>
 <%@page import="Bean.Curso"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="Latin1"%>
 <%@ include file="header.jsp" %>
 <main>    
         <!--BANNER COM O TITULO-->
@@ -14,14 +14,14 @@
                 </div>
             </div>
         </div>
-        <!--CONTE√öDO DO P√ÅGINA-->
+        <!--CONTE⁄DO DO P¡GINA-->
         <div class="container">
             <table id="example" class="highlight responsive-table">
                 <thead>
                     <tr>
                         <th data-field="curso">Nome do Curso</th>
-                        <th data-field="descricao">Descri√ß√£o do Curso</th>
-                        <th data-field="acao">A√ß√£o</th>
+                        <th data-field="descricao">DescriÁ„o do Curso</th>
+                        <th data-field="acao">AÁ„o</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,7 +29,7 @@
                         <c:forEach var="curso" items="${listaCurso}">
                             <tr>
                                 <td id="nome-${curso.codigo}">
-                                    <a class="btn-floating green darken-2 tooltipped" data-position="bottom" data-delay="50" data-tooltip="Clique aqui para configurar." href="Executa?logicaDeNegocio=CursoServlet&tarefa=abrir&codigo=${curso.codigo}" class="waves-effect waves-light">
+                                    <a class="btn-floating green darken-2 tooltipped" data-position="bottom" data-delay="50" data-tooltip="Clique aqui para configurar." href="Executa?logicaDeNegocio=ConfiguracaoCursoServlet&tarefa=consultar&codigoCurso=${curso.codigo}" class="waves-effect waves-light">
                                         <i class="large material-icons left">settings</i>
                                     </a>${curso.nome}</td>
                                 <td id="descricao-${curso.codigo}"> ${curso.descricao}</td>
@@ -63,21 +63,21 @@
                 <h4>Alterar Curso</h4>
                 <p>Altere a curso selecionada:</p>
 
-                <!--Nome das Classes que dever√£o ser informadas na requisi√ß√£o-->
+                <!--Nome das Classes que dever„o ser informadas na requisiÁ„o-->
                 <input type="hidden" name="logicaDeNegocio" value="CursoServlet">
                 <input type="hidden" name="tarefa" value="alterar">
                 <input type="hidden" name="codigo" id="codigo-alterar">
 
                 <div class="input-field">
                     <i class="material-icons prefix">edit</i>
-                    <label for="descricao-alterar">Nome</label>
+                    <label for="nome-alterar">Nome</label>
                     <input id="descricao-alterar" placeholder="Insira o nome do curso aqui..." type="text" class="validate" name="nome" value="" />
                 </div>
                 
                 <div class="input-field">
                     <i class="material-icons prefix">description</i>
-                    <label for="cargaHoraria-alterar">Descri√ß√£o do Curso</label>
-                    <input id="cargaHoraria-alterar" placeholder="Insira a descri√ß√£o do curso..." type="text" name="descricao" value="" />
+                    <label for="descricao-alterar">DescriÁ„o do Curso</label>
+                    <input id="cargaHoraria-alterar" placeholder="Insira a descriÁ„o do curso..." type="text" name="descricao" value="" />
                 </div>
                 
             </div>
@@ -92,9 +92,9 @@
         <form method="POST" action="Executa">
             <div class="modal-content">
                 <h4>Excluir Curso</h4>
-                <p>Confirme a exclus√£o do Curso selecionado:</p>
+                <p>Confirme a exclus„o do Curso selecionado:</p>
 
-                <!--Nome das Classes que dever√£o ser informadas na requisi√ß√£o-->
+                <!--Nome das Classes que dever„o ser informadas na requisiÁ„o-->
                 <input type="hidden" name="logicaDeNegocio" value="CursoServlet">
                 <input type="hidden" name="tarefa" value="remover">
                 <input type="hidden" name="codigo" id="codigo-excluir">
@@ -105,7 +105,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="modal-action waves-effect waves-green btn btn-default cyan" value="Alterar">Confirmar Exclus√£o</button>
+                <button type="submit" class="modal-action waves-effect waves-green btn btn-default cyan" value="Alterar">Confirmar Exclus„o</button>
                 <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancelar</a>
             </div>
         </form>
@@ -123,7 +123,7 @@
                 <h4>Incluir Curso</h4>
                 <p>Insira abaixo o novo Curso</p>
 
-                <!--Nome das Classes que dever√£o ser informadas na requisi√ß√£o-->
+                <!--Nome das Classes que dever„o ser informadas na requisiÁ„o-->
                 <input type="hidden" name="logicaDeNegocio" value="CursoServlet">
                 <input type="hidden" name="tarefa" value="incluir">
 
@@ -136,8 +136,8 @@
                                 
                 <div class="input-field">
                     <i class="material-icons prefix">description</i>
-                    <label for="descricao-incluir">Descri√ß√£o do Curso</label>
-                    <input id="cargaHoraria-incluir" placeholder="Insira uma descri√ß√£o para o curso..." type="text" name="descricao" value="" />
+                    <label for="descricao-incluir">DescriÁ„o do Curso</label>
+                    <input id="cargaHoraria-incluir" placeholder="Insira uma descriÁ„o para o curso..." type="text" name="descricao" value="" />
                 </div>                
             </div>
             <div class="modal-footer">

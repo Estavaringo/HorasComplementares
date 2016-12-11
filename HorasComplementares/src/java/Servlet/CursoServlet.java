@@ -29,32 +29,6 @@ public class CursoServlet implements LogicaDeNegocio{
 
         tarefa = req.getParameter("tarefa");
         switch (tarefa) {
-            case "abrir":
-                try {
-
-                    //instancia uma nova curso
-                    curso = new Curso();
-                    
-                    //Consulta o código do curso no banco de dados
-                    curso = new CursoDAO().Consultar(Integer.parseInt(req.getParameter("codigo")));
-                    
-                    //Atribui numa sessão o objeto com o curso especifico
-                    req.setAttribute("curso", curso);
-                    
-                    //instancia uma nova curso
-                    tipoRelatorio = new TipoRelatorio();
-                    
-                    //Consulta o código do curso no banco de dados
-                    //tipoRelatorio = new TipoRelatorioDAO().ConsultarCurso(Integer.parseInt(req.getParameter("codigo")));
-
-                    //Atribui numa sessão o objeto com o curso especifico
-                    req.setAttribute("tipoRelatorio", tipoRelatorio);
-
-                } catch (SQLException ex) {
-                    System.err.println("Erro ao consultar curso no banco de dados. Detalhes: " + ex.getMessage());
-                    return "erro.html";
-                }
-                return "/WEB-INF/Paginas/configuraCurso.jsp";
             case "incluir":
                 try {
                     
@@ -71,14 +45,17 @@ public class CursoServlet implements LogicaDeNegocio{
                     //Grava um nova curso no banco de dados
                     codigoGerado = new CursoDAO().IncluirComRetornoDoCodigo(curso);
 
-                    //Atribui a ultima curso como Atributo a ser enviado na próxima Requisição 
-                    req.setAttribute("incluidoCurso", curso);
+                    //Atribui na sessão os parametros necessários para carregar a tela com o curso criado
+                    req.setAttribute("logicaDeNegocio", "ConfiguracaoCursoServlet");
+                    req.setAttribute("tarefa", "consultar");
+                    req.setAttribute("codigoCurso", codigoGerado);
+                    
 
                 } catch (SQLException ex) {
                     System.err.println("Erro ao inserir curso no banco de dados. Detalhes: " + ex.getMessage());
                     return "erro.html";
                 }
-                return "/WEB-INF/Paginas/configuraCurso.jsp";
+                return "Executa";
 
             case "remover":
                 try {

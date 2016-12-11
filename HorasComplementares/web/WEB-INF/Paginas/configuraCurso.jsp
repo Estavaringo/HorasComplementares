@@ -1,15 +1,15 @@
 <%@page import="java.util.Collection"%>
 <%@page import="Bean.Curso"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="Latin1"%>
 <%@ include file="header.jsp" %>
 <main>
     <!--BREADCRUMBS QUE MOSTRA O LOCAL ATUAL DO USUARIO-->
     <nav class='nav-breadcrumb green'>
         <div class="nav-wrapper">
             <div class="col s12">
-                <a href="#!" class="breadcrumb green-text text-lighten-4">ConfiguraÃ§Ãµes</a>
+                <a href="#!" class="breadcrumb green-text text-lighten-4">Configurações</a>
                 <a href="Executa?logicaDeNegocio=CursoServlet&tarefa=consultarLista" class="breadcrumb green-text text-lighten-4">Cursos</a>
-                <a href="Executa?logicaDeNegocio=CursoServlet&tarefa=abrir&codigo=${curso.codigo}" class="breadcrumb">${curso.nome}</a>
+                <a href="Executa?logicaDeNegocio=ConfiguracaoCursoServlet&tarefa=consultar&codigoCurso=${curso.codigo}" class="breadcrumb">${curso.nome}</a>
             </div>
         </div>
     </nav>
@@ -23,12 +23,12 @@
             </div> 
         </div>
     </div>
-    <!--CONTEÃšDO DO PÃGINA-->
+    <!--CONTEÚDO DO PÁGINA-->
     <div class="container">
-        <h5 class="header">Tipo de RelatÃ³rios que serÃ£o aceitos</h5>
+        <h5 class="header">Tipo de Relatórios que serão aceitos</h5>
         <form method="POST" action="Executa">
 
-            <!--Nome das Classes que deverÃ£o ser informadas na requisiÃ§Ã£o-->
+            <!--Nome das Classes que deverão ser informadas na requisição-->
             <input type="hidden" name="logicaDeNegocio" value="CursoServlet">
             <input type="hidden" name="tarefa" value="alterar">
             <input type="hidden" name="codigo" id="codigo-alterar">
@@ -50,7 +50,7 @@
     </div>
     <div class="divider"></div>
     <div class="container">
-        <h5 class="header">Tipo de RelatÃ³rios</h5>
+        <h5 class="header">Tipo de Relatórios</h5>
 
 
 
@@ -64,7 +64,7 @@
                 <h4>Alterar Curso</h4>
                 <p>Altere a curso selecionada:</p>
 
-                <!--Nome das Classes que deverÃ£o ser informadas na requisiÃ§Ã£o-->
+                <!--Nome das Classes que deverão ser informadas na requisição-->
                 <input type="hidden" name="logicaDeNegocio" value="CursoServlet">
                 <input type="hidden" name="tarefa" value="alterar">
                 <input type="hidden" name="codigo" id="codigo-alterar">
@@ -77,8 +77,8 @@
 
                 <div class="input-field">
                     <i class="material-icons prefix">timelapse</i>
-                    <label for="cargaHoraria-alterar">Caga HorÃ¡ria NecessÃ¡ria</label>
-                    <input id="cargaHoraria-alterar" placeholder="Insira a carga horÃ¡rio necessÃ¡ria para o  respectivo curso..." type="text" name="cargaHoraria" value="" />
+                    <label for="cargaHoraria-alterar">Caga Horária Necessária</label>
+                    <input id="cargaHoraria-alterar" placeholder="Insira a carga horário necessária para o  respectivo curso..." type="text" name="cargaHoraria" value="" />
                 </div>
 
             </div>
@@ -93,9 +93,9 @@
         <form method="POST" action="Executa">
             <div class="modal-content">
                 <h4>Excluir Curso</h4>
-                <p>Confirme a exclusÃ£o do Curso selecionado:</p>
+                <p>Confirme a exclusão do Curso selecionado:</p>
 
-                <!--Nome das Classes que deverÃ£o ser informadas na requisiÃ§Ã£o-->
+                <!--Nome das Classes que deverão ser informadas na requisição-->
                 <input type="hidden" name="logicaDeNegocio" value="CursoServlet">
                 <input type="hidden" name="tarefa" value="remover">
                 <input type="hidden" name="codigo" id="codigo-excluir">
@@ -106,7 +106,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="modal-action waves-effect waves-green btn btn-default cyan" value="Alterar">Confirmar ExclusÃ£o</button>
+                <button type="submit" class="modal-action waves-effect waves-green btn btn-default cyan" value="Alterar">Confirmar Exclusão</button>
                 <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancelar</a>
             </div>
         </form>
@@ -118,7 +118,7 @@
                 <h4>Incluir Curso</h4>
                 <p>Insira abaixo o novo Curso</p>
 
-                <!--Nome das Classes que deverÃ£o ser informadas na requisiÃ§Ã£o-->
+                <!--Nome das Classes que deverão ser informadas na requisição-->
                 <input type="hidden" name="logicaDeNegocio" value="CursoServlet">
                 <input type="hidden" name="tarefa" value="incluir">
 
@@ -131,8 +131,8 @@
 
                 <div class="input-field">
                     <i class="material-icons prefix">timelapse</i>
-                    <label for="cargaHoraria-incluir">Caga HorÃ¡ria NecessÃ¡ria</label>
-                    <input id="cargaHoraria-incluir" placeholder="Insira a carga horÃ¡rio necessÃ¡ria para o respectivo curso..." type="text" name="cargaHoraria" value="" />
+                    <label for="cargaHoraria-incluir">Caga Horária Necessária</label>
+                    <input id="cargaHoraria-incluir" placeholder="Insira a carga horário necessária para o respectivo curso..." type="text" name="cargaHoraria" value="" />
                 </div>                
             </div>
             <div class="modal-footer">
