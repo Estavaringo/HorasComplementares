@@ -5,11 +5,13 @@
  */
 package Servlet;
 
+import Bean.Curso;
 import Bean.RelatorioAtividade;
 import Bean.RelatorioFinal;
 import Bean.StatusRelatorioAtividade;
 import Bean.TipoRelatorio;
 import Bean.Usuario;
+import DAO.CursoDAO;
 import DAO.RelatorioAtividadeDAO;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -26,6 +28,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ConfiguracaoCursoServlet implements LogicaDeNegocio {
 
     //Declarações
+    private Curso curso = null;
     private RelatorioAtividade relatorioAtividade = null;
     private Usuario usuario = new Usuario();
     private StatusRelatorioAtividade statusRelatorioAtividade = new StatusRelatorioAtividade();
@@ -156,17 +159,17 @@ public class ConfiguracaoCursoServlet implements LogicaDeNegocio {
             case "consultar":
                 try {
 
-                    //instancia uma nova relatorioAtividade
-                    relatorioAtividade = new RelatorioAtividade();
+                    //instancia uma nova curso
+                    curso = new Curso();
 
-                    //Grava um nova relatorioAtividade no banco de dados
-                    relatorioAtividade = new RelatorioAtividadeDAO().Consultar(Integer.parseInt(req.getParameter("codigo")));
+                    //Grava um nova curso no banco de dados
+                    curso = new CursoDAO().Consultar(Integer.parseInt(req.getParameter("codigoCurso")));
 
-                    //Atribui a ultima relatorioAtividade como Atributo a ser enviado na próxima Requisição 
-                    req.setAttribute("consultaRelatorioAtividade", relatorioAtividade);
+                    //Atribui a ultima curso como Atributo a ser enviado na próxima Requisição 
+                    req.setAttribute("curso", curso);
 
                 } catch (SQLException ex) {
-                    System.err.println("Erro ao consultar relatorioAtividade no banco de dados. Detalhes: " + ex.getMessage());
+                    System.err.println("Erro ao consultar curso no banco de dados. Detalhes: " + ex.getMessage());
                     return "erro.html";
                 }
                 break;
@@ -194,22 +197,7 @@ public class ConfiguracaoCursoServlet implements LogicaDeNegocio {
 
         }
 
-        try {
-
-            ArrayList<RelatorioAtividade> listaRelatorioAtividade = new ArrayList<>();
-
-            //Grava um nova relatorioAtividade no banco de dados
-            listaRelatorioAtividade = new RelatorioAtividadeDAO().Consultar();
-
-            //Atribui a ultima relatorioAtividade como Atributo a ser enviado na próxima Requisição 
-            req.setAttribute("listaRelatorioAtividade", listaRelatorioAtividade);
-
-        } catch (SQLException ex) {
-            System.err.println("Erro ao cosultar relatorioAtividade no banco de dados. Detalhes: " + ex.getMessage());
-            return "erro.html";
-        }
-
-        return "/WEB-INF/Paginas/index.jsp";
+        return "/WEB-INF/Paginas/configuraCurso.jsp";
     }
 
     @Override
