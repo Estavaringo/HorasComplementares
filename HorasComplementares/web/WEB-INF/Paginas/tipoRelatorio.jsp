@@ -1,27 +1,26 @@
 <%@page import="java.util.Collection"%>
 <%@page import="Bean.TipoRelatorio"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="latin1"%>
 <%@ include file="header.jsp" %>
-<main>    
+<main>      
         <!--BANNER COM O TITULO-->
         <div class="titulo-pagina">
             <div class="container">
                 <div class="row">
                     <div class="col s12">
                         <h2 class="header center-on-small-only">Tipo de Atividades Complementares</h2>
-                        <h4 class="light green-text text-lighten-4 center-on-small-only">Gerencie os tipos de atividades complementares aceitos</h4>
+                        <h4 class="light green-text text-lighten-4 center-on-small-only">Gerencie os tipos de atividades complementares do sistema  </h4>
                     </div>
                 </div>
             </div>
         </div>
-        <!--CONTEÚDO DO PÁGINA-->
+        <!--CONTE�DO DO P�GINA-->
         <div class="container">
             <table id="example" class="highlight responsive-table">
                 <thead>
                     <tr>
                         <th data-field="tipoRelatorio">Atividade</th>
-                        <th data-field="Horas">Horas</th>
-                        <th data-field="acao">Ação</th>
+                        <th data-field="acao">A��o</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,7 +28,6 @@
                         <c:forEach var="tipoRelatorio" items="${listaTipoRelatorio}">
                             <tr>
                                 <td id="descricao-${tipoRelatorio.codigo}">${tipoRelatorio.descricao}</td>
-                                <td id="qtdHoras-${tipoRelatorio.codigo}">${tipoRelatorio.qtdHoras}</td>
                                 <td class="hide-on-med-and-up">
                                     <a class="botao-alterar-tipoRelatorio cyan-text text-darken-4" id="${tipoRelatorio.codigo}"><i class="material-icons yellow-text text-darken-4" style="font-size: 35px">edit</i></a>
                                     <br>
@@ -60,7 +58,7 @@
                 <h4>Alterar tipo de atividade</h4>
                 <p>Altere o tipo de atividade selecionado:</p>
 
-                <!--Nome das Classes que deverão ser informadas na requisição-->
+                <!--Nome das Classes que dever�o ser informadas na requisi��o-->
                 <input type="hidden" name="logicaDeNegocio" value="TipoRelatorioServlet">
                 <input type="hidden" name="tarefa" value="alterar">
                 <input type="hidden" name="codigo" id="codigo-alterar">
@@ -68,12 +66,7 @@
                 <div class="input-field">
                     <i class="material-icons prefix"></i>
                     <label for="descricao-alterar"></label>
-                    <input id="descricao-alterar" placeholder="Insira o nome do tipo de relatório aqui..." type="text" class="validate" name="descricao" value="" />
-                </div>
-                <div class="input-field">
-                    <i class="material-icons prefix"></i>
-                    <label for="qtdHoras-alterar"></label>
-                    <input id="qtdHoras-alterar" placeholder="Insira o numero de horas deste tipo de relatório aqui..." type="text" class="validate" name="horas" value="" />
+                    <input id="descricao-alterar" placeholder="Insira o nome do tipo de atividade aqui..." type="text" class="validate" name="descricao" value="" />
                 </div>
             </div>
             <div class="modal-footer">
@@ -87,9 +80,9 @@
         <form method="POST" action="Executa">
             <div class="modal-content">
                 <h4>Excluir tipo de comprovante</h4>
-                <p>Confirme a exclusão do tipo de comprovante selecionado:</p>
+                <p>Confirme a exclus�o do tipo de comprovante selecionado:</p>
 
-                <!--Nome das Classes que deverão ser informadas na requisição-->
+                <!--Nome das Classes que dever�o ser informadas na requisi��o-->
                 <input type="hidden" name="logicaDeNegocio" value="TipoRelatorioServlet">
                 <input type="hidden" name="tarefa" value="remover">
                 <input type="hidden" name="codigo" id="codigo-excluir">
@@ -100,14 +93,14 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="modal-action waves-effect waves-green btn btn-default cyan" value="Alterar">Confirmar Exclusão</button>
+                <button type="submit" class="modal-action waves-effect waves-green btn btn-default cyan" value="Alterar">Confirmar Exclus�o</button>
                 <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancelar</a>
             </div>
         </form>
     </div>
     <!-- ABRE MODAL INCLUIR -->
     <div class="fixed-action-btn" style="bottom: 110px; right: 24px;">
-        <a class="modal-trigger btn-floating btn-large red tooltipped" data-position="top" data-delay="50" data-tooltip="Incluir Tipo de Relatório" href="#modal-incluir">
+        <a class="modal-trigger btn-floating btn-large red tooltipped" data-position="top" data-delay="50" data-tooltip="Incluir Tipo de Relat�rio" href="#modal-incluir">
             <i class="large material-icons">add</i>
         </a>
     </div>
@@ -118,7 +111,7 @@
                 <h4>Incluir tipo de atividade</h4>
                 <p>Insira abaixo o novo tipo de atividade</p>
 
-                <!--Nome das Classes que deverão ser informadas na requisição-->
+                <!--Nome das Classes que dever�o ser informadas na requisi��o-->
                 <input type="hidden" name="logicaDeNegocio" value="TipoRelatorioServlet">
                 <input type="hidden" name="tarefa" value="incluir">
 
@@ -126,12 +119,7 @@
                 <div class="input-field">
                     <i class="material-icons prefix">border_color</i>
                     <label for="descricao-incluir">Nome</label>
-                    <input id="descricao-incluir" placeholder="Insira o nome do tipo de comprovante aqui..." type="text" class="validate" name="descricao" value="" />
-                </div>
-                <div class="input-field">
-                    <i class="material-icons prefix"></i>
-                    <label for="descricao-alterar"></label>
-                    <input id="qtdHoras-incluir" placeholder="Insira o numero de horas deste tipo de relatório aqui..." type="text" class="validate" name="horas" value="" />
+                    <input id="descricao-incluir" placeholder="Insira o nome do tipo de atividade aqui..." type="text" class="validate" name="descricao" value="" />
                 </div>
             </div>
             <div class="modal-footer">

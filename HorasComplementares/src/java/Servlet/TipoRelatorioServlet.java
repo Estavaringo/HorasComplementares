@@ -35,7 +35,6 @@ public class TipoRelatorioServlet implements LogicaDeNegocio{
 
                     //Atribui as informações da tipoRelatorio no objeto
                     tipoRelatorio.setDescricao(req.getParameter("descricao"));
-                    tipoRelatorio.setQtdHoras(Integer.parseInt(req.getParameter("horas")));
 
                     //Grava um nova tipoRelatorio no banco de dados
                     new TipoRelatorioDAO().Incluir(tipoRelatorio);
@@ -57,7 +56,6 @@ public class TipoRelatorioServlet implements LogicaDeNegocio{
 
                     //Atribui as informações da tipoRelatorio no objeto
                     tipoRelatorio.setDescricao(req.getParameter("descricao"));
-                    //tipoRelatorio.setQtdHoras(Integer.parseInt(req.getParameter("horas"))); não é um comando necessário
                     tipoRelatorio.setCodigo(Integer.parseInt(req.getParameter("codigo")));
 
                     //Exclui tipoRelatorio no banco de dados
@@ -80,7 +78,6 @@ public class TipoRelatorioServlet implements LogicaDeNegocio{
 
                     //Atribui as informações da tipoRelatorio no objeto
                     tipoRelatorio.setDescricao(req.getParameter("descricao"));
-                    tipoRelatorio.setQtdHoras(Integer.parseInt(req.getParameter("horas")));
                     tipoRelatorio.setCodigo(Integer.parseInt(req.getParameter("codigo")));
 
                     //altera tipoRelatorio no banco de dados

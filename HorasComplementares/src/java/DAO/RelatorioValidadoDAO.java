@@ -105,7 +105,7 @@ public class RelatorioValidadoDAO implements DAO<RelatorioValidado>{
                     + "INNER JOIN RELATORIO_ATIVIDADE RA "
                     + "ON R.REAT_ID = RA.REAT_ID "
                     + "INNER JOIN USUARIO U "
-                    + "ON R.USUA_ID = U.USUA_ID_ID");
+                    + "ON R.USUA_ID = U.USUA_ID");
             while (rs.next()) {
                 RelatorioValidado obj = new RelatorioValidado();
                 RelatorioAtividade relatorioAtividade = new RelatorioAtividade();
