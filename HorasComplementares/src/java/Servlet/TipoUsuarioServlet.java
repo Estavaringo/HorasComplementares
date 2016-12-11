@@ -125,7 +125,7 @@ public class TipoUsuarioServlet implements LogicaDeNegocio {
                     return "erro.html";
                 }
 
-                return "/WEB-INF/Paginas/tipousuario.jsp";
+                return "/WEB-INF/Paginas/tipoUsuario.jsp";
 
             default:
                 System.err.println("Tarefa informada é inválida!");
@@ -148,7 +148,7 @@ public class TipoUsuarioServlet implements LogicaDeNegocio {
             return "erro.html";
         }
 
-        return "/WEB-INF/Paginas/tipousuario.jsp";
+        return "/WEB-INF/Paginas/tipoUsuario.jsp";
     }
 
     @Override

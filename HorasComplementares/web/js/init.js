@@ -84,6 +84,16 @@ $(document).ready(function () {
         
         $('#modal-alterar').openModal('');
     });
-
+    
+    $(".botao-alterar-tipoUsuario").click(function (){
+       
+        var codigo = this.id;
+        var descricao = $('#descricao-' + codigo).text();
+        
+        $('#codigo-alterar').val(codigo);
+        $('#descricao-alterar').val(descricao);
+        
+        $('#modal-alterar').openModal('');
+    });
 
 });
