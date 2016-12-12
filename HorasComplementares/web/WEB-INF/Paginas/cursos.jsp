@@ -36,7 +36,7 @@
                                 <td class="hide-on-med-and-up">
                                     <a class="botao-alterar-curso cyan-text text-darken-4" id="${curso.codigo}"><i class="material-icons yellow-text text-darken-4" style="font-size: 35px">edit</i></a>
                                     <br>
-                                    <a class="botao-excluir cyan-text text-darken-4" id="${curso.codigo}"><i class="material-icons deep-orange-text" style="font-size: 35px">delete</i></a>
+                                    <a class="botao-excluir-nome cyan-text text-darken-4" id="${curso.codigo}"><i class="material-icons deep-orange-text" style="font-size: 35px">delete</i></a>
                                 </td>
                                 <td class="hide-on-small-only">
                                     <!-- Dropdown Trigger -->
@@ -46,7 +46,7 @@
                                         <li class="divider"></li>
                                         <li><a class="botao-alterar-curso cyan-text text-darken-4" id="${curso.codigo}"><i class="material-icons yellow-text text-darken-4">edit</i>Alterar</a></li>
                                         <li class="divider"></li>
-                                        <li><a class="botao-excluir cyan-text text-darken-4" id="${curso.codigo}"><i class="material-icons deep-orange-text">delete</i>Excluir</a></li>
+                                        <li><a class="botao-excluir-nome cyan-text text-darken-4" id="${curso.codigo}"><i class="material-icons deep-orange-text">delete</i>Excluir</a></li>
                                     </ul>
                                 </td>
                             </tr>
@@ -101,7 +101,7 @@
 
                 <div class="input-field">
                     <i class="material-icons prefix">edit</i>
-                    <input disabled class="grey-text text-darken-4" id="descricao-excluir" type="text" name="nome" value="" />
+                    <input disabled class="grey-text text-darken-4" id="nome-excluir" type="text" name="nome" value="" />
                 </div>
             </div>
             <div class="modal-footer">

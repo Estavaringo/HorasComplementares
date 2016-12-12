@@ -26,7 +26,7 @@ public class CursoDAO implements DAO<Curso>{
             bd.conectar();
             String strSql
                     = "INSERT INTO CURSO (CURS_NOME, CURS_DESC) VALUES (?,?)";
-            PreparedStatement p = bd.connection.prepareStatement(strSql,Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement p = bd.connection.prepareStatement(strSql);
             p.setString(1, obj.getNome());
             p.setString(2, obj.getDescricao());
             p.execute();       
