@@ -55,7 +55,7 @@ public class CursoServlet implements LogicaDeNegocio{
                     System.err.println("Erro ao inserir curso no banco de dados. Detalhes: " + ex.getMessage());
                     return "erro.html";
                 }
-                return "Executa";
+                return "/Executa";
 
             case "remover":
                 try {

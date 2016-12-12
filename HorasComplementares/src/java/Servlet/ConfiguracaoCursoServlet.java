@@ -165,7 +165,7 @@ public class ConfiguracaoCursoServlet implements LogicaDeNegocio {
                     //Grava um nova curso no banco de dados
                     curso = new CursoDAO().Consultar(Integer.parseInt(req.getParameter("codigoCurso")));
 
-                    //Atribui a ultima curso como Atributo a ser enviado na próxima Requisição 
+                    //Atribui o ultima curso como Atributo a ser enviado na próxima Requisição 
                     req.setAttribute("curso", curso);
 
                 } catch (SQLException ex) {
