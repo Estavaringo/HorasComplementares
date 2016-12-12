@@ -9,7 +9,7 @@
                 <div class="row">
                     <div class="col s12">
                         <h2 class="header center-on-small-only">Usuarios</h2>
-                        <h4 class="light green-text text-lighten-4 center-on-small-only">Altere os tipos de usuaros</h4>
+                        <h4 class="light green-text text-lighten-4 center-on-small-only">Altere os tipos de usuarios</h4>
                     </div>
                 </div>
             </div>

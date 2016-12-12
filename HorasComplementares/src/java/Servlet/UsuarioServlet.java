@@ -8,6 +8,8 @@ package Servlet;
 import Bean.Curso;
 import Bean.TipoUsuario;
 import Bean.Usuario;
+import DAO.CursoDAO;
+import DAO.TipoUsuarioDAO;
 import DAO.UsuarioDAO;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
@@ -177,19 +179,26 @@ public class UsuarioServlet implements LogicaDeNegocio {
                 try {
 
                     ArrayList<Usuario> listaUsuario = new ArrayList<>();
-
+                    ArrayList<Curso> listaCurso = new ArrayList<>();
+                    ArrayList<TipoUsuario> listaTipoUsuario = new ArrayList<>();
+                    
                     //Grava um nova usuario no banco de dados
                     listaUsuario = new UsuarioDAO().Consultar();
+                    listaCurso = new CursoDAO().Consultar();
+                    listaTipoUsuario = new TipoUsuarioDAO().Consultar();
 
                     //Atribui a ultima usuario como Atributo a ser enviado na próxima Requisição 
                     req.setAttribute("listaUsuario", listaUsuario);
+                    req.setAttribute("listaCurso", listaCurso);
+                    req.setAttribute("listaTipoUsuario", listaTipoUsuario);
+                    
 
                 } catch (SQLException ex) {
                     System.err.println("Erro ao cosultar usuario no banco de dados. Detalhes: " + ex.getMessage());
                     return "erro.html";
                 }
 
-                return "/WEB-INF/Paginas/index.jsp";
+                return "/WEB-INF/Paginas/usuario.jsp";
 
             default:
                 System.err.println("Tarefa informada é inválida!");
@@ -212,7 +221,7 @@ public class UsuarioServlet implements LogicaDeNegocio {
             return "erro.html";
         }
 
-        return "/WEB-INF/Paginas/index.jsp";
+        return "/WEB-INF/Paginas/usuario.jsp";
     }
 
     @Override
