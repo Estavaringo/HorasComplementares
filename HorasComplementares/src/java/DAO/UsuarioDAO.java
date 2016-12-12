@@ -204,14 +204,14 @@ public class UsuarioDAO implements DAO<Usuario>{
         try {
             Usuario obj = null;
             bd.conectar();
-            String strSQL = "SELECT U.USUA_ID, U.USUA_NM, U.USUA_PRON, U.USUA_FUNC, U.USUA_DT_INI, U.USUA_SEME, U.USUA_LOGIN, U.USUA_SENHA, U.CURS_ID, U.TIUS_ID, U.USUA_ATIVO, "
-                    + "C.CURS_ID, C.CURS_DESC, C.CURS_NOME, "
-                    + "T.TIUS_ID, T.TIUS_DESC "
+            String strSQL = "SELECT U.USUA_ID, U.USUA_NM, U.USUA_PRON, U.USUA_FUNC, U.USUA_DT_INI, U.USUA_SEME, U.USUA_LOGIN, U.USUA_SENHA, U.CURS_ID, U.TIUS_ID, U.USUA_ATIVO "
+             //        + "C.CURS_ID, C.CURS_DESC, C.CURS_NOME, "
+             //       + "T.TIUS_ID, T.TIUS_DESC "
                     + "FROM USUARIO U "
-                    + "INNER JOIN CURSO C "
-                    + "ON U.CURS_ID = C.CURS_ID "
-                    + "INNER JOIN TIPO_USUARIO T "
-                    + "ON U.TIUS_ID = T.TIUS_ID "
+              //      + "INNER JOIN CURSO C "
+              //      + "ON U.CURS_ID = C.CURS_ID "
+              //      + "INNER JOIN TIPO_USUARIO T "
+    //                + "ON U.TIUS_ID = T.TIUS_ID "
                     + "WHERE U.USUA_LOGIN = ?";
             PreparedStatement p = bd.connection.prepareStatement(strSQL);
             p.setString(1, email);
@@ -231,14 +231,14 @@ public class UsuarioDAO implements DAO<Usuario>{
                 obj.setSenha(rs.getString("U.USUA_SENHA"));
                 obj.setAtivo(rs.getBoolean("U.USUA_ATIVO"));
 
-                curso.setCodigo(rs.getInt("C.CURS_ID"));
-                curso.setNome(rs.getString("C.CURS_NOME"));
-                curso.setDescricao(rs.getString("C.CURS_DESC"));
-                obj.setCurso(curso);
+           //     curso.setCodigo(rs.getInt("C.CURS_ID"));
+            //    curso.setNome(rs.getString("C.CURS_NOME"));
+             //   curso.setDescricao(rs.getString("C.CURS_DESC"));
+             //   obj.setCurso(curso);
 
-                tipoUsuario.setCodigo(rs.getInt("T.TIUS_ID"));
-                tipoUsuario.setDescricao(rs.getString("T.TIUS_DESC"));
-                obj.setTipoUsuario(tipoUsuario);
+            //    tipoUsuario.setCodigo(rs.getInt("T.TIUS_ID"));
+         //       tipoUsuario.setDescricao(rs.getString("T.TIUS_DESC"));
+             //   obj.setTipoUsuario(tipoUsuario);
 
                 p.close();
                 bd.desconectar();
