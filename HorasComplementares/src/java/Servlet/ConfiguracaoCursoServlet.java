@@ -13,6 +13,7 @@ import Bean.TipoRelatorio;
 import Bean.Usuario;
 import DAO.CursoDAO;
 import DAO.RelatorioAtividadeDAO;
+import DAO.TipoRelatorioDAO;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -167,6 +168,15 @@ public class ConfiguracaoCursoServlet implements LogicaDeNegocio {
 
                     //Atribui o ultima curso como Atributo a ser enviado na próxima Requisição 
                     req.setAttribute("curso", curso);
+                    
+                    //Consulta a lista de Relatórios
+                    ArrayList<TipoRelatorio> listaTipoRelatorio = new ArrayList<>();
+
+                    //Grava um nova tipoRelatorio no banco de dados
+                    listaTipoRelatorio = new TipoRelatorioDAO().Consultar();
+
+                    //Atribui a ultima tipoRelatorio como Atributo a ser enviado na próxima Requisição 
+                    req.setAttribute("listaTipoRelatorio", listaTipoRelatorio);
 
                 } catch (SQLException ex) {
                     System.err.println("Erro ao consultar curso no banco de dados. Detalhes: " + ex.getMessage());

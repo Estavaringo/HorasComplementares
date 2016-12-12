@@ -39,6 +39,12 @@
     bottom: 4px;
 }
 
+.centralizar-icons.medium{
+    position: relative;
+    top: 15px;
+    margin-right: 10px;
+}
+
 .centralizar-icons.large{
     position: relative;
     top: 20px;
@@ -97,7 +103,9 @@ main {
 }
 
 .titulo-pagina-config > h4{
-    margin-top: 0px;
+    position: relative;
+    bottom: 30px;
+    
 }
 
 /*Configuração do Parallax da Home Page*/

@@ -44,18 +44,14 @@ public class CursoServlet implements LogicaDeNegocio{
 
                     //Grava um nova curso no banco de dados
                     codigoGerado = new CursoDAO().IncluirComRetornoDoCodigo(curso);
-
-                    //Atribui na sessão os parametros necessários para carregar a tela com o curso criado
-                    req.setAttribute("logicaDeNegocio", "ConfiguracaoCursoServlet");
-                    req.setAttribute("tarefa", "consultar");
-                    req.setAttribute("codigoCurso", codigoGerado);
                     
+                    //Retorna para a página
+                    return "Executa?logicaDeNegocio=ConfiguracaoCursoServlet&tarefa=consultar&codigoCurso=" + codigoGerado;
 
                 } catch (SQLException ex) {
                     System.err.println("Erro ao inserir curso no banco de dados. Detalhes: " + ex.getMessage());
                     return "erro.html";
                 }
-                return "/Executa";
 
             case "remover":
                 try {

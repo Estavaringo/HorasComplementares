@@ -28,10 +28,10 @@
                     <c:if test="${not empty listaCurso}">
                         <c:forEach var="curso" items="${listaCurso}">
                             <tr>
-                                <td id="nome-${curso.codigo}">
+                                <td>
                                     <a class="btn-floating green darken-2 tooltipped" data-position="bottom" data-delay="50" data-tooltip="Clique aqui para configurar." href="Executa?logicaDeNegocio=ConfiguracaoCursoServlet&tarefa=consultar&codigoCurso=${curso.codigo}" class="waves-effect waves-light">
                                         <i class="large material-icons left">settings</i>
-                                    </a>${curso.nome}</td>
+                                    </a><span style="margin-left: 10px;" id="nome-${curso.codigo}">${curso.nome}</span></td>
                                 <td id="descricao-${curso.codigo}"> ${curso.descricao}</td>
                                 <td class="hide-on-med-and-up">
                                     <a class="botao-alterar-curso cyan-text text-darken-4" id="${curso.codigo}"><i class="material-icons yellow-text text-darken-4" style="font-size: 35px">edit</i></a>
@@ -71,13 +71,13 @@
                 <div class="input-field">
                     <i class="material-icons prefix">edit</i>
                     <label for="nome-alterar">Nome</label>
-                    <input id="descricao-alterar" placeholder="Insira o nome do curso aqui..." type="text" class="validate" name="nome" value="" />
+                    <input id="nome-alterar" placeholder="Insira o nome do curso aqui..." type="text" class="validate" name="nome" value="" />
                 </div>
                 
                 <div class="input-field">
                     <i class="material-icons prefix">description</i>
                     <label for="descricao-alterar">Descrição do Curso</label>
-                    <input id="cargaHoraria-alterar" placeholder="Insira a descri??o do curso..." type="text" name="descricao" value="" />
+                    <input id="descricao-alterar" placeholder="Insira a descrição do curso..." type="text" name="descricao" value="" />
                 </div>
                 
             </div>

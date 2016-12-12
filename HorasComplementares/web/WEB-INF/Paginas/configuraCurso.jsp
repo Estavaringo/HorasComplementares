@@ -18,7 +18,7 @@
         <div class="container">
             <div class="row">
                 <div class="col s12">
-                    <h4 class="truncate header center-on-small-only"><i class="centralizar-icons large material-icons">school</i>${curso.nome}</h4>
+                    <h4 class="truncate header center-on-small-only"><i class="centralizar-icons medium material-icons">school</i>${curso.nome}</h4>
                 </div>
             </div> 
         </div>
@@ -26,24 +26,41 @@
     <!--CONTEÚDO DO PÁGINA-->
     <div class="container">
         <h5 class="header">Tipo de Relatórios que serão aceitos</h5>
-        <form method="POST" action="Executa">
-
-            <!--Nome das Classes que deverão ser informadas na requisição-->
-            <input type="hidden" name="logicaDeNegocio" value="CursoServlet">
-            <input type="hidden" name="tarefa" value="alterar">
-            <input type="hidden" name="codigo" id="codigo-alterar">
-            <div class="row">
-                <c:forEach var="tipoRelatorio" items="${listaTipoRelatorio}">
-                    <div class="col s12 m3">
-                        <p>
-                            <input type="checkbox" id="test5" />
-                            <label for="test5">Red</label>
-                        </p>
-                    </div>
-                </c:forEach>
-            </div>
-
-        </form>
+        <table id="example" class="highlight responsive-table">
+                <thead>
+                    <tr>
+                        <th data-field="nome">Atividade</th>
+                        <th data-field="descricao">Descrição</th>
+                        <th data-field="acao">Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:if test="${not empty listaTipoRelatorio}">
+                        <c:forEach var="tipoRelatorio" items="${listaTipoRelatorio}">
+                            <tr>
+                                <td id="nome-${tipoRelatorio.codigo}">${tipoRelatorio.nome}</td>
+                                <td id="descricao-${tipoRelatorio.codigo}">${tipoRelatorio.descricao}</td>
+                                <td class="hide-on-med-and-up">
+                                    <a class="botao-alterar-tipoRelatorio cyan-text text-darken-4" id="${tipoRelatorio.codigo}"><i class="material-icons yellow-text text-darken-4" style="font-size: 35px">edit</i></a>
+                                    <br>
+                                    <a class="botao-excluir cyan-text text-darken-4" id="${tipoRelatorio.codigo}"><i class="material-icons deep-orange-text" style="font-size: 35px">delete</i></a>
+                                </td>
+                                <td class="hide-on-small-only">
+                                    <!-- Dropdown Trigger -->
+                                    <a class='dropdown-button btn-floating grey darken-2' href='#' data-constrainwidth="false" data-activates='dropdown${tipoRelatorio.codigo}'><i class="material-icons">more_horiz</i></a>
+                                    <!-- Dropdown Structure -->
+                                    <ul id='dropdown${tipoRelatorio.codigo}' class='dropdown-content'>
+                                        <li class="divider"></li>
+                                        <li><a class="botao-alterar-tipoRelatorio cyan-text text-darken-4" id="${tipoRelatorio.codigo}"><i class="material-icons yellow-text text-darken-4">edit</i>Alterar</a></li>
+                                        <li class="divider"></li>
+                                        <li><a class="botao-excluir-nome cyan-text text-darken-4" id="${tipoRelatorio.codigo}"><i class="material-icons deep-orange-text">delete</i>Excluir</a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </c:if>
+                </tbody>
+            </table>
 
 
 
