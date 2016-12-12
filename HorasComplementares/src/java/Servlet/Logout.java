@@ -22,7 +22,7 @@ public class Logout implements LogicaDeNegocio {
 
     @Override
     public boolean verifica() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return false;
     }
     
 }

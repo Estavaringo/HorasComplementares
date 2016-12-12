@@ -14,16 +14,12 @@
                     </div>
                     <div class="row center">
                         <c:if test="${(not empty usuarioLogado)}">
-                            <form method="POST" action="Executa">
-                                <input type="hidden" name="logicaDeNegocio" value="CursoServlet">
-                                <input type="hidden" name="tarefa" value="consultarLista">
-                                <div class="row">
-                                    <button type="submit" id="download-button" class="btn-large waves-effect waves-light green lighten-1" value="Acessar">Acesse Aqui</button>
-                                </div>
-                            </form>
+                            <div class="row">
+                                <a href="Executa?logicaDeNegocio=LoginServlet" id="download-button" class="btn-large waves-effect waves-light green lighten-1">Acesse Aqui</a>       
+                            </div>
                         </c:if>
                         <c:if test="${(empty usuarioLogado)}">
-                            <div>
+                            <div class="row">
                                 <a href="/HorasComplementares/login.jsp" id="download-button" class="btn-large waves-effect waves-light green lighten-1">Acesse Aqui</a>
                             </div>
                         </c:if>

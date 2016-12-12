@@ -23,6 +23,11 @@ public class LoginServlet implements LogicaDeNegocio {
 
     @Override
     public String executa(HttpServletRequest req, HttpServletResponse response) {
+        HttpSession session = req.getSession();
+        if (session.getAttribute("usuarioLogado") != null) {
+            return "/WEB-INF/Paginas/dashboard.jsp";
+        }
+
         String login = req.getParameter("login");
         String senha = "";
 
@@ -38,23 +43,19 @@ public class LoginServlet implements LogicaDeNegocio {
             usuario = new UsuarioDAO().Login(login);
 
             if (usuario == null) {
-                HttpSession session = req.getSession();
                 session.setAttribute("usuarioInvalido", true);
                 return "login.jsp";
             } else if (!senha.equals(usuario.getSenha())) {
-                HttpSession session = req.getSession();
                 session.setAttribute("senhaInvalida", true);
                 return "login.jsp";
             } else if (!usuario.isAtivo()) {
-                HttpSession session = req.getSession();
                 session.setAttribute("usuarioInativo", true);
                 return "login.jsp";
             } else {
-                HttpSession session = req.getSession();
                 session.removeAttribute("senhaInvalida");
                 session.removeAttribute("usuarioInvalido");
                 session.setAttribute("usuarioLogado", usuario);
-                return "/WEB-INF/Paginas/cursos.jsp";
+                return "/WEB-INF/Paginas/dashboard.jsp";
             }
 
         } catch (SQLException ex) {

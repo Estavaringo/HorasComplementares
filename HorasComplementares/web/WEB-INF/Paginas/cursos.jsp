@@ -14,7 +14,7 @@
                 </div>
             </div>
         </div>
-        <!--CONTEÚDO DO PÁGINA-->
+        <!--CONTE?DO DO P?GINA-->
         <div class="container">
             <table id="example" class="highlight responsive-table">
                 <thead>
@@ -63,7 +63,7 @@
                 <h4>Alterar Curso</h4>
                 <p>Altere a curso selecionada:</p>
 
-                <!--Nome das Classes que deverão ser informadas na requisição-->
+                <!--Nome das Classes que dever?o ser informadas na requisi??o-->
                 <input type="hidden" name="logicaDeNegocio" value="CursoServlet">
                 <input type="hidden" name="tarefa" value="alterar">
                 <input type="hidden" name="codigo" id="codigo-alterar">
@@ -77,7 +77,7 @@
                 <div class="input-field">
                     <i class="material-icons prefix">description</i>
                     <label for="descricao-alterar">Descrição do Curso</label>
-                    <input id="cargaHoraria-alterar" placeholder="Insira a descrição do curso..." type="text" name="descricao" value="" />
+                    <input id="cargaHoraria-alterar" placeholder="Insira a descri??o do curso..." type="text" name="descricao" value="" />
                 </div>
                 
             </div>
@@ -94,7 +94,7 @@
                 <h4>Excluir Curso</h4>
                 <p>Confirme a exclusão do Curso selecionado:</p>
 
-                <!--Nome das Classes que deverão ser informadas na requisição-->
+                <!--Nome das Classes que dever?o ser informadas na requisi??o-->
                 <input type="hidden" name="logicaDeNegocio" value="CursoServlet">
                 <input type="hidden" name="tarefa" value="remover">
                 <input type="hidden" name="codigo" id="codigo-excluir">
@@ -105,7 +105,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="modal-action waves-effect waves-green btn btn-default cyan" value="Alterar">Confirmar Exclusão</button>
+                <button type="submit" class="modal-action waves-effect waves-green btn btn-default cyan" value="Alterar">Confirmar Exclus?o</button>
                 <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancelar</a>
             </div>
         </form>
@@ -123,7 +123,7 @@
                 <h4>Incluir Curso</h4>
                 <p>Insira abaixo o novo Curso</p>
 
-                <!--Nome das Classes que deverão ser informadas na requisição-->
+                <!--Nome das Classes que dever?o ser informadas na requisi??o-->
                 <input type="hidden" name="logicaDeNegocio" value="CursoServlet">
                 <input type="hidden" name="tarefa" value="incluir">
 
@@ -137,7 +137,7 @@
                 <div class="input-field">
                     <i class="material-icons prefix">description</i>
                     <label for="descricao-incluir">Descrição do Curso</label>
-                    <input id="cargaHoraria-incluir" placeholder="Insira uma descrição para o curso..." type="text" name="descricao" value="" />
+                    <input id="cargaHoraria-incluir" placeholder="Insira uma descri??o para o curso..." type="text" name="descricao" value="" />
                 </div>                
             </div>
             <div class="modal-footer">

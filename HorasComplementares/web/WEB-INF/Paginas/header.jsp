@@ -24,8 +24,8 @@
                         <ul class="right">
                             <!-- Dropdown Trigger -->
                             <li>
-                                <a class="dropdown-user" href="#!" data-activates="dropdown-user">
-                                    <i class="material-icons right">account_circle</i><i class="material-icons right hide-on-med-and-down">arrow_drop_down</i>
+                                <a class="dropdown-button" href="#!" data-activates="dropdown-user">
+                                    <b class="hide-on-med-and-down">Olá ${usuarioLogado.nome}</b><i class="material-icons right">account_circle</i><i class="material-icons right hide-on-med-and-down">arrow_drop_down</i>
                                 </a>
                             </li>
                         </ul>
@@ -44,7 +44,6 @@
                 <li class="green lighten-2">
                     <div class="area-do-usuario center-align">
                         <a href="/HorasComplementares"><img src="images/HorasComplementares_logo.png" alt="Horas Complementares"></a>
-                        <p class="white-text truncate">${usuarioLogado.nome}</p>
                     </div>
                 </li>
                 <li><a class="waves-effect" href="#!"><i class="material-icons">dashboard</i><span class="gray-text text-darken-2"><b>Dashboard</b></span></a></li>
@@ -54,8 +53,8 @@
                 <li><div class="divider"></div></li>
                 <li><a class="waves-effect" href="#!"><i class="material-icons">forum</i><span class="gray-text text-darken-2"><b>Quadro de Avisos</b></span></a></li>
                 <li><a class="waves-effect" href="#!"><i class="material-icons">info</i><span class="gray-text text-darken-2"><b>Regulamento</b></span></a></li>
-                <%--:if test="${usuarioLogado.moderador}"--%>
-                <c:if test="${true}">
+                    <%--:if test="${usuarioLogado.moderador}"--%>
+                    <c:if test="${true}">
                     <li><div class="divider"></div></li>
                     <li class="no-padding">
                         <ul class="collapsible collapsible-accordion">
