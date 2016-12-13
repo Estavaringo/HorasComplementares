@@ -46,7 +46,7 @@
                         <a href="/HorasComplementares"><img src="images/HorasComplementares_logo.png" alt="Horas Complementares"></a>
                     </div>
                 </li>
-                <li><a class="waves-effect" href="#!"><i class="material-icons">dashboard</i><span class="gray-text text-darken-2"><b>Dashboard</b></span></a></li>
+                <li><a class="waves-effect" href="Executa?logicaDeNegocio=LoginServlet"><i class="material-icons">dashboard</i><span class="gray-text text-darken-2"><b>Dashboard</b></span></a></li>
                 <li><div class="divider"></div></li>
                 <li><a class="waves-effect modal-trigger" href="#modal-upload"><i class="icon-horas-complementares"></i><span class="gray-text text-darken-2"><b>Nova Atividade</b></span></a></li>
                 <li><a class="waves-effect" href="#!"><i class="material-icons">swap_vertical_circle</i><span class="gray-text text-darken-2"><b>Ver Histórico</b></span></a></li>
