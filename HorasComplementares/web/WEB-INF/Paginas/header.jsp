@@ -49,7 +49,7 @@
                 <li class="truncate"><a class="waves-effect" href="Executa?logicaDeNegocio=LoginServlet"><i class="material-icons">dashboard</i><span class="gray-text text-darken-2"><b>Dashboard</b></span></a></li>
                 <li class="truncate"><div class="divider"></div></li>
                 <li class="truncate"><a class="waves-effect modal-trigger" href="#modal-upload"><i class="icon-horas-complementares"></i><span class="gray-text text-darken-2"><b>Nova Atividade</b></span></a></li>
-                <li class="truncate"><a class="waves-effect" href="#!"><i class="material-icons">swap_vertical_circle</i><span class="gray-text text-darken-2"><b>Ver Histórico</b></span></a></li>
+                <li class="truncate"><a class="waves-effect" href="#!"><i class="material-icons">swap_vertical_circle</i><span class="gray-text text-darken-2"><b>Entregas</b></span></a></li>
                 <li class="truncate"><div class="divider"></div></li>
                 <li class="truncate"><a class="waves-effect" href="#!"><i class="material-icons">forum</i><span class="gray-text text-darken-2"><b>Quadro de Avisos</b></span></a></li>
                 <li class="truncate"><a class="waves-effect" href="#!"><i class="material-icons">info</i><span class="gray-text text-darken-2"><b>Regulamento</b></span></a></li>

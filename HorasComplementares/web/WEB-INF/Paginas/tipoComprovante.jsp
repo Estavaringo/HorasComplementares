@@ -64,7 +64,7 @@
                 <input type="hidden" name="codigo" id="codigo-alterar">
 
                 <div class="input-field">
-                    <i class="material-icons prefix"></i>
+                    <i class="material-icons prefix">border_color</i>
                     <label for="descricao-alterar"></label>
                     <input id="descricao-alterar" placeholder="Insira o nome do tipo de comprovante aqui..." type="text" class="validate" name="descricao" value="" />
                 </div>

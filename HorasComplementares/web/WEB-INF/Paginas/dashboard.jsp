@@ -16,7 +16,7 @@
     </div>
     <!--CONTE?DO DO P?GINA-->
     <div class="container">
-        <div class="card-panel amber accent-4 z-depth-3">
+        <div class="card-panel amber center accent-4 z-depth-3">
             <i class="large material-icons red-text">report_problem</i>
             <h3 class="white-text">Dashboard</h3>
             <span class="white-text">Esta página ainda está em construção.

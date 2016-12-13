@@ -13,7 +13,7 @@
                 <i class="material-icons">add_circle</i>
             </a>
         </li>
-        <li><a class="btn-floating blue tooltipped" data-position="top" data-delay="50" data-tooltip="Ver Histórico"><i class="material-icons">swap_vertical_circle</i></a></li>
+        <li><a class="btn-floating blue tooltipped" data-position="top" data-delay="50" data-tooltip="Entregas"><i class="material-icons">swap_vertical_circle</i></a></li>
     </ul>
 </div>
 <!-- ESTRUTURA DA MODAL INCLUIR -->
