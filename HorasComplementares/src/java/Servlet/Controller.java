@@ -8,31 +8,28 @@ package Servlet;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 /**
  *
  * @author flaviosampaioreisdelima
  */
 @WebServlet(urlPatterns = "/Executa")
-@MultipartConfig
 public class Controller extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String classeDeNegocio = null;
-        if (ServletFileUpload.isMultipartContent(request)) {
-            classeDeNegocio = (String) request.getAttribute("logicaDeNegocio");
-        } else {
-            classeDeNegocio = request.getParameter("logicaDeNegocio");
-        }
+        String classeDeNegocio = request.getParameter("logicaDeNegocio");
         System.out.println("Nome da Classe: " + classeDeNegocio);
-
+        if(classeDeNegocio==null){
+            System.out.println("OK");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("curso.jsp");
+            requestDispatcher.forward(request, response);
+        }
+        
         //Pega o nome da classe
         String nomeDaClasse = "Servlet." + classeDeNegocio;
 
@@ -43,9 +40,9 @@ public class Controller extends HttpServlet {
             //Instancia a classe que foi localizada
             LogicaDeNegocio logicaDeNegocio = (LogicaDeNegocio) classe.newInstance();
 
-            //Verifica se o usuario tem acesso a pagina
+           //Verifica se o usuario tem acesso a pagina
             if (!VerificaPermissao.executa(request, response, logicaDeNegocio)) {
-                request.getRequestDispatcher("negado.jsp").forward(request, response);
+               request.getRequestDispatcher("negado.jsp").forward(request, response);
 
             } else {
                 // Recebe o nome da página que deverá ser renderiza como resposta a solicitação

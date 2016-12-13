@@ -11,7 +11,6 @@ import Bean.TipoComprovante;
 import DAO.DocumentoRelatorioDAO;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -19,18 +18,18 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author gabri
  */
-@MultipartConfig
-public class DocumentoRelatorioServlet implements LogicaDeNegocio {
+public class DocumentoRelatorioServlet implements LogicaDeNegocio{
 
     //Declarações
     private DocumentoRelatorio documentoRelatorio = null;
-    private TipoComprovante tipoComprovante = new TipoComprovante();
+    private TipoComprovante tipoDocumento = new TipoComprovante();
     private RelatorioAtividade relatorioAtividade = new RelatorioAtividade();
     private String tarefa;
 
     @Override
     public String executa(HttpServletRequest req, HttpServletResponse resp) {
-        tarefa = (String) req.getAttribute("tarefa");
+
+        tarefa = req.getParameter("tarefa");
         switch (tarefa) {
             case "incluir":
                 try {
@@ -39,15 +38,15 @@ public class DocumentoRelatorioServlet implements LogicaDeNegocio {
                     documentoRelatorio = new DocumentoRelatorio();
 
                     //Atribui as informações da documentoRelatorio no objeto
-                    documentoRelatorio.setDescricao((String) req.getAttribute("descricao"));
-                    documentoRelatorio.setUrl((String) req.getAttribute("url"));
+                    documentoRelatorio.setDescricao(req.getParameter("descricao"));
+                    documentoRelatorio.setUrl(req.getParameter("url"));
 
-                    tipoComprovante.setCodigo(Integer.parseInt((String) req.getAttribute("codigoTipoDocumento")));
-                    relatorioAtividade.setCodigo(Integer.parseInt((String) req.getAttribute("codigoRelatorioAtividade")));
-
-                    documentoRelatorio.setTipoDocumento(tipoComprovante);
+                    tipoDocumento.setCodigo(Integer.parseInt(req.getParameter("codigoTipoDocumento")));
+                    relatorioAtividade.setCodigo(Integer.parseInt(req.getParameter("codigoRelatorioAtividade")));
+                    
+                    documentoRelatorio.setTipoDocumento(tipoDocumento);
                     documentoRelatorio.setRelatorioAtividade(relatorioAtividade);
-
+                    
                     //Grava um nova documentoRelatorio no banco de dados
                     new DocumentoRelatorioDAO().Incluir(documentoRelatorio);
 
@@ -71,12 +70,12 @@ public class DocumentoRelatorioServlet implements LogicaDeNegocio {
                     documentoRelatorio.setDescricao(req.getParameter("descricao"));
                     documentoRelatorio.setUrl(req.getParameter("url"));
 
-                    tipoComprovante.setCodigo(Integer.parseInt(req.getParameter("codigoTipoDocumento")));
+                    tipoDocumento.setCodigo(Integer.parseInt(req.getParameter("codigoTipoDocumento")));
                     relatorioAtividade.setCodigo(Integer.parseInt(req.getParameter("codigoRelatorioAtividade")));
-
-                    documentoRelatorio.setTipoDocumento(tipoComprovante);
+                    
+                    documentoRelatorio.setTipoDocumento(tipoDocumento);
                     documentoRelatorio.setRelatorioAtividade(relatorioAtividade);
-
+                    
                     //Exclui documentoRelatorio no banco de dados
                     new DocumentoRelatorioDAO().Excluir(Integer.parseInt(req.getParameter("codigo")));
 
@@ -100,12 +99,12 @@ public class DocumentoRelatorioServlet implements LogicaDeNegocio {
                     documentoRelatorio.setDescricao(req.getParameter("descricao"));
                     documentoRelatorio.setUrl(req.getParameter("url"));
 
-                    tipoComprovante.setCodigo(Integer.parseInt(req.getParameter("codigoTipoDocumento")));
+                    tipoDocumento.setCodigo(Integer.parseInt(req.getParameter("codigoTipoDocumento")));
                     relatorioAtividade.setCodigo(Integer.parseInt(req.getParameter("codigoRelatorioAtividade")));
-
-                    documentoRelatorio.setTipoDocumento(tipoComprovante);
+                    
+                    documentoRelatorio.setTipoDocumento(tipoDocumento);
                     documentoRelatorio.setRelatorioAtividade(relatorioAtividade);
-
+                    
                     //altera documentoRelatorio no banco de dados
                     new DocumentoRelatorioDAO().Alterar(documentoRelatorio);
 
@@ -151,7 +150,7 @@ public class DocumentoRelatorioServlet implements LogicaDeNegocio {
                     return "erro.html";
                 }
 
-                return "/WEB-INF/Paginas/dashboard.jsp";
+                return "/WEB-INF/Paginas/index.jsp";
 
             default:
                 System.err.println("Tarefa informada é inválida!");
@@ -174,7 +173,7 @@ public class DocumentoRelatorioServlet implements LogicaDeNegocio {
             return "erro.html";
         }
 
-        return "/WEB-INF/Paginas/dashboard.jsp";
+        return "/WEB-INF/Paginas/index.jsp";
     }
 
     @Override
