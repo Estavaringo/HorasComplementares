@@ -46,13 +46,13 @@
                         <a href="/HorasComplementares"><img src="images/HorasComplementares_logo.png" alt="Horas Complementares"></a>
                     </div>
                 </li>
-                <li><a class="waves-effect" href="Executa?logicaDeNegocio=LoginServlet"><i class="material-icons">dashboard</i><span class="gray-text text-darken-2"><b>Dashboard</b></span></a></li>
-                <li><div class="divider"></div></li>
-                <li><a class="waves-effect modal-trigger" href="#modal-upload"><i class="icon-horas-complementares"></i><span class="gray-text text-darken-2"><b>Nova Atividade</b></span></a></li>
-                <li><a class="waves-effect" href="#!"><i class="material-icons">swap_vertical_circle</i><span class="gray-text text-darken-2"><b>Ver Histórico</b></span></a></li>
-                <li><div class="divider"></div></li>
-                <li><a class="waves-effect" href="#!"><i class="material-icons">forum</i><span class="gray-text text-darken-2"><b>Quadro de Avisos</b></span></a></li>
-                <li><a class="waves-effect" href="#!"><i class="material-icons">info</i><span class="gray-text text-darken-2"><b>Regulamento</b></span></a></li>
+                <li class="truncate"><a class="waves-effect" href="Executa?logicaDeNegocio=LoginServlet"><i class="material-icons">dashboard</i><span class="gray-text text-darken-2"><b>Dashboard</b></span></a></li>
+                <li class="truncate"><div class="divider"></div></li>
+                <li class="truncate"><a class="waves-effect modal-trigger" href="#modal-upload"><i class="icon-horas-complementares"></i><span class="gray-text text-darken-2"><b>Nova Atividade</b></span></a></li>
+                <li class="truncate"><a class="waves-effect" href="#!"><i class="material-icons">swap_vertical_circle</i><span class="gray-text text-darken-2"><b>Ver Histórico</b></span></a></li>
+                <li class="truncate"><div class="divider"></div></li>
+                <li class="truncate"><a class="waves-effect" href="#!"><i class="material-icons">forum</i><span class="gray-text text-darken-2"><b>Quadro de Avisos</b></span></a></li>
+                <li class="truncate"><a class="waves-effect" href="#!"><i class="material-icons">info</i><span class="gray-text text-darken-2"><b>Regulamento</b></span></a></li>
                     <%--:if test="${usuarioLogado.moderador}"--%>
                     <c:if test="${true}">
                     <li><div class="divider"></div></li>
@@ -62,8 +62,8 @@
                                 <a class="collapsible-header">Configurações<i class="material-icons">arrow_drop_down</i></a>
                                 <div class="collapsible-body">
                                     <ul>
-                                        <li><a href="Executa?logicaDeNegocio=CursoServlet&tarefa=consultarLista">Cursos</a></li>
-                                        <li><a href="Executa?logicaDeNegocio=UsuarioServlet&tarefa=consultarLista">Usuários</a></li>
+                                        <li class="truncate"><a href="Executa?logicaDeNegocio=CursoServlet&tarefa=consultarLista">Cursos</a></li>
+                                        <li class="truncate"><a href="Executa?logicaDeNegocio=UsuarioServlet&tarefa=consultarLista">Usuários</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -76,11 +76,11 @@
                                 <a class="collapsible-header">Parâmetros<i class="material-icons">arrow_drop_down</i></a>
                                 <div class="collapsible-body">
                                     <ul>
-                                        <li><a href="Executa?logicaDeNegocio=TipoComprovanteServlet&tarefa=consultarLista">Tipos de Comprovantes</a></li>
-                                        <li><a href="Executa?logicaDeNegocio=TipoRelatorioServlet&tarefa=consultarLista">Tipos de Atividades</a></li>
-                                        <li><a href="Executa?logicaDeNegocio=TipoContatoServlet&tarefa=consultarLista">Tipos de Contatos</a></li>
-                                        <li><a href="Executa?logicaDeNegocio=StatusRelatorioAtividadeServlet&tarefa=consultarLista">Status de Atividades</a></li>
-                                        <li><a href="Executa?logicaDeNegocio=TipoNotificacaoServlet&tarefa=consultarLista">Tipos de Notificação</a></li>
+                                        <li class="truncate"><a href="Executa?logicaDeNegocio=TipoComprovanteServlet&tarefa=consultarLista">Tipos de Comprovantes</a></li>
+                                        <li class="truncate"><a href="Executa?logicaDeNegocio=TipoRelatorioServlet&tarefa=consultarLista">Tipos de Atividades</a></li>
+                                        <li class="truncate"><a href="Executa?logicaDeNegocio=TipoContatoServlet&tarefa=consultarLista">Tipos de Contatos</a></li>
+                                        <li class="truncate"><a href="Executa?logicaDeNegocio=StatusRelatorioAtividadeServlet&tarefa=consultarLista">Status de Atividades</a></li>
+                                        <li class="truncate"><a href="Executa?logicaDeNegocio=TipoNotificacaoServlet&tarefa=consultarLista">Tipos de Notificação</a></li>
                                     </ul>
                                 </div>
                             </li>

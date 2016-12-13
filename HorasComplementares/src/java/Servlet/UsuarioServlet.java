@@ -49,27 +49,41 @@ public class UsuarioServlet implements LogicaDeNegocio {
                     usuario = new Usuario();
 
                     //Atribui as informações da usuario no objeto
-                    usuario.setNome(req.getParameter("nome"));
-                    usuario.setProntuario(req.getParameter("prontuario"));
-                    usuario.setFuncional(req.getParameter("funcional"));
-                    usuario.setLogin(req.getParameter("login"));
-                    usuario.setSemestre(req.getParameter("semestre"));
-                    usuario.setAtivo(true);
+                    if (req.getParameter("tipoUsuario").equals("aluno")) {
+                        usuario.setNome(req.getParameter("nome"));
+                        usuario.setProntuario(req.getParameter("prontuario"));
+                        usuario.setLogin(req.getParameter("login"));
+                        usuario.setSemestre(req.getParameter("semestre"));
+                        usuario.setAtivo(Boolean.parseBoolean(req.getParameter("ativo")));
+                        usuario.setSenha(new Criptografia().Digest(req.getParameter("senha")));
 
-                    java.util.Date data = formato.parse(req.getParameter("data"));
-                    Date sql = new Date(data.getTime());
-                    usuario.setDataMatricula(sql);
+                        java.util.Date data = formato.parse(req.getParameter("data"));
+                        Date sql = new Date(data.getTime());
+                        usuario.setDataMatricula(sql);
 
-                    usuario.setSenha(new Criptografia().Digest(req.getParameter("senha")));
+                        curso.setCodigo(Integer.parseInt(req.getParameter("codigoCurso")));
+                        tipoUsario.setCodigo(Integer.parseInt(req.getParameter("codigoTipoUsuario")));
+                        usuario.setCurso(curso);
+                        usuario.setTipoUsuario(tipoUsario);
 
-                    curso.setCodigo(Integer.parseInt(req.getParameter("codigoCurso")));
-                    tipoUsario.setCodigo(Integer.parseInt(req.getParameter("codigoTipoUsuario")));
+                        //Grava um nova usuario no banco de dados
+                        new UsuarioDAO().IncluirAluno(usuario);
 
-                    usuario.setCurso(curso);
-                    usuario.setTipoUsuario(tipoUsario);
+                    } else {
+                        usuario.setNome(req.getParameter("nome"));
+                        usuario.setFuncional(req.getParameter("funcional"));
+                        usuario.setLogin(req.getParameter("login"));
+                        usuario.setAtivo(Boolean.parseBoolean(req.getParameter("ativo")));
+                        usuario.setSenha(new Criptografia().Digest(req.getParameter("senha")));
 
-                    //Grava um nova usuario no banco de dados
-                    new UsuarioDAO().Incluir(usuario);
+                        curso.setCodigo(Integer.parseInt(req.getParameter("codigoCurso")));
+                        tipoUsario.setCodigo(Integer.parseInt(req.getParameter("codigoTipoUsuario")));
+                        usuario.setCurso(curso);
+                        usuario.setTipoUsuario(tipoUsario);
+
+                        //Grava um nova usuario no banco de dados
+                        new UsuarioDAO().IncluirFuncionario(usuario);
+                    }
 
                     //Atribui a ultima usuario como Atributo a ser enviado na próxima Requisição 
                     req.setAttribute("incluidoUsuario", usuario);
@@ -181,7 +195,7 @@ public class UsuarioServlet implements LogicaDeNegocio {
                     ArrayList<Usuario> listaUsuario = new ArrayList<>();
                     ArrayList<Curso> listaCurso = new ArrayList<>();
                     ArrayList<TipoUsuario> listaTipoUsuario = new ArrayList<>();
-                    
+
                     //Grava um nova usuario no banco de dados
                     listaUsuario = new UsuarioDAO().Consultar();
                     listaCurso = new CursoDAO().Consultar();
@@ -191,7 +205,6 @@ public class UsuarioServlet implements LogicaDeNegocio {
                     req.setAttribute("listaUsuario", listaUsuario);
                     req.setAttribute("listaCurso", listaCurso);
                     req.setAttribute("listaTipoUsuario", listaTipoUsuario);
-                    
 
                 } catch (SQLException ex) {
                     System.err.println("Erro ao cosultar usuario no banco de dados. Detalhes: " + ex.getMessage());
