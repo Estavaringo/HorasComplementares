@@ -39,7 +39,7 @@
                                     <!-- Dropdown Structure -->
                                     <ul id='dropdown${statusAtividade.codigo}' class='dropdown-content'>
                                         <li class="divider"></li>
-                                        <li><a class="botao-alterar-statusAtividade cyan-text text-darken-4" id="${statusAtividade.codigo}"><i class="material-icons yellow-text text-darken-4">edit</i>Alterar</a></li>
+                                        <li><a class="botao-alterar-descricao cyan-text text-darken-4" id="${statusAtividade.codigo}"><i class="material-icons yellow-text text-darken-4">edit</i>Alterar</a></li>
                                         <li class="divider"></li>
                                         <li><a class="botao-excluir cyan-text text-darken-4" id="${statusAtividade.codigo}"><i class="material-icons deep-orange-text">delete</i>Excluir</a></li>
                                     </ul>

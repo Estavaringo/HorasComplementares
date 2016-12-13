@@ -73,7 +73,7 @@ $(document).ready(function () {
     
     $('select').material_select();
     
-    $(".botao-alterar-tipoComprovante").click(function (){
+    $(".botao-alterar-descricao").click(function (){
        
         var codigo = this.id;
         var descricao = $('#descricao-' + codigo).text();
@@ -83,17 +83,6 @@ $(document).ready(function () {
         
         $('#modal-alterar').openModal('');
     });    
-    
-    $(".botao-alterar-statusAtividade").click(function (){
-       
-        var codigo = this.id;
-        var descricao = $('#descricao-' + codigo).text();
-        
-        $('#codigo-alterar').val(codigo);
-        $('#descricao-alterar').val(descricao);
-        
-        $('#modal-alterar').openModal('');
-    });
     
     $(".botao-alterar-tipoRelatorio").click(function (){
        
@@ -108,31 +97,9 @@ $(document).ready(function () {
         $('#modal-alterar').openModal('');
     });
     
-    $(".botao-alterar-tipoContato").click(function (){
-       
-        var codigo = this.id;
-        var descricao = $('#descricao-' + codigo).text();
-        
-        $('#codigo-alterar').val(codigo);
-        $('#descricao-alterar').val(descricao);
-        
-        $('#modal-alterar').openModal('');
-    });
-    
     $('.dropdown-button').dropdown({
       hover: true // Activate on hover
     }
-  );
-  
-  $(".botao-alterar-tipoUsuario").click(function (){
-       
-        var codigo = this.id;
-        var descricao = $('#descricao-' + codigo).text();
-        
-        $('#codigo-alterar').val(codigo);
-        $('#descricao-alterar').val(descricao);
-        
-        $('#modal-alterar').openModal('');
-    });   
+  );  
     
 });

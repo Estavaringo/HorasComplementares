@@ -21,30 +21,30 @@
 
     <div class="stepwizard-row setup-panel">
         <div class="stepwizard-step">
-            <a href="#step-1" type="button" class="btn-floating btn-primary btn-circle">1</a>
+            <a href="#step-1" type="button" class="btn-floating btn-primary btn-circle">Identificação</a>
             <p>Step 1</p>
         </div>
         <div class="stepwizard-step">
-            <a href="#step-2" type="button" class="btn-floating btn-default btn-circle" disabled="disabled">2</a>
+            <a href="#step-2" type="button" class="btn-floating btn-default btn-circle">Relatório</a>
             <p>Step 2</p>
         </div>
         <div class="stepwizard-step">
-            <a href="#step-3" type="button" class="btn-floating btn-default btn-circle" disabled="disabled">3</a>
+            <a href="#step-3" type="button" class="btn-floating btn-default btn-circle">Comprovante</a>
             <p>Step 3</p>
         </div>
     </div>
 
 
     <form method="POST" action="Executa" enctype="multipart/form-data">
-        <div class="modal-content">
+        <div class="modal-content" id="step-3">
             <h4>Nova Atividade</h4>
-            <p>Siga o passo a passo para incluir uma nova atividade:</p>
+            <p>Siga o passo a passo para incluir uma nova atividade:</p><br>
 
             <!--Nome das Classes que deverão ser informadas na requisição-->
             <input type="hidden" name="logicaDeNegocio" value="DocumentoRelatorioServlet">
             <input type="hidden" name="tarefa" value="incluir">
-            <input type="hidden" name="codigoTipoDocumento" value="2">
             <input type="hidden" name="codigoRelatorioAtividade" value="2">
+            <input type="hidden" name="codigoTipoComprovante" value="2">
 
 <!--            <div class="input-field">
                 <i class="material-icons prefix">border_color</i>
@@ -53,10 +53,20 @@
             </div>-->
 
             <div class="input-field">
+                    <select name="codigoTipoComprovante">
+                        <option value="" disabled selected>Escolha um tipo de comprovante...</option>
+                        <c:forEach var="tipoComprovante" items="${listaTipoComprovante}">
+                            <option value="${tipoComprovante.codigo}" class="form-control" >${tipoComprovante.descricao}</option>
+                        </c:forEach>
+                    </select>
+                    <label>Tipo de Comprovante</label>
+                </div><br>
+
+            <div class="input-field">
                 <i class="material-icons prefix">description</i>
                 <label for="descricao-incluir" class="active">Descrição</label>
-                <input id="descricao-incluir" placeholder="Insira uma descrição para a sua foto..." type="text" name="descricao" value="" />
-            </div>
+                <input id="descricao-incluir" placeholder="Insira uma descrição para o seu comprovante..." type="text" name="descricao" value="" />
+            </div><br>
 
             <!--Campo de Upload do Comprovante-->
             <div class="file-field input-field">

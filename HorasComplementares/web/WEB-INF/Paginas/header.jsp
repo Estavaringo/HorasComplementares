@@ -80,6 +80,7 @@
                                         <li><a href="Executa?logicaDeNegocio=TipoRelatorioServlet&tarefa=consultarLista">Tipos de Atividades</a></li>
                                         <li><a href="Executa?logicaDeNegocio=TipoContatoServlet&tarefa=consultarLista">Tipos de Contatos</a></li>
                                         <li><a href="Executa?logicaDeNegocio=StatusRelatorioAtividadeServlet&tarefa=consultarLista">Status de Atividades</a></li>
+                                        <li><a href="Executa?logicaDeNegocio=TipoNotificacaoServlet&tarefa=consultarLista">Tipos de Notificação</a></li>
                                     </ul>
                                 </div>
                             </li>

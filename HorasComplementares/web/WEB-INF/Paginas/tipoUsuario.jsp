@@ -39,7 +39,7 @@
                                     <!-- Dropdown Structure -->
                                     <ul id='dropdown${tipoUsuario.codigo}' class='dropdown-content'>
                                         <li class="divider"></li>
-                                        <li><a class="botao-alterar-tipoUsuario cyan-text text-darken-4" id="${tipoUsuario.codigo}"><i class="material-icons yellow-text text-darken-4">edit</i>Alterar</a></li>
+                                        <li><a class="botao-alterar-descricao cyan-text text-darken-4" id="${tipoUsuario.codigo}"><i class="material-icons yellow-text text-darken-4">edit</i>Alterar</a></li>
                                         <li class="divider"></li>
                                         <li><a class="botao-excluir cyan-text text-darken-4" id="${tipoUsuario.codigo}"><i class="material-icons deep-orange-text">delete</i>Excluir</a></li>
                                     </ul>

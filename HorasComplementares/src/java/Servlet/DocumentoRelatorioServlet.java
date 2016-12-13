@@ -9,18 +9,14 @@ import Bean.DocumentoRelatorio;
 import Bean.RelatorioAtividade;
 import Bean.TipoComprovante;
 import DAO.DocumentoRelatorioDAO;
+import DAO.TipoComprovanteDAO;
 import java.io.File;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileUploadException;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 /**
  *
@@ -44,7 +40,7 @@ public class DocumentoRelatorioServlet implements LogicaDeNegocio {
 
                     //instancia uma nova documentoRelatorio
                     documentoRelatorio = new DocumentoRelatorio();
-                    
+
                     //faz o upload do arquivo
                     FileItem item = null;
                     item = (FileItem) req.getAttribute("comprovante");
@@ -54,7 +50,7 @@ public class DocumentoRelatorioServlet implements LogicaDeNegocio {
                     documentoRelatorio.setDescricao((String) req.getAttribute("descricao"));
                     documentoRelatorio.setUrl((String) req.getAttribute("url"));
 
-                    tipoComprovante.setCodigo(Integer.parseInt((String) req.getAttribute("codigoTipoDocumento")));
+                    tipoComprovante.setCodigo(Integer.parseInt((String) req.getAttribute("codigoTipoComprovante")));
                     relatorioAtividade.setCodigo(Integer.parseInt((String) req.getAttribute("codigoRelatorioAtividade")));
 
                     documentoRelatorio.setTipoDocumento(tipoComprovante);
@@ -70,8 +66,8 @@ public class DocumentoRelatorioServlet implements LogicaDeNegocio {
                     System.err.println("Erro ao inserir documentoRelatorio no banco de dados. Detalhes: " + ex.getMessage());
                     return "erro.html";
                 } catch (Exception ex) {
-            System.err.println("Erro ao realizar o upload. Detalhes: " + ex.getMessage());
-        }
+                    System.err.println("Erro ao realizar o upload. Detalhes: " + ex.getMessage());
+                }
                 break;
 
             case "remover":
@@ -85,7 +81,7 @@ public class DocumentoRelatorioServlet implements LogicaDeNegocio {
                     documentoRelatorio.setDescricao(req.getParameter("descricao"));
                     documentoRelatorio.setUrl(req.getParameter("url"));
 
-                    tipoComprovante.setCodigo(Integer.parseInt(req.getParameter("codigoTipoDocumento")));
+                    tipoComprovante.setCodigo(Integer.parseInt(req.getParameter("codigoTipoComprovante")));
                     relatorioAtividade.setCodigo(Integer.parseInt(req.getParameter("codigoRelatorioAtividade")));
 
                     documentoRelatorio.setTipoDocumento(tipoComprovante);
@@ -114,7 +110,7 @@ public class DocumentoRelatorioServlet implements LogicaDeNegocio {
                     documentoRelatorio.setDescricao(req.getParameter("descricao"));
                     documentoRelatorio.setUrl(req.getParameter("url"));
 
-                    tipoComprovante.setCodigo(Integer.parseInt(req.getParameter("codigoTipoDocumento")));
+                    tipoComprovante.setCodigo(Integer.parseInt(req.getParameter("codigoTipoComprovante")));
                     relatorioAtividade.setCodigo(Integer.parseInt(req.getParameter("codigoRelatorioAtividade")));
 
                     documentoRelatorio.setTipoDocumento(tipoComprovante);
@@ -153,12 +149,15 @@ public class DocumentoRelatorioServlet implements LogicaDeNegocio {
                 try {
 
                     ArrayList<DocumentoRelatorio> listaDocumentoRelatorio = new ArrayList<>();
+                    ArrayList<TipoComprovante> listaTipoComprovante = new ArrayList<>();
 
                     //Grava um nova documentoRelatorio no banco de dados
                     listaDocumentoRelatorio = new DocumentoRelatorioDAO().Consultar();
+                    listaTipoComprovante = new TipoComprovanteDAO().Consultar();
 
                     //Atribui a ultima documentoRelatorio como Atributo a ser enviado na próxima Requisição 
                     req.setAttribute("listaDocumentoRelatorio", listaDocumentoRelatorio);
+                    req.setAttribute("listaTipoComprovante", listaTipoComprovante);
 
                 } catch (SQLException ex) {
                     System.err.println("Erro ao cosultar documentoRelatorio no banco de dados. Detalhes: " + ex.getMessage());
@@ -176,12 +175,15 @@ public class DocumentoRelatorioServlet implements LogicaDeNegocio {
         try {
 
             ArrayList<DocumentoRelatorio> listaDocumentoRelatorio = new ArrayList<>();
+            ArrayList<TipoComprovante> listaTipoComprovante = new ArrayList<>();
 
             //Grava um nova documentoRelatorio no banco de dados
             listaDocumentoRelatorio = new DocumentoRelatorioDAO().Consultar();
+            listaTipoComprovante = new TipoComprovanteDAO().Consultar();
 
             //Atribui a ultima documentoRelatorio como Atributo a ser enviado na próxima Requisição 
             req.setAttribute("listaDocumentoRelatorio", listaDocumentoRelatorio);
+            req.setAttribute("listaTipoComprovante", listaTipoComprovante);
 
         } catch (SQLException ex) {
             System.err.println("Erro ao cosultar documentoRelatorio no banco de dados. Detalhes: " + ex.getMessage());

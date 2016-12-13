@@ -125,7 +125,7 @@ public class TipoNotificacaoServlet implements LogicaDeNegocio{
                     return "erro.html";
                 }
 
-                return "/WEB-INF/Paginas/tiponotificacao.jsp";
+                return "/WEB-INF/Paginas/tipoNotificacao.jsp";
 
             default:
                 System.err.println("Tarefa informada é inválida!");
@@ -148,7 +148,7 @@ public class TipoNotificacaoServlet implements LogicaDeNegocio{
             return "erro.html";
         }
 
-        return "/WEB-INF/Paginas/tiponotificacao.jsp";
+        return "/WEB-INF/Paginas/tipoNotificacao.jsp";
     }
 
     @Override
