@@ -79,6 +79,7 @@
                                         <li><a href="Executa?logicaDeNegocio=TipoComprovanteServlet&tarefa=consultarLista">Tipos de Comprovantes</a></li>
                                         <li><a href="Executa?logicaDeNegocio=TipoRelatorioServlet&tarefa=consultarLista">Tipos de Atividades</a></li>
                                         <li><a href="Executa?logicaDeNegocio=TipoContatoServlet&tarefa=consultarLista">Tipos de Contatos</a></li>
+                                        <li><a href="Executa?logicaDeNegocio=StatusRelatorioAtividadeServlet&tarefa=consultarLista">Status de Atividades</a></li>
                                     </ul>
                                 </div>
                             </li>

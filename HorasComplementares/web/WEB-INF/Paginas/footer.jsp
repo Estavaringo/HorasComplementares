@@ -62,7 +62,7 @@
             <div class="file-field input-field">
                 <div class="btn">
                     <span>Selecione o Comprovante</span>
-                    <input type="file" name="file">
+                    <input type="file" name="comprovante">
                 </div>
                 <div class="file-path-wrapper">
                     <input class="file-path validate" type="text">

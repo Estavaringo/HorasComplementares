@@ -125,7 +125,7 @@ public class StatusRelatorioAtividadeServlet implements LogicaDeNegocio{
                     return "erro.html";
                 }
 
-                return "/WEB-INF/Paginas/tipocontato.jsp";
+                return "/WEB-INF/Paginas/statusAtividade.jsp";
 
             default:
                 System.err.println("Tarefa informada é inválida!");
@@ -148,7 +148,7 @@ public class StatusRelatorioAtividadeServlet implements LogicaDeNegocio{
             return "erro.html";
         }
 
-        return "/WEB-INF/Paginas/tipocontato.jsp";
+        return "/WEB-INF/Paginas/statusAtividade.jsp";
     }
 
     @Override

@@ -9,11 +9,18 @@ import Bean.DocumentoRelatorio;
 import Bean.RelatorioAtividade;
 import Bean.TipoComprovante;
 import DAO.DocumentoRelatorioDAO;
+import java.io.File;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 /**
  *
@@ -37,6 +44,11 @@ public class DocumentoRelatorioServlet implements LogicaDeNegocio {
 
                     //instancia uma nova documentoRelatorio
                     documentoRelatorio = new DocumentoRelatorio();
+                    
+                    //faz o upload do arquivo
+                    FileItem item = null;
+                    item = (FileItem) req.getAttribute("comprovante");
+                    item.write(new File((String) req.getAttribute("url")));
 
                     //Atribui as informações da documentoRelatorio no objeto
                     documentoRelatorio.setDescricao((String) req.getAttribute("descricao"));
@@ -57,7 +69,9 @@ public class DocumentoRelatorioServlet implements LogicaDeNegocio {
                 } catch (SQLException ex) {
                     System.err.println("Erro ao inserir documentoRelatorio no banco de dados. Detalhes: " + ex.getMessage());
                     return "erro.html";
-                }
+                } catch (Exception ex) {
+            System.err.println("Erro ao realizar o upload. Detalhes: " + ex.getMessage());
+        }
                 break;
 
             case "remover":

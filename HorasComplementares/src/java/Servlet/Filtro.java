@@ -43,7 +43,7 @@ public class Filtro implements Filter {
         String uri = req.getRequestURI();
         String usuario = getUsuario(req);
         if (ServletFileUpload.isMultipartContent(req)) {
-            HttpServletRequest parsedRequest = upload(req);
+            HttpServletRequest parsedRequest = parse(req);
             chain.doFilter(parsedRequest, response);
         } else {
             chain.doFilter(request, response);
@@ -64,7 +64,7 @@ public class Filtro implements Filter {
     public void destroy() {
     }
 
-    private HttpServletRequest upload(HttpServletRequest req) {
+    private HttpServletRequest parse(HttpServletRequest req) {
         List<FileItem> multiparts = null;
         try {
             multiparts = new ServletFileUpload(
@@ -77,28 +77,23 @@ public class Filtro implements Filter {
                 + "Arquivos e Documentos Produzidos pela Equipe/Desenvolvimento/"
                 + "NetBeans/Gabriel/HorasComplementares/HorasComplementares/web/comprovantes";
 
-        try {
-            System.out.println(multiparts);
-            for (FileItem item : multiparts) {
-                if (!item.isFormField()) {
-                    String name = new File(item.getName()).getName();
-                    String url = UPLOAD_DIRECTORY + File.separator + name;
-                    item.write(new File(url));
-                    System.out.println(name);
-                    System.out.println(url);
-                    System.out.println("Fez o Upload");
-                    req.setAttribute("url", url);
-                } else if (item.isFormField()) {
-                    // Process regular form field (input type="text|radio|checkbox|etc", select, etc).
-                    String fieldname = item.getFieldName();
-                    String fieldvalue = item.getString();
-                    req.setAttribute(fieldname, fieldvalue);
-                }
+        System.out.println(multiparts);
+        for (FileItem item : multiparts) {
+            if (!item.isFormField()) {
+                String name = new File(item.getName()).getName();
+                String url = UPLOAD_DIRECTORY + File.separator + name;
+                System.out.println(name);
+                System.out.println(url);
+                String fieldname = item.getFieldName();
+                req.setAttribute(fieldname, item);
+                req.setAttribute("url", url);
+            } else if (item.isFormField()) {
+                // Process regular form field (input type="text|radio|checkbox|etc", select, etc).
+                String fieldname = item.getFieldName();
+                String fieldvalue = item.getString();
+                req.setAttribute(fieldname, fieldvalue);
             }
-            return req;
-        } catch (Exception ex) {
-            System.err.println("Erro ao realizar o upload. Detalhes: " + ex.getMessage());
         }
-        return null;
+        return req;
     }
 }
