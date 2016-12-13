@@ -9,16 +9,16 @@
         <i class="icon-horas-complementares"></i>
     </a>
     <ul>
-      <li><a class="modal-trigger btn-floating red darken-3 tooltipped" data-position="top" data-delay="50" data-tooltip="Nova Atividade" href="#modal-upload">
-              <i class="material-icons">add_circle</i>
-          </a>
-      </li>
-      <li><a class="btn-floating blue tooltipped" data-position="top" data-delay="50" data-tooltip="Ver Histórico"><i class="material-icons">swap_vertical_circle</i></a></li>
+        <li><a class="modal-trigger btn-floating red darken-3 tooltipped" data-position="top" data-delay="50" data-tooltip="Nova Atividade" href="#modal-upload">
+                <i class="material-icons">add_circle</i>
+            </a>
+        </li>
+        <li><a class="btn-floating blue tooltipped" data-position="top" data-delay="50" data-tooltip="Ver Histórico"><i class="material-icons">swap_vertical_circle</i></a></li>
     </ul>
 </div>
 <!-- ESTRUTURA DA MODAL INCLUIR -->
 <div id="modal-upload" class="modal modal-fixed-footer">
-    
+
     <div class="stepwizard-row setup-panel">
         <div class="stepwizard-step">
             <a href="#step-1" type="button" class="btn-floating btn-primary btn-circle">1</a>
@@ -33,34 +33,36 @@
             <p>Step 3</p>
         </div>
     </div>
-    
-    
-    <form method="POST" action="Executa">
+
+
+    <form method="POST" action="Executa" enctype="multipart/form-data">
         <div class="modal-content">
             <h4>Nova Atividade</h4>
             <p>Siga o passo a passo para incluir uma nova atividade:</p>
 
             <!--Nome das Classes que deverão ser informadas na requisição-->
-            <input type="hidden" name="logicaDeNegocio" value="RelatorioAtividadeServlet">
+            <input type="hidden" name="logicaDeNegocio" value="DocumentoRelatorioServlet">
             <input type="hidden" name="tarefa" value="incluir">
+            <input type="hidden" name="codigoTipoDocumento" value="2">
+            <input type="hidden" name="codigoRelatorioAtividade" value="2">
 
-            <div class="input-field">
+<!--            <div class="input-field">
                 <i class="material-icons prefix">border_color</i>
                 <label for="nome-incluir" class="active">Título</label>
                 <input id="nome-incluir" placeholder="Insira um título para a sua publicação aqui..." type="text" class="validate" name="nome" value="" />
-            </div>
+            </div>-->
 
             <div class="input-field">
                 <i class="material-icons prefix">description</i>
                 <label for="descricao-incluir" class="active">Descrição</label>
                 <input id="descricao-incluir" placeholder="Insira uma descrição para a sua foto..." type="text" name="descricao" value="" />
             </div>
-            
+
             <!--Campo de Upload do Comprovante-->
             <div class="file-field input-field">
                 <div class="btn">
                     <span>Selecione o Comprovante</span>
-                    <input type="file">
+                    <input type="file" name="file">
                 </div>
                 <div class="file-path-wrapper">
                     <input class="file-path validate" type="text">

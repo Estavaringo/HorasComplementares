@@ -100,7 +100,7 @@ public class DocumentoRelatorioDAO implements DAO<DocumentoRelatorio>{
                     + "FROM DOCUMENTO_RELATORIO D "
                     + "INNER JOIN RELATORIO_ATIVIDADE R "
                     + "ON D.REAT_ID = R.REAT_ID "
-                    + "INNER JOIN TIPO_DOCUMENTO T "
+                    + "INNER JOIN TIPO_COMPROVANTE T "
                     + "ON D.TIDO_ID = T.TIDO_ID");
             while (rs.next()) {
                 DocumentoRelatorio obj = new DocumentoRelatorio();
