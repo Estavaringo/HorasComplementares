@@ -102,4 +102,27 @@ $(document).ready(function () {
     }
   );  
     
+  $('input[name="tipoUsuario-incluir"]:radio').change(function (){
+    
+    var parts;
+    parts = Array[3];
+    var codigo = String.valueOf(this.id);
+        parts = codigo.split("-",3);
+        
+    var descricao =  $('#tipoUsuario-incluir-descricao-' + parts[3]).text();
+    
+    switch (descricao){
+        case "Aluno":
+            $('#div-funcional-incluir').addClass("hide");
+            
+            break;
+        default:
+            break;
+    }
+            
+        
+      
+      
+  });
+  
 });

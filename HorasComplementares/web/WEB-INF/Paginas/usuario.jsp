@@ -20,6 +20,7 @@
                 <thead>
                     <tr>
                         <th data-field="usuario">Usuario</th>
+                        <th data-field="tipoUsuario">tipo de usuario</th>
                         <th data-field="funcional">Funcional</th>
                         <th data-field="prontuario">Prontuario</th>
                         <th data-field="dataMatricula">data da matricula</th>
@@ -34,14 +35,15 @@
                         <c:forEach var="usuario" items="${listaUsuario}">
                             <tr>
                                 <td id="descricao-${usuario.codigo}">${usuario.nome}</td>
+                                <td id="tipoUsuario-${usuario.codigo}">${usuario.tipoUsuario.descricao}</td>
                                 <c:if test="${usuario.tipoUsuario.descricao != 'Aluno'}">
                                     <td id="funcional-${usuario.codigo}">${usuario.funcional}</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
                                 </c:if>
                                 <c:if test="${usuario.tipoUsuario.descricao == 'Aluno'}">
-                                    <td></td>
+                                    <td>-</td>
                                     <td id="prontuario-${usuario.codigo}">${usuario.prontuario}</td>
                                     <td id="dataMatricula-${usuario.codigo}">${usuario.dataMatricula}</td>
                                     <td id="semestre-${usuario.codigo}">${usuario.semestre}</td>
@@ -82,7 +84,21 @@
                 <input type="hidden" name="logicaDeNegocio" value="UsuarioServlet">
                 <input type="hidden" name="tarefa" value="alterar">
                 <input type="hidden" name="codigo" id="codigo-alterar">
-
+                
+                
+                <div>
+                    <label>Tipo de usuario</label>
+                    <c:forEach var="tipoUsuario" items="${listaTipoUsuario}">
+                        <c:if test="${usuario.tipoUsuario.codigo == tipoUsuario.codigo}">
+                            <input name="tipoUsuario-alterar" type="radio" id="tipoUsuario-alterar-${tipoUsuario.codigo}" value="${tipoUsuario.codigo}"  />
+                            <label for="tipoUsuario-alterar-${tipoUsuario.codigo}">${tipoUsuario.descricao}</label><br>
+                        </c:if>
+                        <c:if test="${usuario.tipoUsuario.codigo != tipoUsuario.codigo}">
+                            <input name="tipoUsuario-alterar" type="radio" id="tipoUsuario-alterar-${tipoUsuario.codigo}" value="${tipoUsuario.codigo}"  />
+                            <label for="tipoUsuario-alterar-${tipoUsuario.codigo}">${tipoUsuario.descricao}</label><br>
+                        </c:if>
+                    </c:forEach>
+                </div>
                 <div class="input-field">
                     <i class="material-icons prefix">border_color</i>
                     <label for="descricao-alterar"></label>
@@ -129,17 +145,6 @@
                         <span class="lever"></span>
                         Ativo
                     </label>
-                </div>
-                <div>
-                    <label>Tipo de usuario</label>
-                    <c:forEach var="tipoUsuario" items="${listaTipoUsuario}">
-                        <c:if test="${usuario.tipoUsuario.codigo == tipoUsuario.codigo}">
-                            <input id="tipoUsuario-alterar" name="tipoUsuario" type="radiobutton" class="with-gap" value="${tipoUsuario.codigo}" checked="checked">${tipoUsuario.descricao}
-                        </c:if>
-                        <c:if test="${usuario.tipoUsuario.codigo != tipoUsuario.codigo}">
-                            <input id="tipoUsuario-alterar" name="tipoUsuario" type="radiobutton" class="with-gap" value="${tipoUsuario.codigo}">${tipoUsuario.descricao}
-                        </c:if>
-                    </c:forEach>
                 </div>
                 <div class="input-field col s12">
                     <label>Curso</label>
@@ -196,72 +201,68 @@
                 <input type="hidden" name="logicaDeNegocio" value="UsuarioServlet">
                 <input type="hidden" name="tarefa" value="incluir">
 
-                
-                <div class="input-field">
-                    <i class="material-icons prefix">border_color</i>
-                    <label for="descricao-inclir"></label>
-                    <input id="descricao-inclir" placeholder="Insira o nome do usuario aqui..." type="text" class="validate" name="descricao" value="" />
-                </div>
-                <c:if test="${usuario.tipoUsuario.descricao == 'Aluno'}">
-                    <div class="input-field">
-                        <i class="material-icons prefix">border_color</i>
-                        <label for="prontuario-inclir"></label>
-                        <input id="prontuario-inclir" placeholder="Insira o prontuario do usuario aqui..." type="text" class="validate" name="prontuario" value="" />
-                    </div>
-                    <div class="input-field">
-                        <i class="material-icons prefix">border_color</i>
-                        <label for="dataMatricula-inclir"></label>
-                        <input id="dataMatricula-inclir" placeholder="Insira a data da matricula do usuario aqui..." type="text" class="validate" name="dataMatricula" value="" />
-                    </div>
-                    <div class="input-field">
-                        <i class="material-icons prefix">border_color</i>
-                        <label for="semestre-inclir"></label>
-                        <input id="semestre-inclir" placeholder="Insira o semestre do usuario aqui..." type="text" class="validate" name="semestre" value="" />
-                    </div>
-                </c:if>
-                <c:if test="${usuario.tipoUsuario.descricao != 'Aluno'}">
-                    <div class="input-field">
-                        <i class="material-icons prefix">border_color</i>
-                        <label for="funcional-inclir"></label>
-                        <input id="fincional-inclir" placeholder="Insira o numero de funcionario do usuario aqui..." type="text" class="validate" name="funcional" value="" />
-                    </div>
-                </c:if>
-                <div class="input-field">
-                    <i class="material-icons prefix">border_color</i>
-                    <label for="login-inclir"></label>
-                    <input id="login-inclir" placeholder="Insira o login do usuario aqui..." type="text" class="validate" name="login" value="" />
+                <div>
+                    <label>Tipo de usuario</label><br>
+                    <c:forEach var="tipoUsuario" items="${listaTipoUsuario}">
+                        <c:if test="${usuario.tipoUsuario.codigo == tipoUsuario.codigo}">
+                            <input name="tipoUsuario-incluir" type="radio" id="tipoUsuario-incluir-${tipoUsuario.codigo}" class="with-gap" value="${tipoUsuario.codigo}" checked />
+                        </c:if>
+                        <c:if test="${usuario.tipoUsuario.codigo != tipoUsuario.codigo}">
+                            <input name="tipoUsuario-incluir" type="radio" id="tipoUsuario-incluir-${tipoUsuario.codigo}" class="with-gap" value="${tipoUsuario.codigo}"  />
+                        </c:if>
+                        <label for="tipoUsuario-incluir-${tipoUsuario.codigo}">${tipoUsuario.descricao}</label><br>
+                        <input type="hidden" value="${tipoUsuario.descricao}" id="tipoUsuario-incluir-descricao-${tipoUsuario.codigo}"></label>
+                    </c:forEach>
                 </div>
                 <div class="input-field">
                     <i class="material-icons prefix">border_color</i>
-                    <label for="senha-inclir"></label>
-                    <input id="senha-inclir" placeholder="Insira a senha do usuario aqui..." type="text" class="validate" name="senha" value="" />
+                    <label for="descricao-incluir"></label>
+                    <input id="descricao-incluir" placeholder="Insira o nome do usuario aqui..." type="text" class="validate" name="descricao" value="" />
+                </div>
+                    <div class="input-field">
+                        <i class="material-icons prefix">border_color</i>
+                        <label for="prontuario-incluir"></label>
+                        <input id="prontuario-incluir" placeholder="Insira o prontuario do usuario aqui..." type="text" class="validate" name="prontuario" value="" />
+                    </div>
+                    <div class="input-field">
+                        <i class="material-icons prefix">border_color</i>
+                        <label for="dataMatricula-incluir"></label>
+                        <input id="dataMatricula-incluir" placeholder="Insira a data da matricula do usuario aqui..." type="text" class="validate" name="dataMatricula" value="" />
+                    </div>
+                    <div class="input-field">
+                        <i class="material-icons prefix">border_color</i>
+                        <label for="semestre-incluir"></label>
+                        <input id="semestre-incluir" placeholder="Insira o semestre do usuario aqui..." type="text" class="validate" name="semestre" value="" />
+                    </div>
+                <div id="div-funcional-incluir">
+                    <div class="input-field">
+                    <i class="material-icons prefix">border_color</i>
+                    <label for="funcional-incluir"></label>
+                    <input id="fincional-incluir" placeholder="Insira o numero de funcionario do usuario aqui..." type="text" class="validate" name="funcional" value="" />
+                </div>
+                </div>
+                <div class="input-field">
+                    <i class="material-icons prefix">border_color</i>
+                    <label for="login-incluir"></label>
+                    <input id="login-incluir" placeholder="Insira o login do usuario aqui..." type="text" class="validate" name="login" value="" />
+                </div>
+                <div class="input-field">
+                    <i class="material-icons prefix">border_color</i>
+                    <label for="senha-incluir"></label>
+                    <input id="senha-incluir" placeholder="Insira a senha do usuario aqui..." type="text" class="validate" name="senha" value="" />
                 </div>
                 <div class="switch">
-                    <label for="ativo-inclir">
+                    <label for="ativo-incluir">
                         Inativo
-                        <input id="ativo-inclir" type="checkbox" class="validate" name="ativo" value="true" />
+                        <input id="ativo-incluir" type="checkbox" class="validate" name="ativo" value="true" />
                         <span class="lever"></span>
                         Ativo
                     </label>
                 </div>
                 <br>
-                <div>
-                    <label>Tipo de usuario</label><br>
-                    <c:forEach var="tipoUsuario" items="${listaTipoUsuario}">
-                        <c:if test="${usuario.tipoUsuario.codigo == tipoUsuario.codigo}">
-                            <input name="tipoUsuario-inclir" type="radio" id="tipoUsuario-incluir-${tipoUsuario.codigo}" value="${tipoUsuario.codigo}" class="with-gap"  />
-                            <label for="tipoUsuario-incluir">${tipoUsuario.descricao}</label><br>
-                        </c:if>
-                        <c:if test="${usuario.tipoUsuario.codigo != tipoUsuario.codigo}">
-                            <input name="tipoUsuario-inclir" type="radio" id="tipoUsuario-incluir-${tipoUsuario.codigo}" value="${tipoUsuario.codigo}" class="with-gap" />
-                            <label for="tipoUsuario-incluir">${tipoUsuario.descricao}</label><br>
-                        </c:if>
-                    </c:forEach>       
-                </div>
-                <br>
                 <div class="input-field col s12">
                     <label>Curso</label><br>
-                    <select id="curso-inclir" name="">
+                    <select id="curso-incluir" name="">
                         <c:forEach var="curso" items="${listaCurso}">
                             <c:if test="${usuario.curso.codigo == curso.codigo}">
                                 <option value="${curso.codigo}" selected="selected">${curso.nome}</option>
