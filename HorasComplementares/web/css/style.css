@@ -163,11 +163,18 @@ main {
     position: relative;
 }
 .btn-circle {
-    width: 30px;
-    height: 30px;
+    width: 60px;
+    height: 60px;
     text-align: center;
     padding: 6px 0;
     font-size: 12px;
     line-height: 1.428571429;
     border-radius: 15px;
+}
+
+/* Configuração do ScrolSpy da pagina de configuração de curso*/
+.acesso-rapido-lateral {
+    top: 0px; 
+    right: 24px;
+    margin-top: 240px;
 }

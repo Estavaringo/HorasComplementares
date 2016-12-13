@@ -16,8 +16,30 @@ public class TipoComprovante {
     //Atributos
     private String descricao;
     private String intrucao;
-    private String ativo;
+    private String status;
 
+    public enum ChavesDeConfiguracao {
+    
+	STATUS(1), INSTRUCOES(2);
+	
+	private final int valor;
+        
+	ChavesDeConfiguracao(int valorOpcao){
+		valor = valorOpcao;
+	}
+	public int getValor(){
+		return valor;
+	}  
+    }
+    
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+    
     /**
      * @return the codigo
      */

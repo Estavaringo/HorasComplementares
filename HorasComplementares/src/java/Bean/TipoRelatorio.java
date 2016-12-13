@@ -17,9 +17,23 @@ public class TipoRelatorio {
     private String nome;
     private String descricao;
     private int qtdHoras;
-    private int qtdLimite;
+    private int qtdLimiteDeEnvio;
     private String ativo;
-
+    
+    public enum ChavesDeConfiguracao {
+    
+	QUANTIDADE_HORAS(1), QUANTIDADE_LIMITE_DE_ENVIO(2);
+	
+	private final int valor;
+        
+	ChavesDeConfiguracao(int valorOpcao){
+		valor = valorOpcao;
+	}
+	public int getValor(){
+		return valor;
+	}  
+    }
+    
     /**
      * @return the codigo
      */
@@ -77,17 +91,17 @@ public class TipoRelatorio {
     }
 
     /**
-     * @return the qtdLimite
+     * @return the qtdLimiteDeEnvio
      */
-    public int getQtdLimite() {
-        return qtdLimite;
+    public int getQtdLimiteDeEnvio() {
+        return qtdLimiteDeEnvio;
     }
 
     /**
-     * @param qtdLimite the qtdLimite to set
+     * @param qtdLimiteDeEnvio the qtdLimiteDeEnvio to set
      */
-    public void setQtdLimite(int qtdLimite) {
-        this.qtdLimite = qtdLimite;
+    public void setQtdLimiteDeEnvio(int qtdLimiteDeEnvio) {
+        this.qtdLimiteDeEnvio = qtdLimiteDeEnvio;
     }
 
     /**

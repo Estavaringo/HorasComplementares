@@ -9,6 +9,7 @@ import Bean.Curso;
 import Bean.RelatorioAtividade;
 import Bean.RelatorioFinal;
 import Bean.StatusRelatorioAtividade;
+import Bean.TipoComprovante;
 import Bean.TipoRelatorio;
 import Bean.Usuario;
 import DAO.CursoDAO;
@@ -30,11 +31,8 @@ public class ConfiguracaoCursoServlet implements LogicaDeNegocio {
 
     //Declarações
     private Curso curso = null;
-    private RelatorioAtividade relatorioAtividade = null;
-    private Usuario usuario = new Usuario();
-    private StatusRelatorioAtividade statusRelatorioAtividade = new StatusRelatorioAtividade();
-    private RelatorioFinal relatorioFinal = new RelatorioFinal();
-    private TipoRelatorio tipoRelatorio = new TipoRelatorio();
+    private TipoRelatorio tipoRelatorio = null;
+    private TipoComprovante tipoComprovante = null;
     private String tarefa;
 
     SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
@@ -44,16 +42,20 @@ public class ConfiguracaoCursoServlet implements LogicaDeNegocio {
 
         tarefa = req.getParameter("tarefa");
         switch (tarefa) {
-            case "incluir":
+            case "incluir_tipoRelatorio":
                 try {
-
-                    //instancia uma nova relatorioAtividade
-                    relatorioAtividade = new RelatorioAtividade();
-
+                    
+                    //Instancia os objetos a serem utilizados
+                    tipoRelatorio = new TipoRelatorio();
+                    curso = new Curso();                    
+                    
+                    //Obtem o código do curso
+                    curso.setCodigo();
+                    
                     //Atribui as informações da relatorioAtividade no objeto
-                    relatorioAtividade.setDescricao(req.getParameter("descricao"));
-                    relatorioAtividade.setResumo(req.getParameter("resumo"));
-                    relatorioAtividade.setSemestre(req.getParameter("semestre"));
+                    tipoRelatorio.set (req.getParameter("descricao"));
+                    tipoRelatorio.setResumo(req.getParameter("resumo"));
+                    tipoRelatorio.setSemestre(req.getParameter("semestre"));
                     
                     java.util.Date data = formato.parse(req.getParameter("data"));
                     Date sql = new Date(data.getTime());
